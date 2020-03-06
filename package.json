@@ -1,18 +1,25 @@
 {
-  "name": "oliverflint.co.uk",
-  "version": "1.0.0",
-  "description": "",
+  "name": "hexo-site",
+  "version": "0.0.0",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "hexo generate",
+    "clean": "hexo clean",
+    "deploy": "hexo deploy",
+    "server": "hexo server"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/OliverFlint/oliverflint.co.uk.git"
+  "hexo": {
+    "version": "4.2.0"
   },
-  "author": "Oliver Flint",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/OliverFlint/oliverflint.co.uk/issues"
-  },
-  "homepage": "https://github.com/OliverFlint/oliverflint.co.uk#readme"
+  "dependencies": {
+    "hexo": "^4.0.0",
+    "hexo-generator-archive": "^1.0.0",
+    "hexo-generator-category": "^1.0.0",
+    "hexo-generator-index": "^1.0.0",
+    "hexo-generator-tag": "^1.0.0",
+    "hexo-renderer-ejs": "^1.0.0",
+    "hexo-renderer-stylus": "^1.1.0",
+    "hexo-renderer-marked": "^2.0.0",
+    "hexo-server": "^1.0.0"
+  }
 }

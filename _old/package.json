@@ -1,0 +1,18 @@
+{
+  "name": "oliverflint.co.uk",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OliverFlint/oliverflint.co.uk.git"
+  },
+  "author": "Oliver Flint",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/OliverFlint/oliverflint.co.uk/issues"
+  },
+  "homepage": "https://github.com/OliverFlint/oliverflint.co.uk#readme"
+}
