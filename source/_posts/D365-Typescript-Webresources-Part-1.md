@@ -1,8 +1,8 @@
 ---
-title: D365 Typescript Webresources - Part 1 - Basics
+title: D365 Typescript Web Resources - Part 1 - Basics
 tags:
   - D365
-  - Webresources
+  - Web Resources
   - Typescript
   - JavaScript
 date: 2020-03-07 00:52:09
@@ -10,8 +10,8 @@ categories:
   - D365 Typescript
 ---
 
-## Developing JavaScript Webresources with Typescript
-In this [series](/categories/D365-Typescript/) (my first) of posts i'll share my experiences when authoring and maintaining JavaScript Webresources with Typescript. The [series](/categories/D365-Typescript/) will cover the basics and then more advanced options including ES Modules, webpack, babel, unit testing, deployment, etc.
+## Developing JavaScript Web Resources with Typescript
+In this [series](/categories/D365-Typescript/) (my first) of posts i'll share my experiences when authoring and maintaining JavaScript Web Resources with Typescript. The [series](/categories/D365-Typescript/) will cover the basics and then more advanced options including ES Modules, webpack, babel, unit testing, deployment, etc.
 
 Anyway! Let get started!
 
@@ -27,7 +27,7 @@ Finally we have unit testing and debugging where you can debug the typescript di
 Personally, I will never go back to writing raw JavaScript unless it's the only option!
 
 ## A Basic Setup
-Ok, So lets take a look at what we need for the basic setup when working with D365 Webresources.  
+Ok, So lets take a look at what we need for the basic setup when working with D365 Web Resources.  
 *Note: I'll be using [Visual Studio Code](https://code.visualstudio.com/) as my preferred IDE. However, all of this can be done in other IDE's and terminals etc.*
 
 ### Node and NPM
