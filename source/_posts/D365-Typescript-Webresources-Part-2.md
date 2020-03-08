@@ -24,7 +24,9 @@ Read more about them [here](https://www.typescriptlang.org/docs/handbook/declara
 
 Short answer: No
 
-Long answer: No, but you may want to extend either of the two I'll mention below.
+Long answer: No, but you may want to extend either of the two I'll mention below.  
+
+Longer answer: No, but you may want to extend either of the two I'll mention below, and you may even want to author you own.
 
 ### So what do we have available?
 
