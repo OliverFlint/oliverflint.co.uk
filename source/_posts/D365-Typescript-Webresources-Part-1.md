@@ -5,7 +5,8 @@ tags:
   - Web Resources
   - Typescript
   - JavaScript
-date: 2020-03-07 00:52:09
+date: 2020-03-07
+updated: 2020-03-08
 categories:
   - D365 Typescript
 ---
@@ -59,7 +60,7 @@ md dist
 ```
 
 ### Typescript config
-- create a Typescript configuration `tsconfig.json` in the root of the workspace
+- create a Typescript configuration `tsconfig.json` in the root of the workspace...
 ```json
 {
     "compilerOptions": {
@@ -80,6 +81,7 @@ md dist
     ]
 }
 ```
+Full details on Typescript configuration can be found [here](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html)
 
 ### Our first TS file
 - create a new TS file in the `source` directory. We'll create the file `contact-main-form.ts` for the purpose of the demo paste the below into the file and save.
@@ -107,6 +109,8 @@ You can now update the `.js` file and wire it up to the Onload event like so...
 Then when opening or creating a contact via the main contact form you'll see our form notification :-)  
 
 ![](formnotification.png)
+
+You can download a copy of the source code for this blog post [here](d365ts-pt1.zip)
 
 ### Coming up in the [series](/categories/D365-Typescript/)
 In the next part of the [series](/categories/D365-Typescript/) we'll look at type declarations including XrmDefinitelyTyped. Until then feel free to comment below. All feedback is greatly appreciated.
