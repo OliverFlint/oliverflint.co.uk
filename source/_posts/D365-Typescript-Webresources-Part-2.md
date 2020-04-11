@@ -6,6 +6,7 @@ tags:
   - Web Resources
   - Typescript
   - JavaScript
+  - XrmDefinitelyTyped
 categories:
   - D365 Typescript
 ---
@@ -120,6 +121,7 @@ For example the `parentcustomerid` attribute type is `Xrm.LookupAttribute<"accou
 ![](type-infer-2.png)  
 *Remember F12 in your IDE will link you to the definition in the typescript declaration :-)*
 
+## That's all folks!
 I hope that helps you get XDT working in your project. Please use the comments below, i'm more than happy to take questions and extend this post with any suggestions I feel would be of value.
 
 You can download a copy of the source code for this blog post [here](d365ts-pt2.zip)

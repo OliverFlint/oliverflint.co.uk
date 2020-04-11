@@ -12,3 +12,6 @@
 
 
 Now go and read my [blog](/blog)
+
+My Blog Series:
+- [D365 Typescript](D365-Typescript)

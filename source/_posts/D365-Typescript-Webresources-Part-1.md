@@ -110,6 +110,7 @@ Then when opening or creating a contact via the main contact form you'll see our
 
 ![](formnotification.png)
 
+## That's all folks!
 You can download a copy of the source code for this blog post [here](d365ts-pt1.zip)
 
 ### Coming up in the [series](/categories/D365-Typescript/)
