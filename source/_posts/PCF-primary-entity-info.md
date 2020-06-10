@@ -11,11 +11,10 @@ categories:
   - PCF Tips 'n' Tricks
 ---
 
-*Disclaimer!*
-*Some of the tips 'n' tricks in the [PCF Tips 'n' Tricks](/categories/Power-Apps-Component-Framework/PCF-Tips-n-Tricks/) category are to be used with caution. Although they may work at the time of writing, they may or may not be officially supported by Microsoft*
-
 ## Getting the primary entity info
 At present the PCF Template provided by the Power Apps Cli gives us lots of opportunity and scope to improve functionality, but the type definitions are missing some objects that are present api. Now this could be for many reasons, one being support. Anyway, I'm a rogue so here is one I've already used a lot!
+
+![](pcf-entityinfo.png)
 
 ### The entity id (guid)
 ```typescript
@@ -48,3 +47,6 @@ Hopefully this will be helpful to some of you!
 
 Thanks for reading
 Ollie
+
+*Disclaimer!*
+*Some of the tips 'n' tricks in the [PCF Tips 'n' Tricks](/categories/Power-Apps-Component-Framework/PCF-Tips-n-Tricks/) category are to be used with caution. Although they may work at the time of writing, they may or may not be officially supported by Microsoft*
