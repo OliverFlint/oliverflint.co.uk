@@ -15,3 +15,4 @@ Now go and read my [blog](/blog)
 
 My Blog Series:
 - [D365 Typescript](D365-Typescript)
+- [PCF Tips 'n' Tricks](/categories/Power-Apps-Component-Framework/PCF-Tips-n-Tricks/)
