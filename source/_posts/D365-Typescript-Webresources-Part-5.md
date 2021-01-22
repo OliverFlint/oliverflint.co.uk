@@ -15,6 +15,12 @@ date: 2021-01-22 00:12:23
 
 Before you get stuck into this make sure you've checked out any previous parts to the [series](/categories/D365-Typescript/). Each part in this series follows on from the previous, so you may need to grab the code from the previous part if you haven't been following.
 
+## Unit Tests? But my code is next level!
+
+Nowadays there is no excuse to not unit test your code. It's becoming easy and more valuable, so don't not do it!
+
+In this post I'm going to provide a basic guide to get you started with unit tests and typescript webresources for Dynamics 365... err Dataverse... err Power Apps... or whatever we are calling it today!
+
 ## Configure Jest
 
 First of all lets install the jest npm packages we require:
