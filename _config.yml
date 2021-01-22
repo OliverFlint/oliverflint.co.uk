@@ -108,3 +108,10 @@ theme_config:
 
 sitemap:
   path: sitemap.xml
+
+feed:
+  enable: true
+  type: rss2
+  path: rss.xml
+  content: false
+  content_limit: 500

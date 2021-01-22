@@ -10,13 +10,14 @@ tags:
   - Babel
 categories:
   - D365 Typescript
+description: Ok, so, err, where do we start! Webpack and Babel are big. Too big for me to cover in one post. To be honest I don't know everything about them and have only scratched the surface myself, so I'll only cover a minimal config to get people started. I'll leave it to you to read and experiment further. After all, the best way to learn is often to just throw yourself in the deep end!
 ---
 
 Before you get stuck into this make sure you've checked out any previous parts to the [series](/categories/D365-Typescript/). Each part in this series follows on from the previous, so you may need to grab the code from the previous part if you haven't been following.
 
 ## What the \*&^%
 
-Ok, so, err, where do we start! [Webpack](https://webpack.js.org/) and [Babel](https://babeljs.io/) are big. To big for me to cover in one post. To be honest I don't know everything about them and have only scratched the surface myself, so I'll only cover a minimal config to get people started. I'll leave it to you to read and experiment further. After all, the best way to learn is often to just throw yourself in the deep end!
+Ok, so, err, where do we start! [Webpack](https://webpack.js.org/) and [Babel](https://babeljs.io/) are big. Too big for me to cover in one post. To be honest I don't know everything about them and have only scratched the surface myself, so I'll only cover a minimal config to get people started. I'll leave it to you to read and experiment further. After all, the best way to learn is often to just throw yourself in the deep end!
 
 ### Webpack
 
