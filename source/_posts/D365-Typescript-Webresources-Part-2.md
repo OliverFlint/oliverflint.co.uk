@@ -10,6 +10,7 @@ tags:
 categories:
   - D365 Typescript
 description: Type Declaration files provide a way to declare the existence of some types or values without actually providing implementations for those values. They improve readability and also quality. They are integral to the use of Typescript.
+excerpt: Type Declaration files provide a way to declare the existence of some types or values without actually providing implementations for those values. They improve readability and also quality. They are integral to the use of Typescript.
 ---
 
 Before you get stuck into this make sure you've checked out any previous parts to the [series](/categories/D365-Typescript/). Each part in this series follows on from the previous, so you may need to grab the code from the previous part if you haven't been following.

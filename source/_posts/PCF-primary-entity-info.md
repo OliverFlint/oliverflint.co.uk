@@ -10,6 +10,7 @@ categories:
   - Power Apps Component Framework
   - PCF Tips 'n' Tricks
 description: At present the PCF Template provided by the Power Apps Cli gives us lots of opportunity and scope to improve functionality, but the type definitions are missing some objects that are present api. Now this could be for many reasons, one being support. Anyway, I'm a rogue so here is one I've already used a lot!
+excerpt: At present the PCF Template provided by the Power Apps Cli gives us lots of opportunity and scope to improve functionality, but the type definitions are missing some objects that are present api. Now this could be for many reasons, one being support. Anyway, I'm a rogue so here is one I've already used a lot!
 ---
 
 ## Getting the primary entity info

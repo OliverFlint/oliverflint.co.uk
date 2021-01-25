@@ -10,6 +10,7 @@ categories:
   - Power Apps Component Framework
   - PCF Tips 'n' Tricks
 description: Yep, execute is missing from the docs and the type definitions but it's there and it works!
+excerpt: Yep, execute is missing from the docs and the type definitions but it's there and it works!
 ---
 
 ## The PCF WebApi execute method is lurking in the background!

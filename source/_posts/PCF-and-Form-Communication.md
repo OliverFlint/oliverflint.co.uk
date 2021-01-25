@@ -9,6 +9,7 @@ categories:
   - Power Apps Component Framework
 date: 2020-06-06 02:12:12
 description: Communication, It's one of the single most important "things" in EVERYTHING! So why am I finding it so difficult to have my PCF control and Form script talk to each other? Maybe I am missing something but I believe the only "OOTB" method for the two to communicate is via a bound field/control...? So, here is my alternative...
+excerpt: Communication, It's one of the single most important "things" in EVERYTHING! So why am I finding it so difficult to have my PCF control and Form script talk to each other? Maybe I am missing something but I believe the only "OOTB" method for the two to communicate is via a bound field/control...? So, here is my alternative...
 ---
 
 ## Communication

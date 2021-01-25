@@ -4,9 +4,9 @@
 
 # Site
 title: A Blog by Oliver Flint
-subtitle: ""
-description: ""
-keywords: D365, Microsoft, Dynamics, Office365, Azure
+subtitle: "My musings on the subject of Power Platform, Power Apps, Dynamics 365, Dataverse and Azure"
+description: "Oliver Flint's musings on the subject of Power Platform, Power Apps, Dynamics 365, Dataverse and Azure"
+keywords: D365, Microsoft, Dynamics, Office365, Azure, Power, Platform, Apps, PowerPlatform, PowerApps, Dataverse
 author: Oliver Flint
 language: en
 timezone: "GMT"
@@ -57,7 +57,7 @@ highlight:
 # per_page: Posts displayed per page. (0 = disable pagination)
 # order_by: Posts order. (Order by date descending by default)
 index_generator:
-  path: "/"
+  path: ""
   per_page: 10
   order_by: -date
 
@@ -94,7 +94,7 @@ ignore:
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: cactus-of
+theme: cactus
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html

@@ -10,6 +10,7 @@ updated: 2020-03-08
 categories:
   - D365 Typescript
 description: In this series (my first) of posts i'll share my experiences when authoring and maintaining JavaScript Web Resources with Typescript. The series will cover the basics and then more advanced options including ES Modules, webpack, babel, unit testing, deployment, etc.
+excerpt: In this series (my first) of posts i'll share my experiences when authoring and maintaining JavaScript Web Resources with Typescript. The series will cover the basics and then more advanced options including ES Modules, webpack, babel, unit testing, deployment, etc.
 ---
 
 ## Developing JavaScript Web Resources with Typescript

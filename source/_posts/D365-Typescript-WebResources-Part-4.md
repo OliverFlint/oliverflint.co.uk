@@ -13,6 +13,7 @@ categories:
   - D365 Typescript
 date: 2020-04-11 00:07:42
 description: Lets take a look at how we can make use of ES Modules in our typescript webresources and how this help us achieve clean code! Then we'll quickly look at how we can then debug without the extra step of deploying each time we make a change.
+excerpt: Lets take a look at how we can make use of ES Modules in our typescript webresources and how this help us achieve clean code! Then we'll quickly look at how we can then debug without the extra step of deploying each time we make a change.
 ---
 
 Before you get stuck into this make sure you've checked out any previous parts to the [series](/categories/D365-Typescript/). Each part in this series follows on from the previous, so you may need to grab the code from the previous part if you haven't been following.
