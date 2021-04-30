@@ -1,22 +1,22 @@
 ---
-title: D365 Typescript Web Resources - Part 4 - Modules & Debugging
+title: D365 TypeScript Web Resources - Part 4 - Modules & Debugging
 tags:
   - D365
   - Web Resources
-  - Typescript
+  - TypeScript
   - JavaScript
   - Webpack
   - Babel
   - ES Modules
   - Debugging
 categories:
-  - D365 Typescript
+  - D365 TypeScript
 date: 2020-04-11 00:07:42
-description: Lets take a look at how we can make use of ES Modules in our typescript webresources and how this help us achieve clean code! Then we'll quickly look at how we can then debug without the extra step of deploying each time we make a change.
-excerpt: Lets take a look at how we can make use of ES Modules in our typescript webresources and how this help us achieve clean code! Then we'll quickly look at how we can then debug without the extra step of deploying each time we make a change.
+description: Lets take a look at how we can make use of ES Modules in our TypeScript webresources and how this help us achieve clean code! Then we'll quickly look at how we can then debug without the extra step of deploying each time we make a change.
+excerpt: Lets take a look at how we can make use of ES Modules in our TypeScript webresources and how this help us achieve clean code! Then we'll quickly look at how we can then debug without the extra step of deploying each time we make a change.
 ---
 
-Before you get stuck into this make sure you've checked out any previous parts to the [series](/categories/D365-Typescript/). Each part in this series follows on from the previous, so you may need to grab the code from the previous part if you haven't been following.
+Before you get stuck into this make sure you've checked out any previous parts to the [series](/categories/D365-TypeScript/). Each part in this series follows on from the previous, so you may need to grab the code from the previous part if you haven't been following.
 
 ## ES Modules
 
@@ -33,7 +33,7 @@ Rather then repeat or quote others here are a couple of great articles about ES 
 OK, so I expect the above articles have explained more that enough about es modules. Lets create a sample (because we can).
 First create a new file in the `src` directory called `sample.ts`, paste the following into the file and save.
 
-```typescript
+```TypeScript
 export function Pointless(message: string): void {
   Xrm.Navigation.openAlertDialog({
     text: message,
@@ -59,13 +59,13 @@ Our sample module exports a function called `Pointless` that displays a pointles
 
 Lets now consume this module in our `ContactMainForm` class. First we need to import our function and class. Add the following at the top of `contact-main-form.ts`:
 
-```typescript
+```TypeScript
 import { Pointless, Stuff } from "./sample";
 ```
 
 Now we have imported these from our module we can make use of them. Add the following to our `ContactMainForm.OnLoad` function (form load event handler):
 
-```typescript
+```TypeScript
 Pointless("This is a pointless message.");
 const stuff = new Stuff();
 stuff.foo();
@@ -73,7 +73,7 @@ stuff.foo();
 
 The complete `contact-main-form.ts` should now look like this:
 
-```typescript
+```TypeScript
 import { Pointless, Stuff } from "./sample";
 
 class ContactMainForm {
@@ -82,7 +82,7 @@ class ContactMainForm {
   ) {
     const formContext = executionContext.getFormContext() as Form.contact.Main.Contact;
     formContext.ui.setFormNotification(
-      "Typescript locked and loaded!",
+      "TypeScript locked and loaded!",
       "INFO",
       "ts-msg"
     );
@@ -113,7 +113,7 @@ That is a very basic example but it should set you on the way to creating a bett
 ## Debugging
 
 So, we've got all these lovely tools, patterns and methodologies but how can we debug our code?
-Well, you can of course just load up your browsers developer tools and debug the `.js` files deployed to D365, but these are not a line by line representation of our Typescript source files and the optimized version is practically unreadable!
+Well, you can of course just load up your browsers developer tools and debug the `.js` files deployed to D365, but these are not a line by line representation of our TypeScript source files and the optimized version is practically unreadable!
 
 ### webpack-dev-server & fiddler to the rescue!
 
@@ -220,7 +220,7 @@ What's the benefit of this I hear you ask! Well, we get a few benefits...
 
 1. we don't have to deploy the file every time we make a change.
 2. Chrome/Edge (no one uses IE any more right!) will be able to load our source maps.
-3. The source maps will enable us to debug the Typescript in Chrome/Edge Dev tools. Magic! ;-)
+3. The source maps will enable us to debug the TypeScript in Chrome/Edge Dev tools. Magic! ;-)
 
 ### Auto Responder
 
@@ -241,7 +241,7 @@ Thats Fiddler setup, lets get debugging!
 
 ### Debugging in Chrome Dev Tools
 
-OK, so we have built and deployed our `contact-main-form` script (Assuming you followed from [part 1](/2020/03/07/D365-Typescript-Webresources-Part-1/)). We also have Fiddler set up to redirect requests for our `.js` to local files and Webpack Dev Server serving up our files locally.
+OK, so we have built and deployed our `contact-main-form` script (Assuming you followed from [part 1](/2020/03/07/D365-TypeScript-Webresources-Part-1/)). We also have Fiddler set up to redirect requests for our `.js` to local files and Webpack Dev Server serving up our files locally.
 
 Now lets load up Chrome, browse to our D365 instance and open up a contact. Hopefully you'll get the notification and alerts from our script!
 
@@ -271,7 +271,7 @@ Lets make some changes to our `ContactMainForm` and test/debug without the hassl
 First lets make a change.
 I'm going to change the pointless message...
 
-```typescript
+```TypeScript
 Pointless("This REALLY is a pointless message.");
 ```
 

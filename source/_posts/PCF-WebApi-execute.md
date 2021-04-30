@@ -21,7 +21,7 @@ Yep, missing from the [docs](https://docs.microsoft.com/en-us/powerapps/develope
 
 ### execute
 
-```typescript
+```TypeScript
 (context.webAPI as any).execute(request).then(successCallback, errorCallback);
 ```
 
@@ -29,7 +29,7 @@ _see the `execute` Client API [docs](https://docs.microsoft.com/en-us/powerapps/
 
 ### executeMultiple
 
-```typescript
+```TypeScript
 (context.webAPI as any)
   .executeMultiple(requests)
   .then(successCallback, errorCallback);

@@ -21,37 +21,37 @@ At present the PCF Template provided by the Power Apps Cli gives us lots of oppo
 
 ### The entity id (guid)
 
-```typescript
+```TypeScript
 const entityId = (context.mode as any).contextInfo.entityId;
 ```
 
 This is the equivalent of the following in the Client API
 
-```typescript
+```TypeScript
 const entityId = formContext.data.entity.getId();
 ```
 
 ### The entity type (entity logical name)
 
-```typescript
+```TypeScript
 const entityTypeName = (context.mode as any).contextInfo.entityTypeName;
 ```
 
 This is the equivalent of the following in the Client API
 
-```typescript
+```TypeScript
 const entityTypeName = formContext.data.entity.getEntityName();
 ```
 
 ### The record name (primary attribute value)
 
-```typescript
+```TypeScript
 const entityTypeName = (context.mode as any).contextInfo.entityRecordName;
 ```
 
 This is the equivalent of the following in the Client API
 
-```typescript
+```TypeScript
 const entityTypeName = formContext.data.entity.getPrimaryAttributeValue();
 ```
 

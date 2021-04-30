@@ -36,7 +36,7 @@ I'll assume you already have the beginnings of a JavaScript web resource with th
 
 So, it's all pretty simple really. Firstly we need to "dispatch" our event. I'll be doing this when a user selects an address from a `ComboBox` after searching by post code...
 
-```typescript
+```TypeScript
 public addresslistComboBox_onChange(event: React.FormEvent<IComboBox>, option?: IComboBoxOption | undefined, index?: number | undefined, value?: string | undefined): void {
     const selectedAddress = JSON.parse(option?.data);
     const attributeName = this.props.context.parameters.postalcode.attributes?.LogicalName;
@@ -55,7 +55,7 @@ public addresslistComboBox_onChange(event: React.FormEvent<IComboBox>, option?: 
 
 Then all we need is to wire up a "listener" to listen within our form script for the event and handle it...
 
-```typescript
+```TypeScript
 window.parent.addEventListener(
   "onReceiveAddress",
   (ev: CustomEvent<EventData>) => {

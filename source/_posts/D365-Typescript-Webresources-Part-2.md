@@ -1,19 +1,19 @@
 ---
-title: D365 Typescript Web Resources - Part 2 - Type Declarations
+title: D365 TypeScript Web Resources - Part 2 - Type Declarations
 date: 2020-03-08
 tags:
   - D365
   - Web Resources
-  - Typescript
+  - TypeScript
   - JavaScript
   - XrmDefinitelyTyped
 categories:
-  - D365 Typescript
-description: Type Declaration files provide a way to declare the existence of some types or values without actually providing implementations for those values. They improve readability and also quality. They are integral to the use of Typescript.
-excerpt: Type Declaration files provide a way to declare the existence of some types or values without actually providing implementations for those values. They improve readability and also quality. They are integral to the use of Typescript.
+  - D365 TypeScript
+description: Type Declaration files provide a way to declare the existence of some types or values without actually providing implementations for those values. They improve readability and also quality. They are integral to the use of TypeScript.
+excerpt: Type Declaration files provide a way to declare the existence of some types or values without actually providing implementations for those values. They improve readability and also quality. They are integral to the use of TypeScript.
 ---
 
-Before you get stuck into this make sure you've checked out any previous parts to the [series](/categories/D365-Typescript/). Each part in this series follows on from the previous, so you may need to grab the code from the previous part if you haven't been following.
+Before you get stuck into this make sure you've checked out any previous parts to the [series](/categories/D365-TypeScript/). Each part in this series follows on from the previous, so you may need to grab the code from the previous part if you haven't been following.
 
 ## Type Declarations for the D365/XRM Client API
 
@@ -21,7 +21,7 @@ Before you get stuck into this make sure you've checked out any previous parts t
 
 _A declaration file provides a way to declare the existence of some types or values without actually providing implementations for those values._
 
-Read more about them [here](https://www.typescriptlang.org/docs/handbook/declaration-files/introduction.html) and [here](https://microsoft.github.io/TypeScript-New-Handbook/chapters/type-declarations/)
+Read more about them [here](https://www.TypeScriptlang.org/docs/handbook/declaration-files/introduction.html) and [here](https://microsoft.github.io/TypeScript-New-Handbook/chapters/type-declarations/)
 
 ### Do we need to construct our own?
 
@@ -35,7 +35,7 @@ Longer answer: No, but you may want to extend either of the two I'll mention bel
 
 Personally I have had a play with both [@types/xrm](https://www.npmjs.com/package/@types/xrm) and [delegateas/XrmDefinitelyTyped](https://github.com/delegateas/XrmDefinitelyTyped)
 
-Of the two I prefer XrmDefinitelyTyped as it extends on @types/xrm by providing CrmSvcUtil like functionality to build Typescript interfaces that represent the entities and forms within your D365CE environment.
+Of the two I prefer XrmDefinitelyTyped as it extends on @types/xrm by providing CrmSvcUtil like functionality to build TypeScript interfaces that represent the entities and forms within your D365CE environment.
 
 For the purpose of this post we'll take a look at XrmDefinitelyTyped :-)
 
@@ -43,7 +43,7 @@ For the purpose of this post we'll take a look at XrmDefinitelyTyped :-)
 
 XrmDefinitelyTyped is packaged via Nuget so you'll need to ensure you have Nuget [installed](https://www.nuget.org/downloads). Just download the latest nuget.exe into the root of you workspace.
 
-Oh, you can download a starter workspace based on part 1 of this series from [here](/2020/03/07/D365-Typescript-Webresources-Part-1/d365ts-pt1.zip)
+Oh, you can download a starter workspace based on part 1 of this series from [here](/2020/03/07/D365-TypeScript-Webresources-Part-1/d365ts-pt1.zip)
 
 - Once you've installed Nuget run the following from the root of the workspace...
 
@@ -93,21 +93,21 @@ _make sure to check the version number of XrmDefinitelyTyped used in the `/useco
 }
 ```
 
-_Note we also have to turn [noImplicitAny](https://www.typescriptlang.org/tsconfig#noImplicitAny) off_
+_Note we also have to turn [noImplicitAny](https://www.TypeScriptlang.org/tsconfig#noImplicitAny) off_
 
-And that's it. XDT (XrmDefinitelyTyped) should now be installed and ready to reference within your Typescript. As with CrmSvcUtil you will need to run `XrmDefinitelyTyped.exe` each time you need to update your typings with any customisation changes you have made to your entities, forms, etc.
+And that's it. XDT (XrmDefinitelyTyped) should now be installed and ready to reference within your TypeScript. As with CrmSvcUtil you will need to run `XrmDefinitelyTyped.exe` each time you need to update your typings with any customisation changes you have made to your entities, forms, etc.
 
-### Typing your types in your Typescript ;-)
+### Typing your types in your TypeScript ;-)
 
 Easy, and C# devs will love it!  
-Remember our first ts file we created in [part 1](/2020/03/07/D365-Typescript-Webresources-Part-1)...
+Remember our first ts file we created in [part 1](/2020/03/07/D365-TypeScript-Webresources-Part-1)...
 
-```typescript
+```TypeScript
 class ContactMainForm {
   static OnLoad(executionContext: any) {
     const formContext = executionContext.getFormContext();
     formContext.ui.setFormNotification(
-      "Typescript locked and loaded!",
+      "TypeScript locked and loaded!",
       "INFO",
       "ts-msg"
     );
@@ -117,14 +117,14 @@ class ContactMainForm {
 
 Lets apply some typings to our objects...
 
-```typescript
+```TypeScript
 class ContactMainForm {
   static OnLoad(
     executionContext: Xrm.ExecutionContext<Form.contact.Main.Contact, any>
   ) {
     const formContext = executionContext.getFormContext() as Form.contact.Main.Contact;
     formContext.ui.setFormNotification(
-      "Typescript locked and loaded!",
+      "TypeScript locked and loaded!",
       "INFO",
       "ts-msg"
     );
@@ -137,7 +137,7 @@ Now, what I love about XDT is the type inference, for example getting an attribu
 
 For example the `parentcustomerid` attribute type is `Xrm.LookupAttribute<"account" | "contact">` and the `getValue()` function returns a `EntityReference<"account" | "contact">[]`. Anyway I think you get the point.
 ![](type-infer-2.png)  
-_Remember F12 in your IDE will link you to the definition in the typescript declaration :-)_
+_Remember F12 in your IDE will link you to the definition in the TypeScript declaration :-)_
 
 ## That's all folks!
 

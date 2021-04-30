@@ -1,27 +1,27 @@
 ---
-title: D365 Typescript Web Resources - Part 5 - Unit Testing
+title: D365 TypeScript Web Resources - Part 5 - Unit Testing
 tags:
   - D365
   - Web Resources
-  - Typescript
+  - TypeScript
   - JavaScript
   - Unit Testing
   - Jest
   - XrmMock
 categories:
-  - D365 Typescript
+  - D365 TypeScript
 date: 2021-01-22 00:12:23
-description: Nowadays there is no excuse to not unit test your code. It's becoming easy and more valuable, so don't not do it! In this post I'm going to provide a basic guide to get you started with unit tests and typescript webresources for Dynamics 365... err Dataverse... err Power Apps... or whatever we are calling it today!
-excerpt: Nowadays there is no excuse to not unit test your code. It's becoming easy and more valuable, so don't not do it! In this post I'm going to provide a basic guide to get you started with unit tests and typescript webresources for Dynamics 365... err Dataverse... err Power Apps... or whatever we are calling it today!
+description: Nowadays there is no excuse to not unit test your code. It's becoming easy and more valuable, so don't not do it! In this post I'm going to provide a basic guide to get you started with unit tests and TypeScript webresources for Dynamics 365... err Dataverse... err Power Apps... or whatever we are calling it today!
+excerpt: Nowadays there is no excuse to not unit test your code. It's becoming easy and more valuable, so don't not do it! In this post I'm going to provide a basic guide to get you started with unit tests and TypeScript webresources for Dynamics 365... err Dataverse... err Power Apps... or whatever we are calling it today!
 ---
 
-Before you get stuck into this make sure you've checked out any previous parts to the [series](/categories/D365-Typescript/). Each part in this series follows on from the previous, so you may need to grab the code from the previous part if you haven't been following.
+Before you get stuck into this make sure you've checked out any previous parts to the [series](/categories/D365-TypeScript/). Each part in this series follows on from the previous, so you may need to grab the code from the previous part if you haven't been following.
 
 ## Unit Tests? But my code is next level!
 
 Nowadays there is no excuse to not unit test your code. It's becoming easy and more valuable, so don't not do it!
 
-In this post I'm going to provide a basic guide to get you started with unit tests and typescript webresources for Dynamics 365... err Dataverse... err Power Apps... or whatever we are calling it today!
+In this post I'm going to provide a basic guide to get you started with unit tests and TypeScript webresources for Dynamics 365... err Dataverse... err Power Apps... or whatever we are calling it today!
 
 ## Configure Jest
 
@@ -59,7 +59,7 @@ Create a folder in the root of the project called "tests" and then create a new 
 
 Paste the following into the new file:
 
-```typescript
+```TypeScript
 import { NavigationStaticMock, XrmMockGenerator } from "xrm-mock";
 import * as sinon from "sinon";
 import { Pointless } from "../src/sample";
@@ -91,19 +91,19 @@ _I'm not going to tell you how to use [jest](https://jestjs.io/) and [sinon](htt
 First we'll "Arrange" our test...
 Initialise our global `Xrm` object:
 
-```typescript
+```TypeScript
 XrmMockGenerator.initialise();
 ```
 
 Stub `openAlertDialog()`. As I expect you know, `openAlertDialog()` displays a dialog in D365. Stubbing the function enables the code to execute without error given we don't have the UI and we can then test/assert the stubs properties etc.:
 
-```typescript
+```TypeScript
 const stub = sinon.stub(NavigationStaticMock.prototype, "openAlertDialog");
 ```
 
 Now lets "Act" by calling our function:
 
-```typescript
+```TypeScript
 const msg = "a pointless test message";
 Pointless(msg);
 ```
@@ -111,25 +111,25 @@ Pointless(msg);
 Finally we'll "Assert" our tests
 Has the `openAlertDialog()` stub been called?:
 
-```typescript
+```TypeScript
 expect(stub.called).toBeTruthy();
 ```
 
 The `openAlertDialog()` stub should have only been called once:
 
-```typescript
+```TypeScript
 expect(stub.calledOnce).toBeTruthy();
 ```
 
 Was the `openAlertDialog()` stubs `alertStrings.text` parameter as expected?:
 
-```typescript
+```TypeScript
 expect(stub.firstCall.args[0].text).toBe(msg);
 ```
 
 Was the `openAlertDialog()` stubs `alertStrings.title` parameter as expected?:
 
-```typescript
+```TypeScript
 expect(stub.firstCall.args[0].title).toBe("A Pointless Message");
 ```
 
@@ -164,7 +164,7 @@ So, we've written a function that calls Xrm.WebApi, but when we try to test that
 
 First of all we'll create a function called `CreateAccount` (yep you guessed it, it'll create an account!)
 
-```typescript
+```TypeScript
 export async function CreateAccount(account: any): Promise<Xrm.Lookup> {
   const response = await Xrm.WebApi.createRecord("account", account);
   return response;
@@ -179,7 +179,7 @@ So here's the test. This can be added to the `first.test.ts` inside `describe("s
 
 _It's not a great example, but it should demonstrate how we can stub the WebApi ;-)_
 
-```typescript
+```TypeScript
 describe("CallTheWebApi", () => {
   test("Should return a valid Xrm.Lookup", async () => {
     const stub = sinon
@@ -209,7 +209,7 @@ describe("CallTheWebApi", () => {
 
 You'll notice the absence of `XrmMockGenerator.initialise();`. I moved this to the `beforeEach` within `describe("sample test", () => {` like so
 
-```typescript
+```TypeScript
 describe("sample test", () => {
   beforeEach(() => {
     XrmMockGenerator.initialise();
@@ -221,13 +221,13 @@ describe("sample test", () => {
 
 First we stub the `createRecord` function via the `WebApiMock` object provided by `xrm-mock`
 
-```typescript
+```TypeScript
 const stub = sinon.stub(WebApiMock.prototype, "createRecord");
 ```
 
 Then we define the arguments for that stub (optional). Notice the use of the `sinon.match` to match an object.
 
-```typescript
+```TypeScript
   .withArgs("account", sinon.match.object)
 ```
 
@@ -235,7 +235,7 @@ _NOTE If we didn't do the above the stub would be executed for all calls to `Xrm
 
 Finally we tell the stub what we would like it to return, or in this case as it's a async/promise we tell it what to resolve.
 
-```typescript
+```TypeScript
   .resolves({
     entityType: "account",
     id: "9bce6686-48d5-4d6f-85a2-da0eea30984d",
@@ -272,7 +272,7 @@ I hope that has been useful!
 
 You can download a copy of the source code for this blog post [here](d365ts-pt5.zip)
 
-In the next part we'll take a look at hom we can integrate Azure Application Insights into the Webresources.
+In the next part we'll take a look at how we can integrate Azure Application Insights into the Webresources.
 
 Thanks for reading.
 Ollie
