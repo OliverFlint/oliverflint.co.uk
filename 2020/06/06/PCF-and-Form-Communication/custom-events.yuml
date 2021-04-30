@@ -1,0 +1,11 @@
+// {type:activity}
+// {generate:true}
+(PCF Loaded)->(PCF triggers onReady event)
+(PCF triggers onReady event)->(Form handles onReady event)
+(Form handles onReady event)->(Form triggers onData event)
+(Form triggers onData event)->(PCF handles onData event)
+(PCF handles onData event)->(User interacts with PCF)
+(User interacts with PCF)->(PCF triggers onData event)
+(PCF triggers onData event)->(Form handles onData event)
+(Form handles onData event)->(Form triggers onData event)
+(Form handles onData event)->(User interacts with PCF)
