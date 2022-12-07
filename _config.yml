@@ -115,3 +115,7 @@ feed:
   path: rss.xml
   content: false
   content_limit: 500
+
+marked:
+  prependRoot: true
+  postAsset: true
