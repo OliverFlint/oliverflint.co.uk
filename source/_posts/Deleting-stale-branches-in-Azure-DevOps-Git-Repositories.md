@@ -50,6 +50,8 @@ In summary the solution contains the following:
   - sends an approval request to a teams channel
   - if approved, deletes the ref (branch)
 
+_Note: If you're not familiar with logic apps, I would suggest you read the [following tutorial](https://learn.microsoft.com/en-us/azure/logic-apps/tutorial-build-schedule-recurring-logic-app-workflow) before continuing with this article._
+
 ## Child Logic App
 
 ### Create a new logic app
@@ -351,8 +353,6 @@ Within the "True" branch of the condition:
 ### Create a new logic app
 
 Now we can create the parent logic app using the blank logic app option (no template). Give it a suitable name and select the Recurrence trigger.
-
-_Note: If you're not familiar with logic apps, I would suggest you read the [following tutorial](https://learn.microsoft.com/en-us/azure/logic-apps/tutorial-build-schedule-recurring-logic-app-workflow) before continuing with this article._
 
 ### Trigger and iterate repositories
 
