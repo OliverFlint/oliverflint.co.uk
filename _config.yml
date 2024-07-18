@@ -100,7 +100,7 @@ theme: cactus-of
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: "git"
-  repo: "https://github.com/OliverFlint/oliverflint.co.uk.git"
+  repo: "https://gitlab.com/oliverflint/oliverflint.co.uk.git"
   branch: "master"
 
 theme_config:
