@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="In this series (my first) of posts i&#39;ll share my experiences when authoring and maintaining JavaScript Web Resources with TypeScript. The series will cover the basics and then more advanced options in">
+<meta property="og:type" content="article">
+<meta property="og:title" content="D365 TypeScript Web Resources - Part 1 - Basics">
+<meta property="og:url" content="http://www.oliverflint.co.uk/2020/03/07/D365-Typescript-Webresources-Part-1/index.html">
+<meta property="og:site_name" content="A Blog by Oliver Flint">
+<meta property="og:description" content="In this series (my first) of posts i&#39;ll share my experiences when authoring and maintaining JavaScript Web Resources with TypeScript. The series will cover the basics and then more advanced options in">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://www.oliverflint.co.uk/2020/03/07/D365-Typescript-Webresources-Part-1/files1.png">
+<meta property="og:image" content="http://www.oliverflint.co.uk/2020/03/07/D365-Typescript-Webresources-Part-1/form-event.png">
+<meta property="og:image" content="http://www.oliverflint.co.uk/2020/03/07/D365-Typescript-Webresources-Part-1/formnotification.png">
+<meta property="article:published_time" content="2020-03-07T00:00:00.000Z">
+<meta property="article:modified_time" content="2020-03-08T00:00:00.000Z">
+<meta property="article:author" content="Oliver Flint">
+<meta property="article:tag" content="D365">
+<meta property="article:tag" content="Web Resources">
+<meta property="article:tag" content="TypeScript">
+<meta property="article:tag" content="JavaScript">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://www.oliverflint.co.uk/2020/03/07/D365-Typescript-Webresources-Part-1/files1.png">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>D365 TypeScript Web Resources - Part 1 - Basics</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+      
+<link rel="stylesheet" href="/css/rtl.css">
+
+    
+    <!-- rss -->
+    
+    
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/rss.xml" title="A Blog by Oliver Flint" type="application/rss+xml">
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/categories/">Categories</a></li>
+         
+          <li><a href="/archives/">Archive</a></li>
+         
+          <li><a href="/Me/">Me</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2020/03/08/D365-Typescript-Webresources-Part-2/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2020/03/06/Welcome/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://www.oliverflint.co.uk/2020/03/07/D365-Typescript-Webresources-Part-1/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://www.oliverflint.co.uk/2020/03/07/D365-Typescript-Webresources-Part-1/&text=D365 TypeScript Web Resources - Part 1 - Basics"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://www.oliverflint.co.uk/2020/03/07/D365-Typescript-Webresources-Part-1/&title=D365 TypeScript Web Resources - Part 1 - Basics"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://www.oliverflint.co.uk/2020/03/07/D365-Typescript-Webresources-Part-1/&is_video=false&description=D365 TypeScript Web Resources - Part 1 - Basics"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=D365 TypeScript Web Resources - Part 1 - Basics&body=Check out this article: http://www.oliverflint.co.uk/2020/03/07/D365-Typescript-Webresources-Part-1/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://www.oliverflint.co.uk/2020/03/07/D365-Typescript-Webresources-Part-1/&title=D365 TypeScript Web Resources - Part 1 - Basics"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://www.oliverflint.co.uk/2020/03/07/D365-Typescript-Webresources-Part-1/&title=D365 TypeScript Web Resources - Part 1 - Basics"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://www.oliverflint.co.uk/2020/03/07/D365-Typescript-Webresources-Part-1/&title=D365 TypeScript Web Resources - Part 1 - Basics"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://www.oliverflint.co.uk/2020/03/07/D365-Typescript-Webresources-Part-1/&title=D365 TypeScript Web Resources - Part 1 - Basics"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://www.oliverflint.co.uk/2020/03/07/D365-Typescript-Webresources-Part-1/&name=D365 TypeScript Web Resources - Part 1 - Basics&description=In this series (my first) of posts i&#39;ll share my experiences when authoring and maintaining JavaScript Web Resources with TypeScript. The series will cover the basics and then more advanced options including ES Modules, webpack, babel, unit testing, deployment, etc."><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://www.oliverflint.co.uk/2020/03/07/D365-Typescript-Webresources-Part-1/&t=D365 TypeScript Web Resources - Part 1 - Basics"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Developing-JavaScript-Web-Resources-with-TypeScript"><span class="toc-number">1.</span> <span class="toc-text">Developing JavaScript Web Resources with TypeScript</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Why-did-I-choose-TypeScript"><span class="toc-number">2.</span> <span class="toc-text">Why did I choose TypeScript</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#A-Basic-Setup"><span class="toc-number">3.</span> <span class="toc-text">A Basic Setup</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Node-and-NPM"><span class="toc-number">3.1.</span> <span class="toc-text">Node and NPM</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Init"><span class="toc-number">3.2.</span> <span class="toc-text">Init</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#TypeScript-config"><span class="toc-number">3.3.</span> <span class="toc-text">TypeScript config</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Our-first-TS-file"><span class="toc-number">3.4.</span> <span class="toc-text">Our first TS file</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#That%E2%80%99s-all-folks"><span class="toc-number">4.</span> <span class="toc-text">That’s all folks!</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Coming-up-in-the-series"><span class="toc-number">4.1.</span> <span class="toc-text">Coming up in the series</span></a></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        D365 TypeScript Web Resources - Part 1 - Basics
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Oliver Flint</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2020-03-07T00:00:00.000Z" itemprop="datePublished">2020-03-07</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/categories/D365-TypeScript/">D365 TypeScript</a>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link-link" href="/tags/D365/" rel="tag">D365</a>, <a class="tag-link-link" href="/tags/JavaScript/" rel="tag">JavaScript</a>, <a class="tag-link-link" href="/tags/TypeScript/" rel="tag">TypeScript</a>, <a class="tag-link-link" href="/tags/Web-Resources/" rel="tag">Web Resources</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h2 id="Developing-JavaScript-Web-Resources-with-TypeScript"><a href="#Developing-JavaScript-Web-Resources-with-TypeScript" class="headerlink" title="Developing JavaScript Web Resources with TypeScript"></a>Developing JavaScript Web Resources with TypeScript</h2><p>In this <a href="/categories/D365-TypeScript/">series</a> (my first) of posts i’ll share my experiences when authoring and maintaining JavaScript Web Resources with TypeScript. The <a href="/categories/D365-TypeScript/">series</a> will cover the basics and then more advanced options including ES Modules, webpack, babel, unit testing, deployment, etc.</p>
+<p>Anyway! Let get started!</p>
+<h2 id="Why-did-I-choose-TypeScript"><a href="#Why-did-I-choose-TypeScript" class="headerlink" title="Why did I choose TypeScript"></a>Why did I choose TypeScript</h2><p>So the why is potentially quite subjective and we all have our own opinions, this is mine and I don’t expect you to agree but hopefully it will help you form your own opinion and maybe win you over to the idea…</p>
+<p>Firstly the obvious, TypeScript is essentially JavaScript with the addition of being able to (optionally) apply static types to your objects. This allows for more readable, cleaner, and more maintainable code. It also helps identify errors sooner, fits the mindset of C# developers, and has some great tooling to support the end to end development life cycle.</p>
+<p>Then we have the endless options and tools for compiling&#x2F;transpiling. For example, defining the browser(s) you wish to support so you have to worry less about the target browser(s) while writing your code. Also, using tools such a webpack to bundle you code into single files and compressing the output for better performance.</p>
+<p>Finally we have unit testing and debugging where you can debug the TypeScript directly via source maps.</p>
+<p>Personally, I will never go back to writing raw JavaScript unless it’s the only option!</p>
+<h2 id="A-Basic-Setup"><a href="#A-Basic-Setup" class="headerlink" title="A Basic Setup"></a>A Basic Setup</h2><p>Ok, So lets take a look at what we need for the basic setup when working with D365 Web Resources.<br><em>Note: I’ll be using <a target="_blank" rel="noopener" href="https://code.visualstudio.com/">Visual Studio Code</a> as my preferred IDE. However, all of this can be done in other IDE’s and terminals etc.</em></p>
+<h3 id="Node-and-NPM"><a href="#Node-and-NPM" class="headerlink" title="Node and NPM"></a>Node and NPM</h3><p>If you don’t have it installed already go and grab the latest version of <a target="_blank" rel="noopener" href="https://nodejs.org/">Node</a></p>
+<h3 id="Init"><a href="#Init" class="headerlink" title="Init"></a>Init</h3><p>Initialise a workspace&#x2F;project.</p>
+<ul>
+<li>Lets create a directory for our project and change to that directory (via Terminal)</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">md c:\d365ts-pt1</span><br><span class="line">cd c:\d365ts-pt1</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Open the project directory with VS Code (via Terminal)</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">code .</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Init a new project (just go with all the defaults) (via Terminal)</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm init</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>install the TypeScript module (via Terminal)</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install TypeScript --save-dev</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>create directories for the source code and the transpiled output (via Terminal)</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">md src</span><br><span class="line">md dist</span><br></pre></td></tr></table></figure>
+
+<h3 id="TypeScript-config"><a href="#TypeScript-config" class="headerlink" title="TypeScript config"></a>TypeScript config</h3><ul>
+<li>create a TypeScript configuration <code>tsconfig.json</code> in the root of the workspace…</li>
+</ul>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;compilerOptions&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;module&quot;</span><span class="punctuation">:</span> <span class="string">&quot;ES6&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;noImplicitAny&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;removeComments&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;preserveConstEnums&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;outDir&quot;</span><span class="punctuation">:</span> <span class="string">&quot;dist&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;sourceMap&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span></span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;include&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;src/**/*&quot;</span><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;exclude&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;node_modules&quot;</span><span class="punctuation">,</span> <span class="string">&quot;**/*.spec.ts&quot;</span><span class="punctuation">,</span> <span class="string">&quot;dist&quot;</span><span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>Full details on TypeScript configuration can be found <a target="_blank" rel="noopener" href="https://www.typescriptlang.org/docs/handbook/tsconfig-json.html">here</a></p>
+<h3 id="Our-first-TS-file"><a href="#Our-first-TS-file" class="headerlink" title="Our first TS file"></a>Our first TS file</h3><ul>
+<li>create a new TS file in the <code>source</code> directory. We’ll create the file <code>contact-main-form.ts</code> for the purpose of the demo paste the below into the file and save.</li>
+</ul>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">ContactMainForm</span> &#123;</span><br><span class="line">  <span class="keyword">static</span> <span class="title class_">OnLoad</span>(<span class="attr">executionContext</span>: <span class="built_in">any</span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> formContext = executionContext.<span class="title function_">getFormContext</span>();</span><br><span class="line">    formContext.<span class="property">ui</span>.<span class="title function_">setFormNotification</span>(</span><br><span class="line">      <span class="string">&quot;TypeScript locked and loaded!&quot;</span>,</span><br><span class="line">      <span class="string">&quot;INFO&quot;</span>,</span><br><span class="line">      <span class="string">&quot;ts-msg&quot;</span></span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><em>A basic onload event that should add a notification to the form once it’s loaded</em></p>
+<ul>
+<li>compile&#x2F;transpile the source (via Terminal)</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tsc</span><br></pre></td></tr></table></figure>
+
+<p>You should now see your new transpiled <code>.js</code> and <code>.js.map</code> (<a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Tools/Debugger/How_to/Use_a_source_map">source map</a>) files in the <code>dist</code> directory…<br><img src="/2020/03/07/D365-Typescript-Webresources-Part-1/files1.png"></p>
+<p>You can now update the <code>.js</code> file and wire it up to the Onload event like so…</p>
+<p><img src="/2020/03/07/D365-Typescript-Webresources-Part-1/form-event.png"></p>
+<p>Then when opening or creating a contact via the main contact form you’ll see our form notification :-)</p>
+<p><img src="/2020/03/07/D365-Typescript-Webresources-Part-1/formnotification.png"></p>
+<h2 id="That’s-all-folks"><a href="#That’s-all-folks" class="headerlink" title="That’s all folks!"></a>That’s all folks!</h2><p>You can download a copy of the source code for this blog post <a href="d365ts-pt1.zip">here</a></p>
+<h3 id="Coming-up-in-the-series"><a href="#Coming-up-in-the-series" class="headerlink" title="Coming up in the series"></a>Coming up in the <a href="/categories/D365-TypeScript/">series</a></h3><p>In the next part of the <a href="/categories/D365-TypeScript/">series</a> we’ll look at type declarations including XrmDefinitelyTyped. Until then feel free to comment below. All feedback is greatly appreciated.</p>
+<p>In the future I’ll also be covering the following within this <a href="/categories/D365-TypeScript/">series</a>:</p>
+<ul>
+<li>Type declarations</li>
+<li>Debugging and Source maps</li>
+<li>ES6 Modules</li>
+<li>Babel and Webpack</li>
+<li>Unit Testing</li>
+<li>Automated Deployment</li>
+<li>Lint rules for deprecated client API</li>
+<li>and more<br>So keep checking back for updates</li>
+</ul>
+<p>Thanks for reading.<br>Ollie</p>
+
+  </div>
+</article>
+
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the comments.</noscript>
+        </div>
+    </div>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/categories/">Categories</a></li>
+         
+          <li><a href="/archives/">Archive</a></li>
+         
+          <li><a href="/Me/">Me</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Developing-JavaScript-Web-Resources-with-TypeScript"><span class="toc-number">1.</span> <span class="toc-text">Developing JavaScript Web Resources with TypeScript</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Why-did-I-choose-TypeScript"><span class="toc-number">2.</span> <span class="toc-text">Why did I choose TypeScript</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#A-Basic-Setup"><span class="toc-number">3.</span> <span class="toc-text">A Basic Setup</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Node-and-NPM"><span class="toc-number">3.1.</span> <span class="toc-text">Node and NPM</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Init"><span class="toc-number">3.2.</span> <span class="toc-text">Init</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#TypeScript-config"><span class="toc-number">3.3.</span> <span class="toc-text">TypeScript config</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Our-first-TS-file"><span class="toc-number">3.4.</span> <span class="toc-text">Our first TS file</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#That%E2%80%99s-all-folks"><span class="toc-number">4.</span> <span class="toc-text">That’s all folks!</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Coming-up-in-the-series"><span class="toc-number">4.1.</span> <span class="toc-text">Coming up in the series</span></a></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://www.oliverflint.co.uk/2020/03/07/D365-Typescript-Webresources-Part-1/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://www.oliverflint.co.uk/2020/03/07/D365-Typescript-Webresources-Part-1/&text=D365 TypeScript Web Resources - Part 1 - Basics"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://www.oliverflint.co.uk/2020/03/07/D365-Typescript-Webresources-Part-1/&title=D365 TypeScript Web Resources - Part 1 - Basics"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://www.oliverflint.co.uk/2020/03/07/D365-Typescript-Webresources-Part-1/&is_video=false&description=D365 TypeScript Web Resources - Part 1 - Basics"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=D365 TypeScript Web Resources - Part 1 - Basics&body=Check out this article: http://www.oliverflint.co.uk/2020/03/07/D365-Typescript-Webresources-Part-1/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://www.oliverflint.co.uk/2020/03/07/D365-Typescript-Webresources-Part-1/&title=D365 TypeScript Web Resources - Part 1 - Basics"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://www.oliverflint.co.uk/2020/03/07/D365-Typescript-Webresources-Part-1/&title=D365 TypeScript Web Resources - Part 1 - Basics"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://www.oliverflint.co.uk/2020/03/07/D365-Typescript-Webresources-Part-1/&title=D365 TypeScript Web Resources - Part 1 - Basics"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://www.oliverflint.co.uk/2020/03/07/D365-Typescript-Webresources-Part-1/&title=D365 TypeScript Web Resources - Part 1 - Basics"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://www.oliverflint.co.uk/2020/03/07/D365-Typescript-Webresources-Part-1/&name=D365 TypeScript Web Resources - Part 1 - Basics&description=In this series (my first) of posts i&#39;ll share my experiences when authoring and maintaining JavaScript Web Resources with TypeScript. The series will cover the basics and then more advanced options including ES Modules, webpack, babel, unit testing, deployment, etc."><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://www.oliverflint.co.uk/2020/03/07/D365-Typescript-Webresources-Part-1/&t=D365 TypeScript Web Resources - Part 1 - Basics"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2020-2026
+    Oliver Flint
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/categories/">Categories</a></li>
+         
+          <li><a href="/archives/">Archive</a></li>
+         
+          <li><a href="/Me/">Me</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+
+    <!-- jquery -->
+
+<script src="/lib/jquery/jquery.min.js"></script>
+
+
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+
+<!-- clipboard -->
+
+  
+<script src="/lib/clipboard/clipboard.min.js"></script>
+
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-78426300-2"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-78426300-2');
+    </script>
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+    <script type="text/javascript">
+        var disqus_shortname = 'oliverflintblog';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script>
+
+
+    <script src='https://storage.ko-fi.com/cdn/scripts/overlay-widget.js'></script>
+    <script>
+      kofiWidgetOverlay.draw('oliverflint', {
+        'type': 'floating-chat',
+        'floating-chat.donateButton.text': 'Support me',
+        'floating-chat.donateButton.background-color': '#f45d22',
+        'floating-chat.donateButton.text-color': '#fff'
+      });
+    </script>
+  </body>
+</html>

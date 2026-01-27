@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="Lets take a look at how we can make use of ES Modules in our TypeScript webresources and how this help us achieve clean code! Then we&#39;ll quickly look at how we can then debug without the extra step of">
+<meta property="og:type" content="article">
+<meta property="og:title" content="D365 TypeScript Web Resources - Part 4 - Modules &amp; Debugging">
+<meta property="og:url" content="http://www.oliverflint.co.uk/2020/04/11/D365-Typescript-WebResources-Part-4/index.html">
+<meta property="og:site_name" content="A Blog by Oliver Flint">
+<meta property="og:description" content="Lets take a look at how we can make use of ES Modules in our TypeScript webresources and how this help us achieve clean code! Then we&#39;ll quickly look at how we can then debug without the extra step of">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://www.oliverflint.co.uk/2020/04/11/D365-Typescript-WebResources-Part-4/AutoResponderTab.png">
+<meta property="og:image" content="http://www.oliverflint.co.uk/2020/04/11/D365-Typescript-WebResources-Part-4/AutoResponderRule.png">
+<meta property="og:image" content="http://www.oliverflint.co.uk/2020/04/11/D365-Typescript-WebResources-Part-4/ChromeOpenFile.png">
+<meta property="og:image" content="http://www.oliverflint.co.uk/2020/04/11/D365-Typescript-WebResources-Part-4/ChromeBreakpoint.png">
+<meta property="og:image" content="http://www.oliverflint.co.uk/2020/04/11/D365-Typescript-WebResources-Part-4/StepInto.png">
+<meta property="og:image" content="http://www.oliverflint.co.uk/2020/04/11/D365-Typescript-WebResources-Part-4/DebugSampleModule.png">
+<meta property="og:image" content="http://www.oliverflint.co.uk/2020/04/11/D365-Typescript-WebResources-Part-4/ReallyPointless.png">
+<meta property="article:published_time" content="2020-04-11T00:07:42.000Z">
+<meta property="article:modified_time" content="2026-01-27T19:14:05.871Z">
+<meta property="article:author" content="Oliver Flint">
+<meta property="article:tag" content="D365">
+<meta property="article:tag" content="Web Resources">
+<meta property="article:tag" content="TypeScript">
+<meta property="article:tag" content="JavaScript">
+<meta property="article:tag" content="Webpack">
+<meta property="article:tag" content="Babel">
+<meta property="article:tag" content="ES Modules">
+<meta property="article:tag" content="Debugging">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://www.oliverflint.co.uk/2020/04/11/D365-Typescript-WebResources-Part-4/AutoResponderTab.png">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>D365 TypeScript Web Resources - Part 4 - Modules &amp; Debugging</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+      
+<link rel="stylesheet" href="/css/rtl.css">
+
+    
+    <!-- rss -->
+    
+    
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/rss.xml" title="A Blog by Oliver Flint" type="application/rss+xml">
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/categories/">Categories</a></li>
+         
+          <li><a href="/archives/">Archive</a></li>
+         
+          <li><a href="/Me/">Me</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2020/06/06/PCF-and-Form-Communication/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2020/04/04/D365-Typescript-Webresources-Part-3/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://www.oliverflint.co.uk/2020/04/11/D365-Typescript-WebResources-Part-4/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://www.oliverflint.co.uk/2020/04/11/D365-Typescript-WebResources-Part-4/&text=D365 TypeScript Web Resources - Part 4 - Modules &amp; Debugging"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://www.oliverflint.co.uk/2020/04/11/D365-Typescript-WebResources-Part-4/&title=D365 TypeScript Web Resources - Part 4 - Modules &amp; Debugging"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://www.oliverflint.co.uk/2020/04/11/D365-Typescript-WebResources-Part-4/&is_video=false&description=D365 TypeScript Web Resources - Part 4 - Modules &amp; Debugging"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=D365 TypeScript Web Resources - Part 4 - Modules &amp; Debugging&body=Check out this article: http://www.oliverflint.co.uk/2020/04/11/D365-Typescript-WebResources-Part-4/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://www.oliverflint.co.uk/2020/04/11/D365-Typescript-WebResources-Part-4/&title=D365 TypeScript Web Resources - Part 4 - Modules &amp; Debugging"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://www.oliverflint.co.uk/2020/04/11/D365-Typescript-WebResources-Part-4/&title=D365 TypeScript Web Resources - Part 4 - Modules &amp; Debugging"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://www.oliverflint.co.uk/2020/04/11/D365-Typescript-WebResources-Part-4/&title=D365 TypeScript Web Resources - Part 4 - Modules &amp; Debugging"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://www.oliverflint.co.uk/2020/04/11/D365-Typescript-WebResources-Part-4/&title=D365 TypeScript Web Resources - Part 4 - Modules &amp; Debugging"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://www.oliverflint.co.uk/2020/04/11/D365-Typescript-WebResources-Part-4/&name=D365 TypeScript Web Resources - Part 4 - Modules &amp; Debugging&description=Lets take a look at how we can make use of ES Modules in our TypeScript webresources and how this help us achieve clean code! Then we&#39;ll quickly look at how we can then debug without the extra step of deploying each time we make a change."><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://www.oliverflint.co.uk/2020/04/11/D365-Typescript-WebResources-Part-4/&t=D365 TypeScript Web Resources - Part 4 - Modules &amp; Debugging"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#ES-Modules"><span class="toc-number">1.</span> <span class="toc-text">ES Modules</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#What-are-ES-Modules"><span class="toc-number">1.1.</span> <span class="toc-text">What are ES Modules?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#A-Sample-Module"><span class="toc-number">1.2.</span> <span class="toc-text">A Sample Module</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Debugging"><span class="toc-number">2.</span> <span class="toc-text">Debugging</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#webpack-dev-server-amp-fiddler-to-the-rescue"><span class="toc-number">2.1.</span> <span class="toc-text">webpack-dev-server &amp; fiddler to the rescue!</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Fiddler"><span class="toc-number">2.2.</span> <span class="toc-text">Fiddler</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#webpack-dev-server"><span class="toc-number">2.3.</span> <span class="toc-text">webpack-dev-server</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Auto-Responder"><span class="toc-number">2.4.</span> <span class="toc-text">Auto Responder</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Debugging-in-Chrome-Dev-Tools"><span class="toc-number">2.5.</span> <span class="toc-text">Debugging in Chrome Dev Tools</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#No-need-to-deploy"><span class="toc-number">2.6.</span> <span class="toc-text">No need to deploy</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#That%E2%80%99s-all-folks"><span class="toc-number">3.</span> <span class="toc-text">That’s all folks!</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        D365 TypeScript Web Resources - Part 4 - Modules &amp; Debugging
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Oliver Flint</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2020-04-11T00:07:42.000Z" itemprop="datePublished">2020-04-11</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/categories/D365-TypeScript/">D365 TypeScript</a>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link-link" href="/tags/Babel/" rel="tag">Babel</a>, <a class="tag-link-link" href="/tags/D365/" rel="tag">D365</a>, <a class="tag-link-link" href="/tags/Debugging/" rel="tag">Debugging</a>, <a class="tag-link-link" href="/tags/ES-Modules/" rel="tag">ES Modules</a>, <a class="tag-link-link" href="/tags/JavaScript/" rel="tag">JavaScript</a>, <a class="tag-link-link" href="/tags/TypeScript/" rel="tag">TypeScript</a>, <a class="tag-link-link" href="/tags/Web-Resources/" rel="tag">Web Resources</a>, <a class="tag-link-link" href="/tags/Webpack/" rel="tag">Webpack</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p>Before you get stuck into this make sure you’ve checked out any previous parts to the <a href="/categories/D365-TypeScript/">series</a>. Each part in this series follows on from the previous, so you may need to grab the code from the previous part if you haven’t been following.</p>
+<h2 id="ES-Modules"><a href="#ES-Modules" class="headerlink" title="ES Modules"></a>ES Modules</h2><h3 id="What-are-ES-Modules"><a href="#What-are-ES-Modules" class="headerlink" title="What are ES Modules?"></a>What are ES Modules?</h3><p><em>ES Modules is the ECMAScript standard for working with modules.</em><br>Rather then repeat or quote others here are a couple of great articles about ES Modules:</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://hacks.mozilla.org/2018/03/es-modules-a-cartoon-deep-dive/">ES modules: A cartoon deep-dive</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.freecodecamp.org/news/how-to-use-es6-modules-and-why-theyre-important-a9b20b480773/">A Practical guide to ES6 modules</a></li>
+</ul>
+<h3 id="A-Sample-Module"><a href="#A-Sample-Module" class="headerlink" title="A Sample Module"></a>A Sample Module</h3><p>OK, so I expect the above articles have explained more that enough about es modules. Lets create a sample (because we can).<br>First create a new file in the <code>src</code> directory called <code>sample.ts</code>, paste the following into the file and save.</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">function</span> <span class="title function_">Pointless</span>(<span class="params">message: <span class="built_in">string</span></span>): <span class="built_in">void</span> &#123;</span><br><span class="line">  <span class="title class_">Xrm</span>.<span class="property">Navigation</span>.<span class="title function_">openAlertDialog</span>(&#123;</span><br><span class="line">    <span class="attr">text</span>: message,</span><br><span class="line">    <span class="attr">title</span>: <span class="string">&quot;A Pointless Message&quot;</span>,</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">class</span> <span class="title class_">Stuff</span> &#123;</span><br><span class="line">  <span class="keyword">public</span> <span class="title function_">foo</span>(): <span class="built_in">void</span> &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="title function_">bar</span>();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">private</span> <span class="title function_">bar</span>(): <span class="built_in">void</span> &#123;</span><br><span class="line">    <span class="title class_">Xrm</span>.<span class="property">Navigation</span>.<span class="title function_">openAlertDialog</span>(&#123;</span><br><span class="line">      <span class="attr">text</span>: <span class="string">&quot;foo bar&quot;</span>,</span><br><span class="line">      <span class="attr">title</span>: <span class="string">&quot;A foo bar message&quot;</span>,</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Our sample module exports a function called <code>Pointless</code> that displays a pointless message and a class called <code>Stuff</code> with <code>foo</code> and <code>bar</code> functions. Notice <code>foo</code> is public and <code>bar</code> private. <code>foo</code> calls <code>bar</code> which displays a foo bar message.</p>
+<p>Lets now consume this module in our <code>ContactMainForm</code> class. First we need to import our function and class. Add the following at the top of <code>contact-main-form.ts</code>:</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">Pointless</span>, <span class="title class_">Stuff</span> &#125; <span class="keyword">from</span> <span class="string">&quot;./sample&quot;</span>;</span><br></pre></td></tr></table></figure>
+
+<p>Now we have imported these from our module we can make use of them. Add the following to our <code>ContactMainForm.OnLoad</code> function (form load event handler):</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Pointless</span>(<span class="string">&quot;This is a pointless message.&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> stuff = <span class="keyword">new</span> <span class="title class_">Stuff</span>();</span><br><span class="line">stuff.<span class="title function_">foo</span>();</span><br></pre></td></tr></table></figure>
+
+<p>The complete <code>contact-main-form.ts</code> should now look like this:</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">Pointless</span>, <span class="title class_">Stuff</span> &#125; <span class="keyword">from</span> <span class="string">&quot;./sample&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">ContactMainForm</span> &#123;</span><br><span class="line">  <span class="keyword">public</span> <span class="title class_">OnLoad</span>(</span><br><span class="line">    <span class="attr">executionContext</span>: <span class="title class_">Xrm</span>.<span class="property">ExecutionContext</span>&lt;<span class="title class_">Form</span>.<span class="property">contact</span>.<span class="property">Main</span>.<span class="property">Contact</span>, <span class="built_in">any</span>&gt;</span><br><span class="line">  ) &#123;</span><br><span class="line">    <span class="keyword">const</span> formContext = executionContext.<span class="title function_">getFormContext</span>() <span class="keyword">as</span> <span class="title class_">Form</span>.<span class="property">contact</span>.<span class="property">Main</span>.<span class="property">Contact</span>;</span><br><span class="line">    formContext.<span class="property">ui</span>.<span class="title function_">setFormNotification</span>(</span><br><span class="line">      <span class="string">&quot;TypeScript locked and loaded!&quot;</span>,</span><br><span class="line">      <span class="string">&quot;INFO&quot;</span>,</span><br><span class="line">      <span class="string">&quot;ts-msg&quot;</span></span><br><span class="line">    );</span><br><span class="line">    <span class="keyword">const</span> parentCustomerAttribute = formContext.<span class="title function_">getAttribute</span>(</span><br><span class="line">      <span class="string">&quot;parentcustomerid&quot;</span></span><br><span class="line">    );</span><br><span class="line">    <span class="keyword">const</span> parentCustomerValue = parentCustomerAttribute.<span class="title function_">getValue</span>();</span><br><span class="line">    <span class="title class_">Pointless</span>(<span class="string">&quot;This is a pointless message.&quot;</span>);</span><br><span class="line">    <span class="keyword">const</span> stuff = <span class="keyword">new</span> <span class="title class_">Stuff</span>();</span><br><span class="line">    stuff.<span class="title function_">foo</span>();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">(<span class="variable language_">window</span> <span class="keyword">as</span> <span class="built_in">any</span>).<span class="property">ContactMainForm</span> = <span class="keyword">new</span> <span class="title class_">ContactMainForm</span>();</span><br></pre></td></tr></table></figure>
+
+<p>Let’s build our code with the following command and take a look what happens…</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npx webpack</span><br></pre></td></tr></table></figure>
+
+<p>You guessed it! The compiled <code>.js</code> now contains our <code>ContactManForm</code> and the imports from our module <code>sample.ts</code>. Webpack has bundled <code>contact-main-form.ts</code> and all its dependencies into single <code>.js</code> files! :-D</p>
+<p>Now you can deploy and test the new script to ensure it all still works.</p>
+<p>That is a very basic example but it should set you on the way to creating a better more maintainable structure to your code. Remember the <a target="_blank" rel="noopener" href="http://butunclebob.com/ArticleS.UncleBob.PrinciplesOfOod">SOLID</a> principles!</p>
+<h2 id="Debugging"><a href="#Debugging" class="headerlink" title="Debugging"></a>Debugging</h2><p>So, we’ve got all these lovely tools, patterns and methodologies but how can we debug our code?<br>Well, you can of course just load up your browsers developer tools and debug the <code>.js</code> files deployed to D365, but these are not a line by line representation of our TypeScript source files and the optimized version is practically unreadable!</p>
+<h3 id="webpack-dev-server-amp-fiddler-to-the-rescue"><a href="#webpack-dev-server-amp-fiddler-to-the-rescue" class="headerlink" title="webpack-dev-server &amp; fiddler to the rescue!"></a>webpack-dev-server &amp; fiddler to the rescue!</h3><h3 id="Fiddler"><a href="#Fiddler" class="headerlink" title="Fiddler"></a>Fiddler</h3><p>I expect most will have used or heard of Fiddler. If you don’t have it installed go grab it <a target="_blank" rel="noopener" href="https://www.telerik.com/fiddler">here</a>.<br>We’ll be using the Auto Responder functionality to redirect requests for our <code>.js</code> to a locally served file.</p>
+<h3 id="webpack-dev-server"><a href="#webpack-dev-server" class="headerlink" title="webpack-dev-server"></a>webpack-dev-server</h3><p>Webpacks DevServer is essentially a http(s) file server.<br>Lets go an install the npm package…</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install webpack-dev-server --save-dev</span><br></pre></td></tr></table></figure>
+
+<p>Next we need to add some stuff to our <code>webpack.config.js</code><br>Fist of all we need to add the following at the top of the file:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> path = <span class="built_in">require</span>(<span class="string">&quot;path&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>then wee need to add the following to the development mode section&#x2F;config:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">devServer</span>: &#123;</span><br><span class="line">  <span class="attr">contentBase</span>: path.<span class="title function_">join</span>(__dirname, <span class="string">&#x27;dist&#x27;</span>),</span><br><span class="line">  <span class="attr">compress</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="attr">port</span>: <span class="number">9000</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Your <code>webpack.config.js</code> should now look something like this:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> path = <span class="built_in">require</span>(<span class="string">&quot;path&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = [</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="attr">mode</span>: <span class="string">&quot;development&quot;</span>,</span><br><span class="line">    <span class="attr">entry</span>: &#123;</span><br><span class="line">      <span class="string">&quot;contact-main-form&quot;</span>: <span class="string">&quot;./src/contact-main-form&quot;</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">output</span>: &#123;</span><br><span class="line">      <span class="attr">filename</span>: <span class="string">&quot;[name].js&quot;</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">module</span>: &#123;</span><br><span class="line">      <span class="attr">rules</span>: [</span><br><span class="line">        &#123;</span><br><span class="line">          <span class="attr">test</span>: <span class="regexp">/.tsx?$/</span>,</span><br><span class="line">          <span class="attr">exclude</span>: <span class="regexp">/node_modules/</span>,</span><br><span class="line">          <span class="attr">loader</span>: <span class="string">&quot;babel-loader&quot;</span>,</span><br><span class="line">        &#125;,</span><br><span class="line">      ],</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">resolve</span>: &#123;</span><br><span class="line">      <span class="attr">extensions</span>: [<span class="string">&quot;.ts&quot;</span>, <span class="string">&quot;.js&quot;</span>],</span><br><span class="line">      <span class="attr">modules</span>: [<span class="string">&quot;src&quot;</span>, <span class="string">&quot;node_modules&quot;</span>],</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">devtool</span>: <span class="string">&quot;source-map&quot;</span>,</span><br><span class="line">    <span class="attr">devServer</span>: &#123;</span><br><span class="line">      <span class="attr">contentBase</span>: path.<span class="title function_">join</span>(__dirname, <span class="string">&quot;dist&quot;</span>),</span><br><span class="line">      <span class="attr">compress</span>: <span class="literal">true</span>,</span><br><span class="line">      <span class="attr">port</span>: <span class="number">9000</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="attr">mode</span>: <span class="string">&quot;production&quot;</span>,</span><br><span class="line">    <span class="attr">entry</span>: &#123;</span><br><span class="line">      <span class="string">&quot;contact-main-form&quot;</span>: <span class="string">&quot;./src/contact-main-form&quot;</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">output</span>: &#123;</span><br><span class="line">      <span class="attr">filename</span>: <span class="string">&quot;[name].min.js&quot;</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">module</span>: &#123;</span><br><span class="line">      <span class="attr">rules</span>: [</span><br><span class="line">        &#123;</span><br><span class="line">          <span class="attr">test</span>: <span class="regexp">/.tsx?$/</span>,</span><br><span class="line">          <span class="attr">exclude</span>: <span class="regexp">/node_modules/</span>,</span><br><span class="line">          <span class="attr">loader</span>: <span class="string">&quot;babel-loader&quot;</span>,</span><br><span class="line">        &#125;,</span><br><span class="line">      ],</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">resolve</span>: &#123;</span><br><span class="line">      <span class="attr">extensions</span>: [<span class="string">&quot;.ts&quot;</span>, <span class="string">&quot;.js&quot;</span>],</span><br><span class="line">      <span class="attr">modules</span>: [<span class="string">&quot;src&quot;</span>, <span class="string">&quot;node_modules&quot;</span>],</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">devtool</span>: <span class="string">&quot;source-map&quot;</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">];</span><br></pre></td></tr></table></figure>
+
+<p>Now lets start up Webpacks DevServer via the following command</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npx webpack-dev-server</span><br></pre></td></tr></table></figure>
+
+<p>Once running you should be able to browse to <a target="_blank" rel="noopener" href="http://localhost:9000/">http://localhost:9000/</a> and the built <code>.js</code> and <code>.map</code> files should be served.</p>
+<p>What’s the benefit of this I hear you ask! Well, we get a few benefits…</p>
+<ol>
+<li>we don’t have to deploy the file every time we make a change.</li>
+<li>Chrome&#x2F;Edge (no one uses IE any more right!) will be able to load our source maps.</li>
+<li>The source maps will enable us to debug the TypeScript in Chrome&#x2F;Edge Dev tools. Magic! ;-)</li>
+</ol>
+<h3 id="Auto-Responder"><a href="#Auto-Responder" class="headerlink" title="Auto Responder"></a>Auto Responder</h3><p>Lets setup the Fiddler Auto Responder. This is the component that will redirect request for our <code>.js</code> in D365 to our locally served files.</p>
+<p>Load up Fiddler and select the Auto Responder tab on the right hand pane.<br><img src="/2020/04/11/D365-Typescript-WebResources-Part-4/AutoResponderTab.png" alt="Fiddler Auto Responder Tab"><br>Next click <em>Add Rule</em> and enter the following in the <em>Rule Editor</em><br><code>regex:(?inx)^.*\/webresources\/(((new_)+(?&#39;jsname1&#39;[a-z_\-\.]*\.js))|(?&#39;jsname2&#39;[a-z_\-\.]*\.js\.map))$</code><br>and<br><code>http://localhost:9000/$&#123;jsname1&#125;$&#123;jsname2&#125;</code><br>Then click <em>Save</em></p>
+<p>It should look like this…<br><img src="/2020/04/11/D365-Typescript-WebResources-Part-4/AutoResponderRule.png" alt="Fiddler Auto Responder Rule"></p>
+<p>Thats Fiddler setup, lets get debugging!</p>
+<h3 id="Debugging-in-Chrome-Dev-Tools"><a href="#Debugging-in-Chrome-Dev-Tools" class="headerlink" title="Debugging in Chrome Dev Tools"></a>Debugging in Chrome Dev Tools</h3><p>OK, so we have built and deployed our <code>contact-main-form</code> script (Assuming you followed from <a href="/2020/03/07/D365-TypeScript-Webresources-Part-1/">part 1</a>). We also have Fiddler set up to redirect requests for our <code>.js</code> to local files and Webpack Dev Server serving up our files locally.</p>
+<p>Now lets load up Chrome, browse to our D365 instance and open up a contact. Hopefully you’ll get the notification and alerts from our script!</p>
+<p>Hit <em>F12</em> to load the Developer Tools.</p>
+<p>Next select the <em>Source</em> tab</p>
+<p>Then hit <em>Ctrl + P</em> to open a file and type <code>contact-main-form</code>. You should see the <code>.ts</code> file in the list, click on it to open it.<br><img src="/2020/04/11/D365-Typescript-WebResources-Part-4/ChromeOpenFile.png" alt="Chrome Open File"></p>
+<p>Lets add a breakpoint on line 5 (click on the left margin near the number 5)<br><img src="/2020/04/11/D365-Typescript-WebResources-Part-4/ChromeBreakpoint.png" alt="Breakpoint"></p>
+<p>We are now ready! Hit <em>F5</em> (refresh) in the browser and Chrome Dev Tools should pause on our breakpoint. Now hit <em>F10</em> (Step Over) until we are paused on line 9. Feel free to inspect some of the objects and variables along the way.<br><img src="/2020/04/11/D365-Typescript-WebResources-Part-4/StepInto.png" alt="Step Into"></p>
+<p>We are now going to step into our <code>Pointless</code> function so go ahead and hit <em>F11</em> (you may have to hit it 2 or 3 times to get there). But eventually you should get to line 2 of our sample module <code>sample.ts</code>.<br><img src="/2020/04/11/D365-Typescript-WebResources-Part-4/DebugSampleModule.png" alt="Debug Sample Module"></p>
+<p>Brilliant isn’t it!</p>
+<h3 id="No-need-to-deploy"><a href="#No-need-to-deploy" class="headerlink" title="No need to deploy"></a>No need to deploy</h3><p>Right, One last thing to show you…<br>Lets make some changes to our <code>ContactMainForm</code> and test&#x2F;debug without the hassle of having to deploy&#x2F;upload the file to D365. Obviously once you’ve finished your development you’ll need to deploy the file to D365, but this method speeds up your dev&#x2F;test process.</p>
+<p>First lets make a change.<br>I’m going to change the pointless message…</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Pointless</span>(<span class="string">&quot;This REALLY is a pointless message.&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>Save the file and the build via the following command</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npx webpack</span><br></pre></td></tr></table></figure>
+
+<p>Refesh the browser and in Dev Tools you should see our changes and be able to debug.<br><img src="/2020/04/11/D365-Typescript-WebResources-Part-4/ReallyPointless.png" alt="Really Pointless"></p>
+<h2 id="That’s-all-folks"><a href="#That’s-all-folks" class="headerlink" title="That’s all folks!"></a>That’s all folks!</h2><p>I hope that has been useful!</p>
+<p>You can download a copy of the source code for this blog post <a href="d365ts-pt4.zip">here</a></p>
+<p>In the next part we’ll take a look at unit testing and few useful tweaks to help some of the processes covered so far.</p>
+<p>Thanks for reading.<br>Ollie</p>
+
+  </div>
+</article>
+
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the comments.</noscript>
+        </div>
+    </div>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/categories/">Categories</a></li>
+         
+          <li><a href="/archives/">Archive</a></li>
+         
+          <li><a href="/Me/">Me</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#ES-Modules"><span class="toc-number">1.</span> <span class="toc-text">ES Modules</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#What-are-ES-Modules"><span class="toc-number">1.1.</span> <span class="toc-text">What are ES Modules?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#A-Sample-Module"><span class="toc-number">1.2.</span> <span class="toc-text">A Sample Module</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Debugging"><span class="toc-number">2.</span> <span class="toc-text">Debugging</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#webpack-dev-server-amp-fiddler-to-the-rescue"><span class="toc-number">2.1.</span> <span class="toc-text">webpack-dev-server &amp; fiddler to the rescue!</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Fiddler"><span class="toc-number">2.2.</span> <span class="toc-text">Fiddler</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#webpack-dev-server"><span class="toc-number">2.3.</span> <span class="toc-text">webpack-dev-server</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Auto-Responder"><span class="toc-number">2.4.</span> <span class="toc-text">Auto Responder</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Debugging-in-Chrome-Dev-Tools"><span class="toc-number">2.5.</span> <span class="toc-text">Debugging in Chrome Dev Tools</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#No-need-to-deploy"><span class="toc-number">2.6.</span> <span class="toc-text">No need to deploy</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#That%E2%80%99s-all-folks"><span class="toc-number">3.</span> <span class="toc-text">That’s all folks!</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://www.oliverflint.co.uk/2020/04/11/D365-Typescript-WebResources-Part-4/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://www.oliverflint.co.uk/2020/04/11/D365-Typescript-WebResources-Part-4/&text=D365 TypeScript Web Resources - Part 4 - Modules &amp; Debugging"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://www.oliverflint.co.uk/2020/04/11/D365-Typescript-WebResources-Part-4/&title=D365 TypeScript Web Resources - Part 4 - Modules &amp; Debugging"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://www.oliverflint.co.uk/2020/04/11/D365-Typescript-WebResources-Part-4/&is_video=false&description=D365 TypeScript Web Resources - Part 4 - Modules &amp; Debugging"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=D365 TypeScript Web Resources - Part 4 - Modules &amp; Debugging&body=Check out this article: http://www.oliverflint.co.uk/2020/04/11/D365-Typescript-WebResources-Part-4/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://www.oliverflint.co.uk/2020/04/11/D365-Typescript-WebResources-Part-4/&title=D365 TypeScript Web Resources - Part 4 - Modules &amp; Debugging"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://www.oliverflint.co.uk/2020/04/11/D365-Typescript-WebResources-Part-4/&title=D365 TypeScript Web Resources - Part 4 - Modules &amp; Debugging"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://www.oliverflint.co.uk/2020/04/11/D365-Typescript-WebResources-Part-4/&title=D365 TypeScript Web Resources - Part 4 - Modules &amp; Debugging"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://www.oliverflint.co.uk/2020/04/11/D365-Typescript-WebResources-Part-4/&title=D365 TypeScript Web Resources - Part 4 - Modules &amp; Debugging"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://www.oliverflint.co.uk/2020/04/11/D365-Typescript-WebResources-Part-4/&name=D365 TypeScript Web Resources - Part 4 - Modules &amp; Debugging&description=Lets take a look at how we can make use of ES Modules in our TypeScript webresources and how this help us achieve clean code! Then we&#39;ll quickly look at how we can then debug without the extra step of deploying each time we make a change."><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://www.oliverflint.co.uk/2020/04/11/D365-Typescript-WebResources-Part-4/&t=D365 TypeScript Web Resources - Part 4 - Modules &amp; Debugging"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2020-2026
+    Oliver Flint
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/categories/">Categories</a></li>
+         
+          <li><a href="/archives/">Archive</a></li>
+         
+          <li><a href="/Me/">Me</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+
+    <!-- jquery -->
+
+<script src="/lib/jquery/jquery.min.js"></script>
+
+
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+
+<!-- clipboard -->
+
+  
+<script src="/lib/clipboard/clipboard.min.js"></script>
+
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-78426300-2"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-78426300-2');
+    </script>
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+    <script type="text/javascript">
+        var disqus_shortname = 'oliverflintblog';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script>
+
+
+    <script src='https://storage.ko-fi.com/cdn/scripts/overlay-widget.js'></script>
+    <script>
+      kofiWidgetOverlay.draw('oliverflint', {
+        'type': 'floating-chat',
+        'floating-chat.donateButton.text': 'Support me',
+        'floating-chat.donateButton.background-color': '#f45d22',
+        'floating-chat.donateButton.text-color': '#fff'
+      });
+    </script>
+  </body>
+</html>

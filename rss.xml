@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0"
+  xmlns:atom="http://www.w3.org/2005/Atom"
+  xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>A Blog by Oliver Flint</title>
+    <link>http://www.oliverflint.co.uk/</link>
+    
+    <atom:link href="http://www.oliverflint.co.uk/rss.xml" rel="self" type="application/rss+xml"/>
+    
+    <description>Oliver Flint&#39;s musings on the subject of Power Platform, Power Apps, Dynamics 365, Dataverse and Azure</description>
+    <pubDate>Tue, 27 Jan 2026 19:14:05 GMT</pubDate>
+    <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>Deleting stale branches in Azure DevOps Git Repositories with Azure Logic Apps</title>
+      <link>http://www.oliverflint.co.uk/2022/12/06/Deleting-stale-branches-in-Azure-DevOps-Git-Repositories/</link>
+      <guid>http://www.oliverflint.co.uk/2022/12/06/Deleting-stale-branches-in-Azure-DevOps-Git-Repositories/</guid>
+      <pubDate>Tue, 06 Dec 2022 00:00:00 GMT</pubDate>
+      
+      <description>Azure DevOps, GitHub, etc. refer to a branch as being &quot;stale&quot; when it has no new commits within a certain number of days. I believe Azure uses 90 days as it&#39;s reference. Pretty simple really! Unfortunatly Azure DevOps doesn&#39;t automatically delete/archive stale branches. In this article I&#39;m going to describe a solution to that problem.</description>
+      
+      
+      
+      
+      <category domain="http://www.oliverflint.co.uk/categories/Azure/">Azure</category>
+      
+      <category domain="http://www.oliverflint.co.uk/categories/Azure/DevOps/">DevOps</category>
+      
+      
+      <category domain="http://www.oliverflint.co.uk/tags/Azure/">Azure</category>
+      
+      <category domain="http://www.oliverflint.co.uk/tags/DevOps/">DevOps</category>
+      
+      <category domain="http://www.oliverflint.co.uk/tags/Stale/">Stale</category>
+      
+      <category domain="http://www.oliverflint.co.uk/tags/Branches/">Branches</category>
+      
+      <category domain="http://www.oliverflint.co.uk/tags/Power-Automate/">Power Automate</category>
+      
+      <category domain="http://www.oliverflint.co.uk/tags/Flow/">Flow</category>
+      
+      <category domain="http://www.oliverflint.co.uk/tags/Logic-Apps/">Logic Apps</category>
+      
+      
+      <comments>http://www.oliverflint.co.uk/2022/12/06/Deleting-stale-branches-in-Azure-DevOps-Git-Repositories/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>D365 TypeScript Web Resources - Part 6 - Application Insights</title>
+      <link>http://www.oliverflint.co.uk/2021/04/30/D365-Typescript-Webresources-Part-6/</link>
+      <guid>http://www.oliverflint.co.uk/2021/04/30/D365-Typescript-Webresources-Part-6/</guid>
+      <pubDate>Fri, 30 Apr 2021 22:00:00 GMT</pubDate>
+      
+      <description>Application Insights, a feature of Azure Monitor, is an extensible Application Performance Management (APM) service for developers and DevOps professionals. Use it to monitor your live applications. In this post I&#39;ll go though the steps required to set it up in your TypeScript Webresources project.</description>
+      
+      
+      
+      
+      <category domain="http://www.oliverflint.co.uk/categories/D365-TypeScript/">D365 TypeScript</category>
+      
+      
+      <category domain="http://www.oliverflint.co.uk/tags/D365/">D365</category>
+      
+      <category domain="http://www.oliverflint.co.uk/tags/Web-Resources/">Web Resources</category>
+      
+      <category domain="http://www.oliverflint.co.uk/tags/TypeScript/">TypeScript</category>
+      
+      <category domain="http://www.oliverflint.co.uk/tags/JavaScript/">JavaScript</category>
+      
+      
+      <comments>http://www.oliverflint.co.uk/2021/04/30/D365-Typescript-Webresources-Part-6/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>D365 TypeScript Web Resources - Part 5 - Unit Testing</title>
+      <link>http://www.oliverflint.co.uk/2021/01/22/D365-Typescript-Webresources-Part-5/</link>
+      <guid>http://www.oliverflint.co.uk/2021/01/22/D365-Typescript-Webresources-Part-5/</guid>
+      <pubDate>Fri, 22 Jan 2021 00:12:23 GMT</pubDate>
+      
+      <description>Nowadays there is no excuse to not unit test your code. It&#39;s becoming easy and more valuable, so don&#39;t not do it! In this post I&#39;m going to provide a basic guide to get you started with unit tests and TypeScript webresources for Dynamics 365... err Dataverse... err Power Apps... or whatever we are calling it today!</description>
+      
+      
+      
+      
+      <category domain="http://www.oliverflint.co.uk/categories/D365-TypeScript/">D365 TypeScript</category>
+      
+      
+      <category domain="http://www.oliverflint.co.uk/tags/D365/">D365</category>
+      
+      <category domain="http://www.oliverflint.co.uk/tags/Web-Resources/">Web Resources</category>
+      
+      <category domain="http://www.oliverflint.co.uk/tags/TypeScript/">TypeScript</category>
+      
+      <category domain="http://www.oliverflint.co.uk/tags/JavaScript/">JavaScript</category>
+      
+      <category domain="http://www.oliverflint.co.uk/tags/Unit-Testing/">Unit Testing</category>
+      
+      <category domain="http://www.oliverflint.co.uk/tags/Jest/">Jest</category>
+      
+      <category domain="http://www.oliverflint.co.uk/tags/XrmMock/">XrmMock</category>
+      
+      
+      <comments>http://www.oliverflint.co.uk/2021/01/22/D365-Typescript-Webresources-Part-5/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>PCF WebApi execute</title>
+      <link>http://www.oliverflint.co.uk/2020/06/11/PCF-WebApi-execute/</link>
+      <guid>http://www.oliverflint.co.uk/2020/06/11/PCF-WebApi-execute/</guid>
+      <pubDate>Wed, 10 Jun 2020 23:05:42 GMT</pubDate>
+      
+      <description>Yep, execute is missing from the docs and the type definitions but it&#39;s there and it works!</description>
+      
+      
+      
+      
+      <category domain="http://www.oliverflint.co.uk/categories/Power-Apps-Component-Framework/">Power Apps Component Framework</category>
+      
+      <category domain="http://www.oliverflint.co.uk/categories/Power-Apps-Component-Framework/PCF-Tips-n-Tricks/">PCF Tips &#39;n&#39; Tricks</category>
+      
+      
+      <category domain="http://www.oliverflint.co.uk/tags/D365/">D365</category>
+      
+      <category domain="http://www.oliverflint.co.uk/tags/PCF/">PCF</category>
+      
+      <category domain="http://www.oliverflint.co.uk/tags/Power-Apps/">Power Apps</category>
+      
+      <category domain="http://www.oliverflint.co.uk/tags/Power-Apps-Component-Framework/">Power Apps Component Framework</category>
+      
+      
+      <comments>http://www.oliverflint.co.uk/2020/06/11/PCF-WebApi-execute/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>PCF primary entity info</title>
+      <link>http://www.oliverflint.co.uk/2020/06/10/PCF-primary-entity-info/</link>
+      <guid>http://www.oliverflint.co.uk/2020/06/10/PCF-primary-entity-info/</guid>
+      <pubDate>Wed, 10 Jun 2020 18:59:36 GMT</pubDate>
+      
+      <description>At present the PCF Template provided by the Power Apps Cli gives us lots of opportunity and scope to improve functionality, but the type definitions are missing some objects that are present api. Now this could be for many reasons, one being support. Anyway, I&#39;m a rogue so here is one I&#39;ve already used a lot!</description>
+      
+      
+      
+      
+      <category domain="http://www.oliverflint.co.uk/categories/Power-Apps-Component-Framework/">Power Apps Component Framework</category>
+      
+      <category domain="http://www.oliverflint.co.uk/categories/Power-Apps-Component-Framework/PCF-Tips-n-Tricks/">PCF Tips &#39;n&#39; Tricks</category>
+      
+      
+      <category domain="http://www.oliverflint.co.uk/tags/D365/">D365</category>
+      
+      <category domain="http://www.oliverflint.co.uk/tags/PCF/">PCF</category>
+      
+      <category domain="http://www.oliverflint.co.uk/tags/Power-Apps/">Power Apps</category>
+      
+      <category domain="http://www.oliverflint.co.uk/tags/Power-Apps-Component-Framework/">Power Apps Component Framework</category>
+      
+      
+      <comments>http://www.oliverflint.co.uk/2020/06/10/PCF-primary-entity-info/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>PCF &lt;-&gt; Form Communication</title>
+      <link>http://www.oliverflint.co.uk/2020/06/06/PCF-and-Form-Communication/</link>
+      <guid>http://www.oliverflint.co.uk/2020/06/06/PCF-and-Form-Communication/</guid>
+      <pubDate>Sat, 06 Jun 2020 02:12:12 GMT</pubDate>
+      
+      <description>Communication, It&#39;s one of the single most important &quot;things&quot; in EVERYTHING! So why am I finding it so difficult to have my PCF control and Form script talk to each other? Maybe I am missing something but I believe the only &quot;OOTB&quot; method for the two to communicate is via a bound field/control...? So, here is my alternative...</description>
+      
+      
+      
+      
+      <category domain="http://www.oliverflint.co.uk/categories/Power-Apps-Component-Framework/">Power Apps Component Framework</category>
+      
+      
+      <category domain="http://www.oliverflint.co.uk/tags/D365/">D365</category>
+      
+      <category domain="http://www.oliverflint.co.uk/tags/PCF/">PCF</category>
+      
+      <category domain="http://www.oliverflint.co.uk/tags/Power-Apps/">Power Apps</category>
+      
+      <category domain="http://www.oliverflint.co.uk/tags/Power-Apps-Component-Framework/">Power Apps Component Framework</category>
+      
+      
+      <comments>http://www.oliverflint.co.uk/2020/06/06/PCF-and-Form-Communication/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>D365 TypeScript Web Resources - Part 4 - Modules &amp; Debugging</title>
+      <link>http://www.oliverflint.co.uk/2020/04/11/D365-Typescript-WebResources-Part-4/</link>
+      <guid>http://www.oliverflint.co.uk/2020/04/11/D365-Typescript-WebResources-Part-4/</guid>
+      <pubDate>Sat, 11 Apr 2020 00:07:42 GMT</pubDate>
+      
+      <description>Lets take a look at how we can make use of ES Modules in our TypeScript webresources and how this help us achieve clean code! Then we&#39;ll quickly look at how we can then debug without the extra step of deploying each time we make a change.</description>
+      
+      
+      
+      
+      <category domain="http://www.oliverflint.co.uk/categories/D365-TypeScript/">D365 TypeScript</category>
+      
+      
+      <category domain="http://www.oliverflint.co.uk/tags/D365/">D365</category>
+      
+      <category domain="http://www.oliverflint.co.uk/tags/Web-Resources/">Web Resources</category>
+      
+      <category domain="http://www.oliverflint.co.uk/tags/TypeScript/">TypeScript</category>
+      
+      <category domain="http://www.oliverflint.co.uk/tags/JavaScript/">JavaScript</category>
+      
+      <category domain="http://www.oliverflint.co.uk/tags/Webpack/">Webpack</category>
+      
+      <category domain="http://www.oliverflint.co.uk/tags/Babel/">Babel</category>
+      
+      <category domain="http://www.oliverflint.co.uk/tags/ES-Modules/">ES Modules</category>
+      
+      <category domain="http://www.oliverflint.co.uk/tags/Debugging/">Debugging</category>
+      
+      
+      <comments>http://www.oliverflint.co.uk/2020/04/11/D365-Typescript-WebResources-Part-4/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>D365 TypeScript Web Resources - Part 3 - Webpack &amp; Babel</title>
+      <link>http://www.oliverflint.co.uk/2020/04/04/D365-Typescript-Webresources-Part-3/</link>
+      <guid>http://www.oliverflint.co.uk/2020/04/04/D365-Typescript-Webresources-Part-3/</guid>
+      <pubDate>Sat, 04 Apr 2020 22:00:00 GMT</pubDate>
+      
+      <description>Ok, so, err, where do we start! Webpack and Babel are big. Too big for me to cover in one post. To be honest I don&#39;t know everything about them and have only scratched the surface myself, so I&#39;ll only cover a minimal config to get people started. I&#39;ll leave it to you to read and experiment further. After all, the best way to learn is often to just throw yourself in the deep end!</description>
+      
+      
+      
+      
+      <category domain="http://www.oliverflint.co.uk/categories/D365-TypeScript/">D365 TypeScript</category>
+      
+      
+      <category domain="http://www.oliverflint.co.uk/tags/D365/">D365</category>
+      
+      <category domain="http://www.oliverflint.co.uk/tags/Web-Resources/">Web Resources</category>
+      
+      <category domain="http://www.oliverflint.co.uk/tags/TypeScript/">TypeScript</category>
+      
+      <category domain="http://www.oliverflint.co.uk/tags/JavaScript/">JavaScript</category>
+      
+      <category domain="http://www.oliverflint.co.uk/tags/Webpack/">Webpack</category>
+      
+      <category domain="http://www.oliverflint.co.uk/tags/Babel/">Babel</category>
+      
+      
+      <comments>http://www.oliverflint.co.uk/2020/04/04/D365-Typescript-Webresources-Part-3/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>D365 TypeScript Web Resources - Part 2 - Type Declarations</title>
+      <link>http://www.oliverflint.co.uk/2020/03/08/D365-Typescript-Webresources-Part-2/</link>
+      <guid>http://www.oliverflint.co.uk/2020/03/08/D365-Typescript-Webresources-Part-2/</guid>
+      <pubDate>Sun, 08 Mar 2020 00:00:00 GMT</pubDate>
+      
+      <description>Type Declaration files provide a way to declare the existence of some types or values without actually providing implementations for those values. They improve readability and also quality. They are integral to the use of TypeScript.</description>
+      
+      
+      
+      
+      <category domain="http://www.oliverflint.co.uk/categories/D365-TypeScript/">D365 TypeScript</category>
+      
+      
+      <category domain="http://www.oliverflint.co.uk/tags/D365/">D365</category>
+      
+      <category domain="http://www.oliverflint.co.uk/tags/Web-Resources/">Web Resources</category>
+      
+      <category domain="http://www.oliverflint.co.uk/tags/TypeScript/">TypeScript</category>
+      
+      <category domain="http://www.oliverflint.co.uk/tags/JavaScript/">JavaScript</category>
+      
+      <category domain="http://www.oliverflint.co.uk/tags/XrmDefinitelyTyped/">XrmDefinitelyTyped</category>
+      
+      
+      <comments>http://www.oliverflint.co.uk/2020/03/08/D365-Typescript-Webresources-Part-2/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>D365 TypeScript Web Resources - Part 1 - Basics</title>
+      <link>http://www.oliverflint.co.uk/2020/03/07/D365-Typescript-Webresources-Part-1/</link>
+      <guid>http://www.oliverflint.co.uk/2020/03/07/D365-Typescript-Webresources-Part-1/</guid>
+      <pubDate>Sat, 07 Mar 2020 00:00:00 GMT</pubDate>
+      
+      <description>In this series (my first) of posts i&#39;ll share my experiences when authoring and maintaining JavaScript Web Resources with TypeScript. The series will cover the basics and then more advanced options including ES Modules, webpack, babel, unit testing, deployment, etc.</description>
+      
+      
+      
+      
+      <category domain="http://www.oliverflint.co.uk/categories/D365-TypeScript/">D365 TypeScript</category>
+      
+      
+      <category domain="http://www.oliverflint.co.uk/tags/D365/">D365</category>
+      
+      <category domain="http://www.oliverflint.co.uk/tags/Web-Resources/">Web Resources</category>
+      
+      <category domain="http://www.oliverflint.co.uk/tags/TypeScript/">TypeScript</category>
+      
+      <category domain="http://www.oliverflint.co.uk/tags/JavaScript/">JavaScript</category>
+      
+      
+      <comments>http://www.oliverflint.co.uk/2020/03/07/D365-Typescript-Webresources-Part-1/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>Welcome</title>
+      <link>http://www.oliverflint.co.uk/2020/03/06/Welcome/</link>
+      <guid>http://www.oliverflint.co.uk/2020/03/06/Welcome/</guid>
+      <pubDate>Fri, 06 Mar 2020 23:00:43 GMT</pubDate>
+      
+        
+        
+      <description>&lt;h2 id=&quot;Hello&quot;&gt;&lt;a href=&quot;#Hello&quot; class=&quot;headerlink&quot; title=&quot;Hello&quot;&gt;&lt;/a&gt;Hello&lt;/h2&gt;&lt;p&gt;So here I am with a new website. The site is built with Hexo.io. I chose Hexo.io because I love the simplicity of Markdown. Check it out &lt;a href=&quot;https://www.hexo.io/&quot;&gt;Hexo.io&lt;/a&gt;&lt;/p&gt;
+</description>
+        
+      
+      
+      
+      
+      
+      <category domain="http://www.oliverflint.co.uk/tags/welcome/">welcome</category>
+      
+      <category domain="http://www.oliverflint.co.uk/tags/oliver-flint/">oliver flint</category>
+      
+      
+      <comments>http://www.oliverflint.co.uk/2020/03/06/Welcome/#disqus_thread</comments>
+      
+    </item>
+    
+  </channel>
+</rss>

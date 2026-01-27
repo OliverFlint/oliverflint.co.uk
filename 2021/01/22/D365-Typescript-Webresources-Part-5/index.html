@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="Nowadays there is no excuse to not unit test your code. It&#39;s becoming easy and more valuable, so don&#39;t not do it! In this post I&#39;m going to provide a basic guide to get you started with unit tests and">
+<meta property="og:type" content="article">
+<meta property="og:title" content="D365 TypeScript Web Resources - Part 5 - Unit Testing">
+<meta property="og:url" content="http://www.oliverflint.co.uk/2021/01/22/D365-Typescript-Webresources-Part-5/index.html">
+<meta property="og:site_name" content="A Blog by Oliver Flint">
+<meta property="og:description" content="Nowadays there is no excuse to not unit test your code. It&#39;s becoming easy and more valuable, so don&#39;t not do it! In this post I&#39;m going to provide a basic guide to get you started with unit tests and">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-01-22T00:12:23.000Z">
+<meta property="article:modified_time" content="2026-01-27T19:14:05.895Z">
+<meta property="article:author" content="Oliver Flint">
+<meta property="article:tag" content="D365">
+<meta property="article:tag" content="Web Resources">
+<meta property="article:tag" content="TypeScript">
+<meta property="article:tag" content="JavaScript">
+<meta property="article:tag" content="Unit Testing">
+<meta property="article:tag" content="Jest">
+<meta property="article:tag" content="XrmMock">
+<meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>D365 TypeScript Web Resources - Part 5 - Unit Testing</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+      
+<link rel="stylesheet" href="/css/rtl.css">
+
+    
+    <!-- rss -->
+    
+    
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/rss.xml" title="A Blog by Oliver Flint" type="application/rss+xml">
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/categories/">Categories</a></li>
+         
+          <li><a href="/archives/">Archive</a></li>
+         
+          <li><a href="/Me/">Me</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2021/04/30/D365-Typescript-Webresources-Part-6/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2020/06/11/PCF-WebApi-execute/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://www.oliverflint.co.uk/2021/01/22/D365-Typescript-Webresources-Part-5/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://www.oliverflint.co.uk/2021/01/22/D365-Typescript-Webresources-Part-5/&text=D365 TypeScript Web Resources - Part 5 - Unit Testing"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://www.oliverflint.co.uk/2021/01/22/D365-Typescript-Webresources-Part-5/&title=D365 TypeScript Web Resources - Part 5 - Unit Testing"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://www.oliverflint.co.uk/2021/01/22/D365-Typescript-Webresources-Part-5/&is_video=false&description=D365 TypeScript Web Resources - Part 5 - Unit Testing"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=D365 TypeScript Web Resources - Part 5 - Unit Testing&body=Check out this article: http://www.oliverflint.co.uk/2021/01/22/D365-Typescript-Webresources-Part-5/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://www.oliverflint.co.uk/2021/01/22/D365-Typescript-Webresources-Part-5/&title=D365 TypeScript Web Resources - Part 5 - Unit Testing"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://www.oliverflint.co.uk/2021/01/22/D365-Typescript-Webresources-Part-5/&title=D365 TypeScript Web Resources - Part 5 - Unit Testing"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://www.oliverflint.co.uk/2021/01/22/D365-Typescript-Webresources-Part-5/&title=D365 TypeScript Web Resources - Part 5 - Unit Testing"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://www.oliverflint.co.uk/2021/01/22/D365-Typescript-Webresources-Part-5/&title=D365 TypeScript Web Resources - Part 5 - Unit Testing"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://www.oliverflint.co.uk/2021/01/22/D365-Typescript-Webresources-Part-5/&name=D365 TypeScript Web Resources - Part 5 - Unit Testing&description=Nowadays there is no excuse to not unit test your code. It&#39;s becoming easy and more valuable, so don&#39;t not do it! In this post I&#39;m going to provide a basic guide to get you started with unit tests and TypeScript webresources for Dynamics 365... err Dataverse... err Power Apps... or whatever we are calling it today!"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://www.oliverflint.co.uk/2021/01/22/D365-Typescript-Webresources-Part-5/&t=D365 TypeScript Web Resources - Part 5 - Unit Testing"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Unit-Tests-But-my-code-is-next-level"><span class="toc-number">1.</span> <span class="toc-text">Unit Tests? But my code is next level!</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Configure-Jest"><span class="toc-number">2.</span> <span class="toc-text">Configure Jest</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Writing-our-first-test"><span class="toc-number">3.</span> <span class="toc-text">Writing our first test</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Lets-have-a-closer-look-at-the-test%E2%80%A6"><span class="toc-number">3.1.</span> <span class="toc-text">Lets have a closer look at the test…</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#So-lets-run-the-tests"><span class="toc-number">3.2.</span> <span class="toc-text">So, lets run the tests!</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Fancy-a-crack-at-mocking-the-WebApi"><span class="toc-number">4.</span> <span class="toc-text">Fancy a crack at mocking the WebApi?</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#A-function-that-calls-Xrm-WebApi%E2%80%A6"><span class="toc-number">4.1.</span> <span class="toc-text">A function that calls Xrm.WebApi…</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Testing-a-function-that-calls-Xrm-WebApi"><span class="toc-number">4.2.</span> <span class="toc-text">Testing a function that calls Xrm.WebApi</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Lets-have-a-closer-look-again"><span class="toc-number">4.3.</span> <span class="toc-text">Lets have a closer look again</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#OK-OK-Lets-run-the-bloody-tests"><span class="toc-number">5.</span> <span class="toc-text">OK OK! Lets run the bloody tests!</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#That%E2%80%99s-all-folks"><span class="toc-number">6.</span> <span class="toc-text">That’s all folks!</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        D365 TypeScript Web Resources - Part 5 - Unit Testing
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Oliver Flint</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2021-01-22T00:12:23.000Z" itemprop="datePublished">2021-01-22</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/categories/D365-TypeScript/">D365 TypeScript</a>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link-link" href="/tags/D365/" rel="tag">D365</a>, <a class="tag-link-link" href="/tags/JavaScript/" rel="tag">JavaScript</a>, <a class="tag-link-link" href="/tags/Jest/" rel="tag">Jest</a>, <a class="tag-link-link" href="/tags/TypeScript/" rel="tag">TypeScript</a>, <a class="tag-link-link" href="/tags/Unit-Testing/" rel="tag">Unit Testing</a>, <a class="tag-link-link" href="/tags/Web-Resources/" rel="tag">Web Resources</a>, <a class="tag-link-link" href="/tags/XrmMock/" rel="tag">XrmMock</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p>Before you get stuck into this make sure you’ve checked out any previous parts to the <a href="/categories/D365-TypeScript/">series</a>. Each part in this series follows on from the previous, so you may need to grab the code from the previous part if you haven’t been following.</p>
+<h2 id="Unit-Tests-But-my-code-is-next-level"><a href="#Unit-Tests-But-my-code-is-next-level" class="headerlink" title="Unit Tests? But my code is next level!"></a>Unit Tests? But my code is next level!</h2><p>Nowadays there is no excuse to not unit test your code. It’s becoming easy and more valuable, so don’t not do it!</p>
+<p>In this post I’m going to provide a basic guide to get you started with unit tests and TypeScript webresources for Dynamics 365… err Dataverse… err Power Apps… or whatever we are calling it today!</p>
+<h2 id="Configure-Jest"><a href="#Configure-Jest" class="headerlink" title="Configure Jest"></a>Configure Jest</h2><p>First of all lets install the jest npm packages we require:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install jest @types/jest ts-jest --save-dev</span><br></pre></td></tr></table></figure>
+
+<p>Next we’ll create a basic config via:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npx ts-jest config:init</span><br></pre></td></tr></table></figure>
+
+<p>Finally we’ll install xrm-mock and sinon to help us a little:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install xrm-mock sinon @types/sinon --save-dev</span><br></pre></td></tr></table></figure>
+
+<p>Ensure your <code>package.json</code> is setup to run jest via <code>npm run test</code> makes sure you have the following script defined:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&quot;scripts&quot;: &#123;</span><br><span class="line">    &quot;test&quot;: &quot;jest&quot;,</span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
+
+<p>Now we are ready to write some tests! :-D</p>
+<h2 id="Writing-our-first-test"><a href="#Writing-our-first-test" class="headerlink" title="Writing our first test"></a>Writing our first test</h2><p>Create a folder in the root of the project called “tests” and then create a new file called “first.test.ts”.</p>
+<p>Paste the following into the new file:</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">NavigationStaticMock</span>, <span class="title class_">XrmMockGenerator</span> &#125; <span class="keyword">from</span> <span class="string">&quot;xrm-mock&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> sinon <span class="keyword">from</span> <span class="string">&quot;sinon&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">Pointless</span> &#125; <span class="keyword">from</span> <span class="string">&quot;../src/sample&quot;</span>;</span><br><span class="line"><span class="title function_">describe</span>(<span class="string">&quot;sample test&quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="title function_">describe</span>(<span class="string">&quot;Pointless&quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="title function_">test</span>(<span class="string">&quot;Should display alert&quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">      <span class="title class_">XrmMockGenerator</span>.<span class="title function_">initialise</span>();</span><br><span class="line">      <span class="keyword">const</span> stub = sinon.<span class="title function_">stub</span>(</span><br><span class="line">        <span class="title class_">NavigationStaticMock</span>.<span class="property"><span class="keyword">prototype</span></span>,</span><br><span class="line">        <span class="string">&quot;openAlertDialog&quot;</span></span><br><span class="line">      );</span><br><span class="line"></span><br><span class="line">      <span class="keyword">const</span> msg = <span class="string">&quot;a pointless test message&quot;</span>;</span><br><span class="line">      <span class="title class_">Pointless</span>(msg);</span><br><span class="line"></span><br><span class="line">      <span class="title function_">expect</span>(stub.<span class="property">called</span>).<span class="title function_">toBeTruthy</span>();</span><br><span class="line">      <span class="title function_">expect</span>(stub.<span class="property">calledOnce</span>).<span class="title function_">toBeTruthy</span>();</span><br><span class="line">      <span class="title function_">expect</span>(stub.<span class="property">firstCall</span>.<span class="property">args</span>[<span class="number">0</span>].<span class="property">text</span>).<span class="title function_">toBe</span>(msg);</span><br><span class="line">      <span class="title function_">expect</span>(stub.<span class="property">firstCall</span>.<span class="property">args</span>[<span class="number">0</span>].<span class="property">title</span>).<span class="title function_">toBe</span>(<span class="string">&quot;A Pointless Message&quot;</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="Lets-have-a-closer-look-at-the-test…"><a href="#Lets-have-a-closer-look-at-the-test…" class="headerlink" title="Lets have a closer look at the test…"></a>Lets have a closer look at the test…</h3><p><em>I’m not going to tell you how to use <a target="_blank" rel="noopener" href="https://jestjs.io/">jest</a> and <a target="_blank" rel="noopener" href="https://sinonjs.org/">sinon</a> as these already have great documentation of their own.</em></p>
+<p>First we’ll “Arrange” our test…<br>Initialise our global <code>Xrm</code> object:</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">XrmMockGenerator</span>.<span class="title function_">initialise</span>();</span><br></pre></td></tr></table></figure>
+
+<p>Stub <code>openAlertDialog()</code>. As I expect you know, <code>openAlertDialog()</code> displays a dialog in D365. Stubbing the function enables the code to execute without error given we don’t have the UI and we can then test&#x2F;assert the stubs properties etc.:</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> stub = sinon.<span class="title function_">stub</span>(<span class="title class_">NavigationStaticMock</span>.<span class="property"><span class="keyword">prototype</span></span>, <span class="string">&quot;openAlertDialog&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>Now lets “Act” by calling our function:</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> msg = <span class="string">&quot;a pointless test message&quot;</span>;</span><br><span class="line"><span class="title class_">Pointless</span>(msg);</span><br></pre></td></tr></table></figure>
+
+<p>Finally we’ll “Assert” our tests<br>Has the <code>openAlertDialog()</code> stub been called?:</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">expect</span>(stub.<span class="property">called</span>).<span class="title function_">toBeTruthy</span>();</span><br></pre></td></tr></table></figure>
+
+<p>The <code>openAlertDialog()</code> stub should have only been called once:</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">expect</span>(stub.<span class="property">calledOnce</span>).<span class="title function_">toBeTruthy</span>();</span><br></pre></td></tr></table></figure>
+
+<p>Was the <code>openAlertDialog()</code> stubs <code>alertStrings.text</code> parameter as expected?:</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">expect</span>(stub.<span class="property">firstCall</span>.<span class="property">args</span>[<span class="number">0</span>].<span class="property">text</span>).<span class="title function_">toBe</span>(msg);</span><br></pre></td></tr></table></figure>
+
+<p>Was the <code>openAlertDialog()</code> stubs <code>alertStrings.title</code> parameter as expected?:</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">expect</span>(stub.<span class="property">firstCall</span>.<span class="property">args</span>[<span class="number">0</span>].<span class="property">title</span>).<span class="title function_">toBe</span>(<span class="string">&quot;A Pointless Message&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>It’s quite a rudimentary test but it demonstrates the basics.</p>
+<h3 id="So-lets-run-the-tests"><a href="#So-lets-run-the-tests" class="headerlink" title="So, lets run the tests!"></a>So, lets run the tests!</h3><p>Execute <code>npm run test</code></p>
+<p>The output should look something like this:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&gt; jest</span><br><span class="line"></span><br><span class="line"> PASS  tests/first.test.ts (10.199 s)</span><br><span class="line">  sample test</span><br><span class="line">    Pointless</span><br><span class="line">      √ Should display alert (34 ms)</span><br><span class="line"></span><br><span class="line">Test Suites: 1 passed, 1 total</span><br><span class="line">Tests:       1 passed, 1 total</span><br><span class="line">Snapshots:   0 total</span><br><span class="line">Time:        10.811 s</span><br><span class="line">Ran all test suites.</span><br></pre></td></tr></table></figure>
+
+<h2 id="Fancy-a-crack-at-mocking-the-WebApi"><a href="#Fancy-a-crack-at-mocking-the-WebApi" class="headerlink" title="Fancy a crack at mocking the WebApi?"></a>Fancy a crack at mocking the WebApi?</h2><p>So, we’ve written a function that calls Xrm.WebApi, but when we try to test that function it’ll fail as the Api doesn’t exist… We need to mock the Api call with a stub.</p>
+<h3 id="A-function-that-calls-Xrm-WebApi…"><a href="#A-function-that-calls-Xrm-WebApi…" class="headerlink" title="A function that calls Xrm.WebApi…"></a>A function that calls Xrm.WebApi…</h3><p>First of all we’ll create a function called <code>CreateAccount</code> (yep you guessed it, it’ll create an account!)</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">async</span> <span class="keyword">function</span> <span class="title function_">CreateAccount</span>(<span class="params">account: <span class="built_in">any</span></span>): <span class="title class_">Promise</span>&lt;<span class="title class_">Xrm</span>.<span class="property">Lookup</span>&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> response = <span class="keyword">await</span> <span class="title class_">Xrm</span>.<span class="property">WebApi</span>.<span class="title function_">createRecord</span>(<span class="string">&quot;account&quot;</span>, account);</span><br><span class="line">  <span class="keyword">return</span> response;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><em>It’s a simple example but it should get the point across.</em></p>
+<h3 id="Testing-a-function-that-calls-Xrm-WebApi"><a href="#Testing-a-function-that-calls-Xrm-WebApi" class="headerlink" title="Testing a function that calls Xrm.WebApi"></a>Testing a function that calls Xrm.WebApi</h3><p>So here’s the test. This can be added to the <code>first.test.ts</code> inside <code>describe(&quot;sample test&quot;, () =&gt; &#123;</code></p>
+<p><em>It’s not a great example, but it should demonstrate how we can stub the WebApi ;-)</em></p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">describe</span>(<span class="string">&quot;CallTheWebApi&quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="title function_">test</span>(<span class="string">&quot;Should return a valid Xrm.Lookup&quot;</span>, <span class="keyword">async</span> () =&gt; &#123;</span><br><span class="line">    <span class="keyword">const</span> stub = sinon</span><br><span class="line">      .<span class="title function_">stub</span>(<span class="title class_">WebApiMock</span>.<span class="property"><span class="keyword">prototype</span></span>, <span class="string">&quot;createRecord&quot;</span>)</span><br><span class="line">      .<span class="title function_">withArgs</span>(<span class="string">&quot;account&quot;</span>, sinon.<span class="property">match</span>.<span class="property">object</span>)</span><br><span class="line">      .<span class="title function_">resolves</span>(&#123;</span><br><span class="line">        <span class="attr">entityType</span>: <span class="string">&quot;account&quot;</span>,</span><br><span class="line">        <span class="attr">id</span>: <span class="string">&quot;9bce6686-48d5-4d6f-85a2-da0eea30984d&quot;</span>,</span><br><span class="line">        <span class="attr">name</span>: <span class="string">&quot;Jest Account&quot;</span>,</span><br><span class="line">      &#125; <span class="keyword">as</span> <span class="title class_">LookupValueMock</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> <span class="attr">result</span>: <span class="title class_">LookupValueMock</span> = <span class="keyword">await</span> <span class="title class_">CreateAccount</span>(&#123;</span><br><span class="line">      <span class="attr">name</span>: <span class="string">&quot;Jest Account&quot;</span>,</span><br><span class="line">      <span class="attr">creditonhold</span>: <span class="literal">false</span>,</span><br><span class="line">      <span class="attr">address1_latitude</span>: <span class="number">47.639583</span>,</span><br><span class="line">      <span class="attr">description</span>: <span class="string">&quot;This is the description of the sample account&quot;</span>,</span><br><span class="line">      <span class="attr">revenue</span>: <span class="number">5000000</span>,</span><br><span class="line">      <span class="attr">accountcategorycode</span>: <span class="number">1</span>,</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    <span class="title function_">expect</span>(stub.<span class="property">calledOnce</span>).<span class="title function_">toBeTruthy</span>();</span><br><span class="line">    <span class="title function_">expect</span>(result).<span class="title function_">toBeTruthy</span>();</span><br><span class="line">    <span class="title function_">expect</span>(result.<span class="property">name</span>).<span class="title function_">toBe</span>(<span class="string">&quot;Jest Account&quot;</span>);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>You’ll notice the absence of <code>XrmMockGenerator.initialise();</code>. I moved this to the <code>beforeEach</code> within <code>describe(&quot;sample test&quot;, () =&gt; &#123;</code> like so</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">describe</span>(<span class="string">&quot;sample test&quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="title function_">beforeEach</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="title class_">XrmMockGenerator</span>.<span class="title function_">initialise</span>();</span><br><span class="line">  &#125;);</span><br><span class="line">  ...</span><br></pre></td></tr></table></figure>
+
+<h3 id="Lets-have-a-closer-look-again"><a href="#Lets-have-a-closer-look-again" class="headerlink" title="Lets have a closer look again"></a>Lets have a closer look again</h3><p>First we stub the <code>createRecord</code> function via the <code>WebApiMock</code> object provided by <code>xrm-mock</code></p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> stub = sinon.<span class="title function_">stub</span>(<span class="title class_">WebApiMock</span>.<span class="property"><span class="keyword">prototype</span></span>, <span class="string">&quot;createRecord&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>Then we define the arguments for that stub (optional). Notice the use of the <code>sinon.match</code> to match an object.</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.<span class="title function_">withArgs</span>(<span class="string">&quot;account&quot;</span>, sinon.<span class="property">match</span>.<span class="property">object</span>)</span><br></pre></td></tr></table></figure>
+
+<p><em>NOTE If we didn’t do the above the stub would be executed for all calls to <code>Xrm.WebApi.createRecord</code></em></p>
+<p>Finally we tell the stub what we would like it to return, or in this case as it’s a async&#x2F;promise we tell it what to resolve.</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">.<span class="title function_">resolves</span>(&#123;</span><br><span class="line">  <span class="attr">entityType</span>: <span class="string">&quot;account&quot;</span>,</span><br><span class="line">  <span class="attr">id</span>: <span class="string">&quot;9bce6686-48d5-4d6f-85a2-da0eea30984d&quot;</span>,</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&quot;Jest Account&quot;</span>,</span><br><span class="line">&#125; <span class="keyword">as</span> <span class="title class_">LookupValueMock</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="OK-OK-Lets-run-the-bloody-tests"><a href="#OK-OK-Lets-run-the-bloody-tests" class="headerlink" title="OK OK! Lets run the bloody tests!"></a>OK OK! Lets run the bloody tests!</h2><p>Execute <code>npm run test</code> and you should now get something similar to the following output</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&gt; jest</span><br><span class="line"></span><br><span class="line"> PASS  tests/first.test.ts</span><br><span class="line">  sample test</span><br><span class="line">    Pointless</span><br><span class="line">      √ Should display alert (7 ms)</span><br><span class="line">    CallTheWebApi</span><br><span class="line">      √ Should return a valid Xrm.Lookup (2 ms)</span><br><span class="line"></span><br><span class="line">Test Suites: 1 passed, 1 total</span><br><span class="line">Tests:       2 passed, 2 total</span><br><span class="line">Snapshots:   0 total</span><br><span class="line">Time:        2.34 s, estimated 27 s</span><br><span class="line">Ran all test suites.</span><br></pre></td></tr></table></figure>
+
+<h2 id="That’s-all-folks"><a href="#That’s-all-folks" class="headerlink" title="That’s all folks!"></a>That’s all folks!</h2><p>Remember to take a look at <a target="_blank" rel="noopener" href="https://jestjs.io/">jest</a>, <a target="_blank" rel="noopener" href="https://sinonjs.org/">sinon</a>, and <a target="_blank" rel="noopener" href="https://github.com/camelCaseDave/xrm-mock">xrm-mock</a></p>
+<p>I hope that has been useful!</p>
+<p>You can download a copy of the source code for this blog post <a href="d365ts-pt5.zip">here</a></p>
+<p>In the next part we’ll take a look at how we can integrate Azure Application Insights into the Webresources.</p>
+<p>Thanks for reading.<br>Ollie</p>
+
+  </div>
+</article>
+
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the comments.</noscript>
+        </div>
+    </div>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/categories/">Categories</a></li>
+         
+          <li><a href="/archives/">Archive</a></li>
+         
+          <li><a href="/Me/">Me</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Unit-Tests-But-my-code-is-next-level"><span class="toc-number">1.</span> <span class="toc-text">Unit Tests? But my code is next level!</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Configure-Jest"><span class="toc-number">2.</span> <span class="toc-text">Configure Jest</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Writing-our-first-test"><span class="toc-number">3.</span> <span class="toc-text">Writing our first test</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Lets-have-a-closer-look-at-the-test%E2%80%A6"><span class="toc-number">3.1.</span> <span class="toc-text">Lets have a closer look at the test…</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#So-lets-run-the-tests"><span class="toc-number">3.2.</span> <span class="toc-text">So, lets run the tests!</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Fancy-a-crack-at-mocking-the-WebApi"><span class="toc-number">4.</span> <span class="toc-text">Fancy a crack at mocking the WebApi?</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#A-function-that-calls-Xrm-WebApi%E2%80%A6"><span class="toc-number">4.1.</span> <span class="toc-text">A function that calls Xrm.WebApi…</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Testing-a-function-that-calls-Xrm-WebApi"><span class="toc-number">4.2.</span> <span class="toc-text">Testing a function that calls Xrm.WebApi</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Lets-have-a-closer-look-again"><span class="toc-number">4.3.</span> <span class="toc-text">Lets have a closer look again</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#OK-OK-Lets-run-the-bloody-tests"><span class="toc-number">5.</span> <span class="toc-text">OK OK! Lets run the bloody tests!</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#That%E2%80%99s-all-folks"><span class="toc-number">6.</span> <span class="toc-text">That’s all folks!</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://www.oliverflint.co.uk/2021/01/22/D365-Typescript-Webresources-Part-5/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://www.oliverflint.co.uk/2021/01/22/D365-Typescript-Webresources-Part-5/&text=D365 TypeScript Web Resources - Part 5 - Unit Testing"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://www.oliverflint.co.uk/2021/01/22/D365-Typescript-Webresources-Part-5/&title=D365 TypeScript Web Resources - Part 5 - Unit Testing"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://www.oliverflint.co.uk/2021/01/22/D365-Typescript-Webresources-Part-5/&is_video=false&description=D365 TypeScript Web Resources - Part 5 - Unit Testing"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=D365 TypeScript Web Resources - Part 5 - Unit Testing&body=Check out this article: http://www.oliverflint.co.uk/2021/01/22/D365-Typescript-Webresources-Part-5/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://www.oliverflint.co.uk/2021/01/22/D365-Typescript-Webresources-Part-5/&title=D365 TypeScript Web Resources - Part 5 - Unit Testing"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://www.oliverflint.co.uk/2021/01/22/D365-Typescript-Webresources-Part-5/&title=D365 TypeScript Web Resources - Part 5 - Unit Testing"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://www.oliverflint.co.uk/2021/01/22/D365-Typescript-Webresources-Part-5/&title=D365 TypeScript Web Resources - Part 5 - Unit Testing"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://www.oliverflint.co.uk/2021/01/22/D365-Typescript-Webresources-Part-5/&title=D365 TypeScript Web Resources - Part 5 - Unit Testing"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://www.oliverflint.co.uk/2021/01/22/D365-Typescript-Webresources-Part-5/&name=D365 TypeScript Web Resources - Part 5 - Unit Testing&description=Nowadays there is no excuse to not unit test your code. It&#39;s becoming easy and more valuable, so don&#39;t not do it! In this post I&#39;m going to provide a basic guide to get you started with unit tests and TypeScript webresources for Dynamics 365... err Dataverse... err Power Apps... or whatever we are calling it today!"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://www.oliverflint.co.uk/2021/01/22/D365-Typescript-Webresources-Part-5/&t=D365 TypeScript Web Resources - Part 5 - Unit Testing"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2020-2026
+    Oliver Flint
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/categories/">Categories</a></li>
+         
+          <li><a href="/archives/">Archive</a></li>
+         
+          <li><a href="/Me/">Me</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+
+    <!-- jquery -->
+
+<script src="/lib/jquery/jquery.min.js"></script>
+
+
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+
+<!-- clipboard -->
+
+  
+<script src="/lib/clipboard/clipboard.min.js"></script>
+
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-78426300-2"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-78426300-2');
+    </script>
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+    <script type="text/javascript">
+        var disqus_shortname = 'oliverflintblog';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script>
+
+
+    <script src='https://storage.ko-fi.com/cdn/scripts/overlay-widget.js'></script>
+    <script>
+      kofiWidgetOverlay.draw('oliverflint', {
+        'type': 'floating-chat',
+        'floating-chat.donateButton.text': 'Support me',
+        'floating-chat.donateButton.background-color': '#f45d22',
+        'floating-chat.donateButton.text-color': '#fff'
+      });
+    </script>
+  </body>
+</html>

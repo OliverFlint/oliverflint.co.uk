@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="Type Declaration files provide a way to declare the existence of some types or values without actually providing implementations for those values. They improve readability and also quality. They are i">
+<meta property="og:type" content="article">
+<meta property="og:title" content="D365 TypeScript Web Resources - Part 2 - Type Declarations">
+<meta property="og:url" content="http://www.oliverflint.co.uk/2020/03/08/D365-Typescript-Webresources-Part-2/index.html">
+<meta property="og:site_name" content="A Blog by Oliver Flint">
+<meta property="og:description" content="Type Declaration files provide a way to declare the existence of some types or values without actually providing implementations for those values. They improve readability and also quality. They are i">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://www.oliverflint.co.uk/2020/03/08/D365-Typescript-Webresources-Part-2/type-infer-1.png">
+<meta property="og:image" content="http://www.oliverflint.co.uk/2020/03/08/D365-Typescript-Webresources-Part-2/type-infer-2.png">
+<meta property="article:published_time" content="2020-03-08T00:00:00.000Z">
+<meta property="article:modified_time" content="2026-01-27T19:14:05.886Z">
+<meta property="article:author" content="Oliver Flint">
+<meta property="article:tag" content="D365">
+<meta property="article:tag" content="Web Resources">
+<meta property="article:tag" content="TypeScript">
+<meta property="article:tag" content="JavaScript">
+<meta property="article:tag" content="XrmDefinitelyTyped">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://www.oliverflint.co.uk/2020/03/08/D365-Typescript-Webresources-Part-2/type-infer-1.png">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>D365 TypeScript Web Resources - Part 2 - Type Declarations</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+      
+<link rel="stylesheet" href="/css/rtl.css">
+
+    
+    <!-- rss -->
+    
+    
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/rss.xml" title="A Blog by Oliver Flint" type="application/rss+xml">
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/categories/">Categories</a></li>
+         
+          <li><a href="/archives/">Archive</a></li>
+         
+          <li><a href="/Me/">Me</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2020/04/04/D365-Typescript-Webresources-Part-3/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2020/03/07/D365-Typescript-Webresources-Part-1/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://www.oliverflint.co.uk/2020/03/08/D365-Typescript-Webresources-Part-2/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://www.oliverflint.co.uk/2020/03/08/D365-Typescript-Webresources-Part-2/&text=D365 TypeScript Web Resources - Part 2 - Type Declarations"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://www.oliverflint.co.uk/2020/03/08/D365-Typescript-Webresources-Part-2/&title=D365 TypeScript Web Resources - Part 2 - Type Declarations"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://www.oliverflint.co.uk/2020/03/08/D365-Typescript-Webresources-Part-2/&is_video=false&description=D365 TypeScript Web Resources - Part 2 - Type Declarations"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=D365 TypeScript Web Resources - Part 2 - Type Declarations&body=Check out this article: http://www.oliverflint.co.uk/2020/03/08/D365-Typescript-Webresources-Part-2/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://www.oliverflint.co.uk/2020/03/08/D365-Typescript-Webresources-Part-2/&title=D365 TypeScript Web Resources - Part 2 - Type Declarations"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://www.oliverflint.co.uk/2020/03/08/D365-Typescript-Webresources-Part-2/&title=D365 TypeScript Web Resources - Part 2 - Type Declarations"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://www.oliverflint.co.uk/2020/03/08/D365-Typescript-Webresources-Part-2/&title=D365 TypeScript Web Resources - Part 2 - Type Declarations"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://www.oliverflint.co.uk/2020/03/08/D365-Typescript-Webresources-Part-2/&title=D365 TypeScript Web Resources - Part 2 - Type Declarations"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://www.oliverflint.co.uk/2020/03/08/D365-Typescript-Webresources-Part-2/&name=D365 TypeScript Web Resources - Part 2 - Type Declarations&description=Type Declaration files provide a way to declare the existence of some types or values without actually providing implementations for those values. They improve readability and also quality. They are integral to the use of TypeScript."><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://www.oliverflint.co.uk/2020/03/08/D365-Typescript-Webresources-Part-2/&t=D365 TypeScript Web Resources - Part 2 - Type Declarations"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Type-Declarations-for-the-D365-x2F-XRM-Client-API"><span class="toc-number">1.</span> <span class="toc-text">Type Declarations for the D365&#x2F;XRM Client API</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#What-are-they"><span class="toc-number">1.1.</span> <span class="toc-text">What are they?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Do-we-need-to-construct-our-own"><span class="toc-number">1.2.</span> <span class="toc-text">Do we need to construct our own?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#So-what-do-we-have-available"><span class="toc-number">1.3.</span> <span class="toc-text">So what do we have available?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Install-XrmDefinitelyTyped"><span class="toc-number">1.4.</span> <span class="toc-text">Install XrmDefinitelyTyped</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Typing-your-types-in-your-TypeScript"><span class="toc-number">1.5.</span> <span class="toc-text">Typing your types in your TypeScript ;-)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#That%E2%80%99s-all-folks"><span class="toc-number">2.</span> <span class="toc-text">That’s all folks!</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        D365 TypeScript Web Resources - Part 2 - Type Declarations
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Oliver Flint</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2020-03-08T00:00:00.000Z" itemprop="datePublished">2020-03-08</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/categories/D365-TypeScript/">D365 TypeScript</a>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link-link" href="/tags/D365/" rel="tag">D365</a>, <a class="tag-link-link" href="/tags/JavaScript/" rel="tag">JavaScript</a>, <a class="tag-link-link" href="/tags/TypeScript/" rel="tag">TypeScript</a>, <a class="tag-link-link" href="/tags/Web-Resources/" rel="tag">Web Resources</a>, <a class="tag-link-link" href="/tags/XrmDefinitelyTyped/" rel="tag">XrmDefinitelyTyped</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p>Before you get stuck into this make sure you’ve checked out any previous parts to the <a href="/categories/D365-TypeScript/">series</a>. Each part in this series follows on from the previous, so you may need to grab the code from the previous part if you haven’t been following.</p>
+<h2 id="Type-Declarations-for-the-D365-x2F-XRM-Client-API"><a href="#Type-Declarations-for-the-D365-x2F-XRM-Client-API" class="headerlink" title="Type Declarations for the D365&#x2F;XRM Client API"></a>Type Declarations for the D365&#x2F;XRM Client API</h2><h3 id="What-are-they"><a href="#What-are-they" class="headerlink" title="What are they?"></a>What are they?</h3><p><em>A declaration file provides a way to declare the existence of some types or values without actually providing implementations for those values.</em></p>
+<p>Read more about them <a target="_blank" rel="noopener" href="https://www.typescriptlang.org/docs/handbook/declaration-files/introduction.html">here</a> and <a target="_blank" rel="noopener" href="https://microsoft.github.io/TypeScript-New-Handbook/chapters/type-declarations/">here</a></p>
+<h3 id="Do-we-need-to-construct-our-own"><a href="#Do-we-need-to-construct-our-own" class="headerlink" title="Do we need to construct our own?"></a>Do we need to construct our own?</h3><p>Short answer: No</p>
+<p>Long answer: No, but you may want to extend either of the two I’ll mention below.</p>
+<p>Longer answer: No, but you may want to extend either of the two I’ll mention below, and you may even want to author you own.</p>
+<h3 id="So-what-do-we-have-available"><a href="#So-what-do-we-have-available" class="headerlink" title="So what do we have available?"></a>So what do we have available?</h3><p>Personally I have had a play with both <a target="_blank" rel="noopener" href="https://www.npmjs.com/package/@types/xrm">@types&#x2F;xrm</a> and <a target="_blank" rel="noopener" href="https://github.com/delegateas/XrmDefinitelyTyped">delegateas&#x2F;XrmDefinitelyTyped</a></p>
+<p>Of the two I prefer XrmDefinitelyTyped as it extends on @types&#x2F;xrm by providing CrmSvcUtil like functionality to build TypeScript interfaces that represent the entities and forms within your D365CE environment.</p>
+<p>For the purpose of this post we’ll take a look at XrmDefinitelyTyped :-)</p>
+<h3 id="Install-XrmDefinitelyTyped"><a href="#Install-XrmDefinitelyTyped" class="headerlink" title="Install XrmDefinitelyTyped"></a>Install XrmDefinitelyTyped</h3><p>XrmDefinitelyTyped is packaged via Nuget so you’ll need to ensure you have Nuget <a target="_blank" rel="noopener" href="https://www.nuget.org/downloads">installed</a>. Just download the latest nuget.exe into the root of you workspace.</p>
+<p>Oh, you can download a starter workspace based on part 1 of this series from <a href="/2020/03/07/D365-TypeScript-Webresources-Part-1/d365ts-pt1.zip">here</a></p>
+<ul>
+<li>Once you’ve installed Nuget run the following from the root of the workspace…</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nuget.exe install Delegate.XrmDefinitelyTyped -OutputDirectory .\</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Next we need to configure XrmDefinitelyTyped. Within the XrmDefinitelyTyped directory you should find <code>XrmDefinitelyTyped.exe.config</code>. We are going to need provide some values for the settings in here.</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=<span class="string">&quot;1.0&quot;</span> encoding=<span class="string">&quot;utf-8&quot;</span>?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">appSettings</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">add</span> <span class="attr">key</span>=<span class="string">&quot;out&quot;</span> <span class="attr">value</span>=<span class="string">&quot;./typings/XRM&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">add</span> <span class="attr">key</span>=<span class="string">&quot;solutions&quot;</span> <span class="attr">value</span>=<span class="string">&quot;&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">add</span> <span class="attr">key</span>=<span class="string">&quot;entities&quot;</span> <span class="attr">value</span>=<span class="string">&quot;account, contact&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">add</span> <span class="attr">key</span>=<span class="string">&quot;web&quot;</span> <span class="attr">value</span>=<span class="string">&quot;WebApiEntities&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">add</span> <span class="attr">key</span>=<span class="string">&quot;jsLib&quot;</span> <span class="attr">value</span>=<span class="string">&quot;./src/lib&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">add</span> <span class="attr">key</span>=<span class="string">&quot;mfaAppId&quot;</span> <span class="attr">value</span>=<span class="string">&quot;&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">add</span> <span class="attr">key</span>=<span class="string">&quot;mfaReturnUrl&quot;</span> <span class="attr">value</span>=<span class="string">&quot;&quot;</span>/&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">appSettings</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>Alternatively you can use command line switches. I tend to use a combination of the two. Providing a list of the <code>entities</code> in the config file but the connection settings via the command line.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">XrmDefinitelyTyped.exe /url:https://&lt;organizationName&gt;.crm&lt;regionNumber&gt;.dynamics.com/XRMServices/2011/Organization.svc /username:&lt;username&gt; /password:&lt;password&gt; /useconfig:.\Delegate.XrmDefinitelyTyped.5.1.6\content\XrmDefinitelyTyped\XrmDefinitelyTyped.exe.config</span><br></pre></td></tr></table></figure>
+
+<p><em>make sure to check the version number of XrmDefinitelyTyped used in the <code>/useconfig:</code> command line switch</em></p>
+<ul>
+<li>Update the <code>tsconfig.json</code> with a reference to our new declarations by adding the <code>typings</code> to the <code>include</code>.</li>
+</ul>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;compilerOptions&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;module&quot;</span><span class="punctuation">:</span> <span class="string">&quot;ES6&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;noImplicitAny&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;removeComments&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;preserveConstEnums&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;outDir&quot;</span><span class="punctuation">:</span> <span class="string">&quot;dist&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;sourceMap&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span></span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;include&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;src/**/*&quot;</span><span class="punctuation">,</span> <span class="string">&quot;typings/**/*&quot;</span><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;exclude&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;node_modules&quot;</span><span class="punctuation">,</span> <span class="string">&quot;**/*.spec.ts&quot;</span><span class="punctuation">,</span> <span class="string">&quot;dist&quot;</span><span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p><em>Note we also have to turn <a target="_blank" rel="noopener" href="https://www.typescriptlang.org/tsconfig#noImplicitAny">noImplicitAny</a> off</em></p>
+<p>And that’s it. XDT (XrmDefinitelyTyped) should now be installed and ready to reference within your TypeScript. As with CrmSvcUtil you will need to run <code>XrmDefinitelyTyped.exe</code> each time you need to update your typings with any customisation changes you have made to your entities, forms, etc.</p>
+<h3 id="Typing-your-types-in-your-TypeScript"><a href="#Typing-your-types-in-your-TypeScript" class="headerlink" title="Typing your types in your TypeScript ;-)"></a>Typing your types in your TypeScript ;-)</h3><p>Easy, and C# devs will love it!<br>Remember our first ts file we created in <a href="/2020/03/07/D365-TypeScript-Webresources-Part-1">part 1</a>…</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">ContactMainForm</span> &#123;</span><br><span class="line">  <span class="keyword">static</span> <span class="title class_">OnLoad</span>(<span class="attr">executionContext</span>: <span class="built_in">any</span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> formContext = executionContext.<span class="title function_">getFormContext</span>();</span><br><span class="line">    formContext.<span class="property">ui</span>.<span class="title function_">setFormNotification</span>(</span><br><span class="line">      <span class="string">&quot;TypeScript locked and loaded!&quot;</span>,</span><br><span class="line">      <span class="string">&quot;INFO&quot;</span>,</span><br><span class="line">      <span class="string">&quot;ts-msg&quot;</span></span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Lets apply some typings to our objects…</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">ContactMainForm</span> &#123;</span><br><span class="line">  <span class="keyword">static</span> <span class="title class_">OnLoad</span>(</span><br><span class="line">    <span class="attr">executionContext</span>: <span class="title class_">Xrm</span>.<span class="property">ExecutionContext</span>&lt;<span class="title class_">Form</span>.<span class="property">contact</span>.<span class="property">Main</span>.<span class="property">Contact</span>, <span class="built_in">any</span>&gt;</span><br><span class="line">  ) &#123;</span><br><span class="line">    <span class="keyword">const</span> formContext = executionContext.<span class="title function_">getFormContext</span>() <span class="keyword">as</span> <span class="title class_">Form</span>.<span class="property">contact</span>.<span class="property">Main</span>.<span class="property">Contact</span>;</span><br><span class="line">    formContext.<span class="property">ui</span>.<span class="title function_">setFormNotification</span>(</span><br><span class="line">      <span class="string">&quot;TypeScript locked and loaded!&quot;</span>,</span><br><span class="line">      <span class="string">&quot;INFO&quot;</span>,</span><br><span class="line">      <span class="string">&quot;ts-msg&quot;</span></span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Now, what I love about XDT is the type inference, for example getting an attribute infers the type depending on the logical name and you get something a little like this when writing your code:<br><img src="/2020/03/08/D365-Typescript-Webresources-Part-2/type-infer-1.png"></p>
+<p>For example the <code>parentcustomerid</code> attribute type is <code>Xrm.LookupAttribute&lt;&quot;account&quot; | &quot;contact&quot;&gt;</code> and the <code>getValue()</code> function returns a <code>EntityReference&lt;&quot;account&quot; | &quot;contact&quot;&gt;[]</code>. Anyway I think you get the point.<br><img src="/2020/03/08/D365-Typescript-Webresources-Part-2/type-infer-2.png"><br><em>Remember F12 in your IDE will link you to the definition in the TypeScript declaration :-)</em></p>
+<h2 id="That’s-all-folks"><a href="#That’s-all-folks" class="headerlink" title="That’s all folks!"></a>That’s all folks!</h2><p>I hope that helps you get XDT working in your project. Please use the comments below, i’m more than happy to take questions and extend this post with any suggestions I feel would be of value.</p>
+<p>You can download a copy of the source code for this blog post <a href="d365ts-pt2.zip">here</a></p>
+<p>Thanks for reading.<br>Ollie</p>
+
+  </div>
+</article>
+
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the comments.</noscript>
+        </div>
+    </div>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/categories/">Categories</a></li>
+         
+          <li><a href="/archives/">Archive</a></li>
+         
+          <li><a href="/Me/">Me</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Type-Declarations-for-the-D365-x2F-XRM-Client-API"><span class="toc-number">1.</span> <span class="toc-text">Type Declarations for the D365&#x2F;XRM Client API</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#What-are-they"><span class="toc-number">1.1.</span> <span class="toc-text">What are they?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Do-we-need-to-construct-our-own"><span class="toc-number">1.2.</span> <span class="toc-text">Do we need to construct our own?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#So-what-do-we-have-available"><span class="toc-number">1.3.</span> <span class="toc-text">So what do we have available?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Install-XrmDefinitelyTyped"><span class="toc-number">1.4.</span> <span class="toc-text">Install XrmDefinitelyTyped</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Typing-your-types-in-your-TypeScript"><span class="toc-number">1.5.</span> <span class="toc-text">Typing your types in your TypeScript ;-)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#That%E2%80%99s-all-folks"><span class="toc-number">2.</span> <span class="toc-text">That’s all folks!</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://www.oliverflint.co.uk/2020/03/08/D365-Typescript-Webresources-Part-2/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://www.oliverflint.co.uk/2020/03/08/D365-Typescript-Webresources-Part-2/&text=D365 TypeScript Web Resources - Part 2 - Type Declarations"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://www.oliverflint.co.uk/2020/03/08/D365-Typescript-Webresources-Part-2/&title=D365 TypeScript Web Resources - Part 2 - Type Declarations"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://www.oliverflint.co.uk/2020/03/08/D365-Typescript-Webresources-Part-2/&is_video=false&description=D365 TypeScript Web Resources - Part 2 - Type Declarations"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=D365 TypeScript Web Resources - Part 2 - Type Declarations&body=Check out this article: http://www.oliverflint.co.uk/2020/03/08/D365-Typescript-Webresources-Part-2/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://www.oliverflint.co.uk/2020/03/08/D365-Typescript-Webresources-Part-2/&title=D365 TypeScript Web Resources - Part 2 - Type Declarations"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://www.oliverflint.co.uk/2020/03/08/D365-Typescript-Webresources-Part-2/&title=D365 TypeScript Web Resources - Part 2 - Type Declarations"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://www.oliverflint.co.uk/2020/03/08/D365-Typescript-Webresources-Part-2/&title=D365 TypeScript Web Resources - Part 2 - Type Declarations"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://www.oliverflint.co.uk/2020/03/08/D365-Typescript-Webresources-Part-2/&title=D365 TypeScript Web Resources - Part 2 - Type Declarations"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://www.oliverflint.co.uk/2020/03/08/D365-Typescript-Webresources-Part-2/&name=D365 TypeScript Web Resources - Part 2 - Type Declarations&description=Type Declaration files provide a way to declare the existence of some types or values without actually providing implementations for those values. They improve readability and also quality. They are integral to the use of TypeScript."><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://www.oliverflint.co.uk/2020/03/08/D365-Typescript-Webresources-Part-2/&t=D365 TypeScript Web Resources - Part 2 - Type Declarations"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2020-2026
+    Oliver Flint
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/categories/">Categories</a></li>
+         
+          <li><a href="/archives/">Archive</a></li>
+         
+          <li><a href="/Me/">Me</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+
+    <!-- jquery -->
+
+<script src="/lib/jquery/jquery.min.js"></script>
+
+
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+
+<!-- clipboard -->
+
+  
+<script src="/lib/clipboard/clipboard.min.js"></script>
+
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-78426300-2"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-78426300-2');
+    </script>
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+    <script type="text/javascript">
+        var disqus_shortname = 'oliverflintblog';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script>
+
+
+    <script src='https://storage.ko-fi.com/cdn/scripts/overlay-widget.js'></script>
+    <script>
+      kofiWidgetOverlay.draw('oliverflint', {
+        'type': 'floating-chat',
+        'floating-chat.donateButton.text': 'Support me',
+        'floating-chat.donateButton.background-color': '#f45d22',
+        'floating-chat.donateButton.text-color': '#fff'
+      });
+    </script>
+  </body>
+</html>
