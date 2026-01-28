@@ -9,7 +9,7 @@
     <atom:link href="http://www.oliverflint.co.uk/rss.xml" rel="self" type="application/rss+xml"/>
     
     <description>Oliver Flint&#39;s musings on the subject of Power Platform, Power Apps, Dynamics 365, Dataverse and Azure</description>
-    <pubDate>Wed, 28 Jan 2026 14:41:24 GMT</pubDate>
+    <pubDate>Wed, 28 Jan 2026 14:42:17 GMT</pubDate>
     <generator>http://hexo.io/</generator>
     
     <item>
@@ -18,7 +18,7 @@
       <guid>http://www.oliverflint.co.uk/2026/01/28/Power-Platform-Component-Framework-ESBuild/</guid>
       <pubDate>Wed, 28 Jan 2026 00:00:00 GMT</pubDate>
       
-      <description>Webpack isn&#39;t the only way to build your component, let&#39;s look at the native support for ESBuild.</description>
+      <description>Webpack isn&#39;t the only way to build your component, let&#39;s look at the &quot;experimental&quot; native support for ESBuild.</description>
       
       
       
