@@ -14,7 +14,7 @@
 <meta property="og:description" content="Webpack isn&#39;t the only way to build your component, let&#39;s look at the native support for ESBuild.">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2026-01-28T00:00:00.000Z">
-<meta property="article:modified_time" content="2026-01-28T12:28:08.133Z">
+<meta property="article:modified_time" content="2026-01-28T14:38:39.495Z">
 <meta property="article:author" content="Oliver Flint">
 <meta property="article:tag" content="Component Framework">
 <meta property="article:tag" content="PCF">
@@ -230,7 +230,8 @@
 </tr>
 </tbody></table>
 <p>ESBuild cuts the build time in half, but produces a larger bundle because it doesn’t omit React and FluentUI (platform libraries) from the bundle.</p>
-<h2 id="Configuration"><a href="#Configuration" class="headerlink" title="Configuration"></a>Configuration</h2><p>Below are the steps to configure the PCF project to use ESBuild.</p>
+<h2 id="Configuration"><a href="#Configuration" class="headerlink" title="Configuration"></a>Configuration</h2><p><strong><em>note: At the time of writing this is an experimental feature</em></strong></p>
+<p>Below are the steps to configure the PCF project to use ESBuild.</p>
 <p><em>Ensure you are on at least version 1.47.1 of <code>pcf-scripts</code></em></p>
 <h3 id="Enable-the-feature-flag"><a href="#Enable-the-feature-flag" class="headerlink" title="Enable the feature flag."></a>Enable the feature flag.</h3><p>If you don’t have one already, create a <code>featureconfig.json</code> file along side your PCF’s <code>package.json</code> (e.g. <code>./src/controls/MyControl/featureconfig.json</code>) and add the following:</p>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;pcfUseESBuild&quot;</span><span class="punctuation">:</span> <span class="string">&quot;on&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
@@ -239,13 +240,11 @@
 
 <p>Now your builds will use ESBuild instead of Webpack. This will be identifiable by the output not printing the webpack build stats.</p>
 <h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>ESBuild <strong>IS</strong> faster (as expected). However, the output is larger than the webpack output (with the exception of the ESBuild development build for larger components).</p>
-<p>Why is the output larger? Well, I’m building a virtual control with React and FluentUI. Webpack correctly omits React and FluentUI from the bundle (Virtual controls use the “platform libraries”). ESBuild does not omit React and FluentUI from the bundle! I expect if I wasn’t using React and FluentUI, the output would be much the same, but how many of us creates PCF components without React or FluentUI?</p>
+<p>Why is the output larger? Well, I’m building a virtual control with React and FluentUI. Webpack correctly omits React and FluentUI from the bundle (Virtual controls use the “platform libraries”). ESBuild does not omit React and FluentUI from the bundle! I expect if I wasn’t using React and FluentUI, the output would be much the same, but how many of us create PCF components without React or FluentUI?</p>
 <p>It’s worth noting that ESBuild itself can support externals (omitting React and FluentUI from the bundle), but <code>pcf-scripts</code> does not expose this feature at present with ESBuild enabled.</p>
 <p>ESBuild also outputs sourcemaps for the development build by default. This is a nice touch. Although we can enable this for webpack too with a custom <code>webpack.config.js</code>.</p>
 <p>With webpack we can customise the build process (<code>webpack.config.js</code>), with ESBuild we cannot (yet!).</p>
-<p>Ultimately I think given the ESBuild feature is still experimental, it doesn’t omit React and FluentUI from the bundle, and we cannot customise the build process, I think I’ll stick with Webpack for now.</p>
-<p>Once the ESBuild feature supports externals and customisation, I’ll be back to try it again and I expect it will become the default build process for PCF components.</p>
-<p><strong><em>note: At the time of writing this option is still an experimental feature</em></strong></p>
+<p>So, to conclude, I think I’ll stick with Webpack for now given the ESBuild feature is still experimental, it doesn’t omit React and FluentUI from the bundle, and we cannot customise the build process. Once the ESBuild feature supports externals and customisation, I’ll be back to try it again and I expect it will become the default build process for PCF components.</p>
 
   </div>
 </article>
