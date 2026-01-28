@@ -14,7 +14,7 @@
 <meta property="og:description" content="Webpack isn&#39;t the only way to build your component, let&#39;s look at the native support for ESBuild.">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2026-01-28T00:00:00.000Z">
-<meta property="article:modified_time" content="2026-01-28T14:38:39.495Z">
+<meta property="article:modified_time" content="2026-01-28T14:41:24.706Z">
 <meta property="article:author" content="Oliver Flint">
 <meta property="article:tag" content="Component Framework">
 <meta property="article:tag" content="PCF">
@@ -159,7 +159,7 @@
   
 
   <div class="content" itemprop="articleBody">
-    <p>PCF development cycles can be slow, especially when you are working on a large component. The build process can take a long time, and it can be frustrating to wait for the build to complete. Version 1.47.1 of <code>pcf-scripts</code> introduced a new feature that allows you to use ESBuild instead of Webpack to build your component. This “should” be a much faster build experience, let’s take at look…</p>
+    <p>PCF development cycles can be slow, especially when you are working on a large component. The build process can take a long time, and it can be frustrating to wait for the build to complete. Version 1.47.1 of <code>pcf-scripts</code> introduced a new feature that allows you to use ESBuild instead of Webpack to build your component. This “should” be a much faster build experience, it’s currently experimental, so let’s take at look and see how it compares…</p>
 <h2 id="The-Default"><a href="#The-Default" class="headerlink" title="The Default"></a>The Default</h2><p>The default build process for PCF components is configured to use webpack to bundle the component. This is a great way to bundle the component, but it is not the fastest.</p>
 <h3 id="Webpack-Output"><a href="#Webpack-Output" class="headerlink" title="Webpack Output"></a>Webpack Output</h3><table>
 <thead>
