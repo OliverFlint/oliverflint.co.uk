@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://www.oliverflint.co.uk/2026/01/28/Power-Platform-Component-Framework-ESBuild/</loc>
+    
+    <lastmod>2026-01-28</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://www.oliverflint.co.uk/categories/index.html</loc>
     
     <lastmod>2026-01-27</lastmod>
@@ -318,6 +327,20 @@
     <priority>0.2</priority>
   </url>
   
+  <url>
+    <loc>http://www.oliverflint.co.uk/tags/Power-Platform/</loc>
+    <lastmod>2026-01-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.oliverflint.co.uk/tags/Component-Framework/</loc>
+    <lastmod>2026-01-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
 
   
   <url>
@@ -350,6 +373,20 @@
   
   <url>
     <loc>http://www.oliverflint.co.uk/categories/Azure/DevOps/</loc>
+    <lastmod>2026-01-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.oliverflint.co.uk/categories/Power-Platform/</loc>
+    <lastmod>2026-01-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.oliverflint.co.uk/categories/Power-Platform/Power-Apps-Component-Framework/</loc>
     <lastmod>2026-01-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>

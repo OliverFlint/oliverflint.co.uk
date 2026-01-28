@@ -9,8 +9,37 @@
     <atom:link href="http://www.oliverflint.co.uk/rss.xml" rel="self" type="application/rss+xml"/>
     
     <description>Oliver Flint&#39;s musings on the subject of Power Platform, Power Apps, Dynamics 365, Dataverse and Azure</description>
-    <pubDate>Tue, 27 Jan 2026 19:14:05 GMT</pubDate>
+    <pubDate>Wed, 28 Jan 2026 00:28:38 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>[object Object]</title>
+      <link>http://www.oliverflint.co.uk/2026/01/28/Power-Platform-Component-Framework-ESBuild/</link>
+      <guid>http://www.oliverflint.co.uk/2026/01/28/Power-Platform-Component-Framework-ESBuild/</guid>
+      <pubDate>Wed, 28 Jan 2026 00:28:38 GMT</pubDate>
+      
+      <description>Webpack isn&#39;t the only way to build your component, lets look at the native support for ESBuild.</description>
+      
+      
+      
+      
+      <category domain="http://www.oliverflint.co.uk/categories/Power-Platform/">Power Platform</category>
+      
+      <category domain="http://www.oliverflint.co.uk/categories/Power-Platform/Power-Apps-Component-Framework/">Power Apps Component Framework</category>
+      
+      
+      <category domain="http://www.oliverflint.co.uk/tags/PCF/">PCF</category>
+      
+      <category domain="http://www.oliverflint.co.uk/tags/Power-Apps-Component-Framework/">Power Apps Component Framework</category>
+      
+      <category domain="http://www.oliverflint.co.uk/tags/Power-Platform/">Power Platform</category>
+      
+      <category domain="http://www.oliverflint.co.uk/tags/Component-Framework/">Component Framework</category>
+      
+      
+      <comments>http://www.oliverflint.co.uk/2026/01/28/Power-Platform-Component-Framework-ESBuild/#disqus_thread</comments>
+      
+    </item>
     
     <item>
       <title>Deleting stale branches in Azure DevOps Git Repositories with Azure Logic Apps</title>
