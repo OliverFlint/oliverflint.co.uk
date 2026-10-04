@@ -55,7 +55,7 @@ draft: false
 Write ordinary Markdown here.
 ```
 
-Available topics: `power-platform`, `dynamics-typescript`, `azure-devops`. Dates are explicit UTC timestamps and paths are explicit; a timezone change never moves an article. An optional `updated` timestamp should record an actual editorial revision.
+Topic slugs and their display names and descriptions are defined once in `lib/topics.json`. Add a topic there, then use its slug in post front matter. Dates are explicit UTC timestamps and paths are explicit; a timezone change never moves an article. An optional `updated` timestamp should record an actual editorial revision.
 
 For D365 TypeScript series members, add `series: d365-typescript` and `order: 1` (through 6). Do not assign these fields to unrelated posts.
 

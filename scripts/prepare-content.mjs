@@ -13,9 +13,10 @@ import rehypeStringify from 'rehype-stringify';
 import rehypeShiki from '@shikijs/rehype';
 import { visit } from 'unist-util-visit';
 import sharp from 'sharp';
+import topics from '../lib/topics.json' with { type: 'json' };
 
 const origin = 'https://oliverflint.co.uk';
-const topicIds = ['power-platform', 'dynamics-typescript', 'azure-devops'];
+const topicIds = topics.map(topic => topic.slug);
 const schema = z.object({
   title: z.string().min(1), slug: z.string().regex(/^[a-z0-9-]+$/),
   published: z.string().datetime(), path: z.string().regex(/^\/\d{4}\/\d{2}\/\d{2}\/[a-z0-9-]+\/$/),
