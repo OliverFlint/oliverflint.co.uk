@@ -1,0 +1,703 @@
+{
+  "capturedAt": "2026-10-04T21:34:28.879Z",
+  "snapshots": {
+    "sitemap": {
+      "status": 200,
+      "server": "Netlify"
+    },
+    "rss": {
+      "status": 200,
+      "server": "Netlify"
+    }
+  },
+  "posts": [
+    {
+      "path": "/2020/03/06/Welcome/",
+      "title": "Welcome",
+      "headings": [
+        "Hello"
+      ],
+      "published": "2020-03-06T23:00:43.000Z",
+      "canonical": "/2020/03/06/welcome/",
+      "source": "Welcome.md"
+    },
+    {
+      "path": "/2020/03/07/D365-Typescript-Webresources-Part-1/",
+      "title": "D365 TypeScript Web Resources - Part 1 - Basics",
+      "headings": [
+        "Developing-JavaScript-Web-Resources-with-TypeScript",
+        "Why-did-I-choose-TypeScript",
+        "A-Basic-Setup",
+        "Node-and-NPM",
+        "Init",
+        "TypeScript-config",
+        "Our-first-TS-file",
+        "That’s-all-folks",
+        "Coming-up-in-the-series"
+      ],
+      "published": "2020-03-07T00:00:00.000Z",
+      "canonical": "/2020/03/07/d365-typescript-webresources-part-1/",
+      "source": "D365-Typescript-Webresources-Part-1.md"
+    },
+    {
+      "path": "/2020/03/08/D365-Typescript-Webresources-Part-2/",
+      "title": "D365 TypeScript Web Resources - Part 2 - Type Declarations",
+      "headings": [
+        "Type-Declarations-for-the-D365-x2F-XRM-Client-API",
+        "What-are-they",
+        "Do-we-need-to-construct-our-own",
+        "So-what-do-we-have-available",
+        "Install-XrmDefinitelyTyped",
+        "Typing-your-types-in-your-TypeScript",
+        "That’s-all-folks"
+      ],
+      "published": "2020-03-08T00:00:00.000Z",
+      "canonical": "/2020/03/08/d365-typescript-webresources-part-2/",
+      "source": "D365-Typescript-Webresources-Part-2.md"
+    },
+    {
+      "path": "/2020/04/04/D365-Typescript-Webresources-Part-3/",
+      "title": "D365 TypeScript Web Resources - Part 3 - Webpack &amp; Babel",
+      "headings": [
+        "What-the-amp",
+        "Webpack",
+        "Babel",
+        "Install",
+        "Config",
+        "Webpack-config",
+        "Babel-config",
+        "Lets-build",
+        "That’s-all-folks"
+      ],
+      "published": "2020-04-04T22:00:00.000Z",
+      "canonical": "/2020/04/04/d365-typescript-webresources-part-3/",
+      "source": "D365-Typescript-Webresources-Part-3.md"
+    },
+    {
+      "path": "/2020/04/11/D365-Typescript-WebResources-Part-4/",
+      "title": "D365 TypeScript Web Resources - Part 4 - Modules &amp; Debugging",
+      "headings": [
+        "ES-Modules",
+        "What-are-ES-Modules",
+        "A-Sample-Module",
+        "Debugging",
+        "webpack-dev-server-amp-fiddler-to-the-rescue",
+        "Fiddler",
+        "webpack-dev-server",
+        "Auto-Responder",
+        "Debugging-in-Chrome-Dev-Tools",
+        "No-need-to-deploy",
+        "That’s-all-folks"
+      ],
+      "published": "2020-04-11T00:07:42.000Z",
+      "canonical": "/2020/04/11/d365-typescript-webresources-part-4/",
+      "source": "D365-Typescript-WebResources-Part-4.md"
+    },
+    {
+      "path": "/2020/06/06/PCF-and-Form-Communication/",
+      "title": "PCF &lt;-&gt; Form Communication",
+      "headings": [
+        "Communication",
+        "I-want-better-comms",
+        "Here’s-what-I-came-up-with…",
+        "Custom-Events"
+      ],
+      "published": "2020-06-06T02:12:12.000Z",
+      "canonical": "/2020/06/06/pcf-and-form-communication/",
+      "source": "PCF-and-Form-Communication.md"
+    },
+    {
+      "path": "/2020/06/10/PCF-primary-entity-info/",
+      "title": "PCF primary entity info",
+      "headings": [
+        "Getting-the-primary-entity-info",
+        "The-entity-id-guid",
+        "The-entity-type-entity-logical-name",
+        "The-record-name-primary-attribute-value"
+      ],
+      "published": "2020-06-10T18:59:36.000Z",
+      "canonical": "/2020/06/10/pcf-primary-entity-info/",
+      "source": "PCF-primary-entity-info.md"
+    },
+    {
+      "path": "/2020/06/11/PCF-WebApi-execute/",
+      "title": "PCF WebApi execute",
+      "headings": [
+        "The-PCF-WebApi-execute-method-is-lurking-in-the-background",
+        "execute",
+        "executeMultiple"
+      ],
+      "published": "2020-06-10T23:05:42.000Z",
+      "canonical": "/2020/06/11/pcf-webapi-execute/",
+      "source": "PCF-WebApi-execute.md"
+    },
+    {
+      "path": "/2021/01/22/D365-Typescript-Webresources-Part-5/",
+      "title": "D365 TypeScript Web Resources - Part 5 - Unit Testing",
+      "headings": [
+        "Unit-Tests-But-my-code-is-next-level",
+        "Configure-Jest",
+        "Writing-our-first-test",
+        "Lets-have-a-closer-look-at-the-test…",
+        "So-lets-run-the-tests",
+        "Fancy-a-crack-at-mocking-the-WebApi",
+        "A-function-that-calls-Xrm-WebApi…",
+        "Testing-a-function-that-calls-Xrm-WebApi",
+        "Lets-have-a-closer-look-again",
+        "OK-OK-Lets-run-the-bloody-tests",
+        "That’s-all-folks"
+      ],
+      "published": "2021-01-22T00:12:23.000Z",
+      "canonical": "/2021/01/22/d365-typescript-webresources-part-5/",
+      "source": "D365-Typescript-Webresources-Part-5.md"
+    },
+    {
+      "path": "/2021/04/30/D365-Typescript-Webresources-Part-6/",
+      "title": "D365 TypeScript Web Resources - Part 6 - Application Insights",
+      "headings": [
+        "Application-Insights",
+        "What-is-Application-Insights",
+        "Setup",
+        "The-Code",
+        "Telemetry-Initializer",
+        "What’s-it-look-like",
+        "That’s-all-folks"
+      ],
+      "published": "2021-04-30T22:00:00.000Z",
+      "canonical": "/2021/04/30/d365-typescript-webresources-part-6/",
+      "source": "D365-Typescript-Webresources-Part-6.md"
+    },
+    {
+      "path": "/2022/12/06/Deleting-stale-branches-in-Azure-DevOps-Git-Repositories/",
+      "title": "Deleting stale branches in Azure DevOps Git Repositories with Azure Logic Apps",
+      "headings": [
+        "Stale-Branch…-Huh",
+        "Why-delete-your-stale-branches",
+        "My-Solution",
+        "Child-Logic-App",
+        "Create-a-new-logic-app",
+        "Configure-the-trigger",
+        "Respond-and-get-branch-stats",
+        "Parse-the-branch-stats-response",
+        "Post-adaptive-card-to-teams-channel",
+        "Check-adaptive-card-response",
+        "When-response-is-NOT-“Approve”",
+        "When-response-IS-“Approve”",
+        "Parent-Logic-App",
+        "Create-a-new-logic-app-1",
+        "Trigger-and-iterate-repositories",
+        "Parse-the-branch-stats-response-1",
+        "Validate-each-branch",
+        "Call-the-child-logic-app",
+        "The-End"
+      ],
+      "published": "2022-12-06T00:00:00.000Z",
+      "canonical": "/2022/12/06/deleting-stale-branches-in-azure-devops-git-repositories/",
+      "source": "Deleting-stale-branches-in-Azure-DevOps-Git-Repositories.md"
+    },
+    {
+      "path": "/2026/01/28/Power-Platform-Component-Framework-ESBuild/",
+      "title": "Power Platform Component Framework - ESBuild",
+      "headings": [
+        "The-Default",
+        "Lets-Compare",
+        "Webpack-Output",
+        "ESBuild-Output",
+        "Configuration",
+        "Enable-the-feature-flag",
+        "Install-the-dependencies",
+        "Results-amp-Conclusion"
+      ],
+      "published": "2026-01-28T00:00:00.000Z",
+      "canonical": "/2026/01/28/power-platform-component-framework-esbuild/",
+      "source": "Power-Platform-Component-Framework-ESBuild.md"
+    }
+  ],
+  "pages": [
+    {
+      "path": "/2020/03/06/Welcome/",
+      "title": "Welcome",
+      "headings": [
+        "Hello"
+      ],
+      "published": "2020-03-06T23:00:43.000Z"
+    },
+    {
+      "path": "/2020/03/07/D365-Typescript-Webresources-Part-1/",
+      "title": "D365 TypeScript Web Resources - Part 1 - Basics",
+      "headings": [
+        "Developing-JavaScript-Web-Resources-with-TypeScript",
+        "Why-did-I-choose-TypeScript",
+        "A-Basic-Setup",
+        "Node-and-NPM",
+        "Init",
+        "TypeScript-config",
+        "Our-first-TS-file",
+        "That’s-all-folks",
+        "Coming-up-in-the-series"
+      ],
+      "published": "2020-03-07T00:00:00.000Z"
+    },
+    {
+      "path": "/2020/03/08/D365-Typescript-Webresources-Part-2/",
+      "title": "D365 TypeScript Web Resources - Part 2 - Type Declarations",
+      "headings": [
+        "Type-Declarations-for-the-D365-x2F-XRM-Client-API",
+        "What-are-they",
+        "Do-we-need-to-construct-our-own",
+        "So-what-do-we-have-available",
+        "Install-XrmDefinitelyTyped",
+        "Typing-your-types-in-your-TypeScript",
+        "That’s-all-folks"
+      ],
+      "published": "2020-03-08T00:00:00.000Z"
+    },
+    {
+      "path": "/2020/04/04/D365-Typescript-Webresources-Part-3/",
+      "title": "D365 TypeScript Web Resources - Part 3 - Webpack &amp; Babel",
+      "headings": [
+        "What-the-amp",
+        "Webpack",
+        "Babel",
+        "Install",
+        "Config",
+        "Webpack-config",
+        "Babel-config",
+        "Lets-build",
+        "That’s-all-folks"
+      ],
+      "published": "2020-04-04T22:00:00.000Z"
+    },
+    {
+      "path": "/2020/04/11/D365-Typescript-WebResources-Part-4/",
+      "title": "D365 TypeScript Web Resources - Part 4 - Modules &amp; Debugging",
+      "headings": [
+        "ES-Modules",
+        "What-are-ES-Modules",
+        "A-Sample-Module",
+        "Debugging",
+        "webpack-dev-server-amp-fiddler-to-the-rescue",
+        "Fiddler",
+        "webpack-dev-server",
+        "Auto-Responder",
+        "Debugging-in-Chrome-Dev-Tools",
+        "No-need-to-deploy",
+        "That’s-all-folks"
+      ],
+      "published": "2020-04-11T00:07:42.000Z"
+    },
+    {
+      "path": "/2020/06/06/PCF-and-Form-Communication/",
+      "title": "PCF &lt;-&gt; Form Communication",
+      "headings": [
+        "Communication",
+        "I-want-better-comms",
+        "Here’s-what-I-came-up-with…",
+        "Custom-Events"
+      ],
+      "published": "2020-06-06T02:12:12.000Z"
+    },
+    {
+      "path": "/2020/06/10/PCF-primary-entity-info/",
+      "title": "PCF primary entity info",
+      "headings": [
+        "Getting-the-primary-entity-info",
+        "The-entity-id-guid",
+        "The-entity-type-entity-logical-name",
+        "The-record-name-primary-attribute-value"
+      ],
+      "published": "2020-06-10T18:59:36.000Z"
+    },
+    {
+      "path": "/2020/06/11/PCF-WebApi-execute/",
+      "title": "PCF WebApi execute",
+      "headings": [
+        "The-PCF-WebApi-execute-method-is-lurking-in-the-background",
+        "execute",
+        "executeMultiple"
+      ],
+      "published": "2020-06-10T23:05:42.000Z"
+    },
+    {
+      "path": "/2021/01/22/D365-Typescript-Webresources-Part-5/",
+      "title": "D365 TypeScript Web Resources - Part 5 - Unit Testing",
+      "headings": [
+        "Unit-Tests-But-my-code-is-next-level",
+        "Configure-Jest",
+        "Writing-our-first-test",
+        "Lets-have-a-closer-look-at-the-test…",
+        "So-lets-run-the-tests",
+        "Fancy-a-crack-at-mocking-the-WebApi",
+        "A-function-that-calls-Xrm-WebApi…",
+        "Testing-a-function-that-calls-Xrm-WebApi",
+        "Lets-have-a-closer-look-again",
+        "OK-OK-Lets-run-the-bloody-tests",
+        "That’s-all-folks"
+      ],
+      "published": "2021-01-22T00:12:23.000Z"
+    },
+    {
+      "path": "/2021/04/30/D365-Typescript-Webresources-Part-6/",
+      "title": "D365 TypeScript Web Resources - Part 6 - Application Insights",
+      "headings": [
+        "Application-Insights",
+        "What-is-Application-Insights",
+        "Setup",
+        "The-Code",
+        "Telemetry-Initializer",
+        "What’s-it-look-like",
+        "That’s-all-folks"
+      ],
+      "published": "2021-04-30T22:00:00.000Z"
+    },
+    {
+      "path": "/2022/12/06/Deleting-stale-branches-in-Azure-DevOps-Git-Repositories/",
+      "title": "Deleting stale branches in Azure DevOps Git Repositories with Azure Logic Apps",
+      "headings": [
+        "Stale-Branch…-Huh",
+        "Why-delete-your-stale-branches",
+        "My-Solution",
+        "Child-Logic-App",
+        "Create-a-new-logic-app",
+        "Configure-the-trigger",
+        "Respond-and-get-branch-stats",
+        "Parse-the-branch-stats-response",
+        "Post-adaptive-card-to-teams-channel",
+        "Check-adaptive-card-response",
+        "When-response-is-NOT-“Approve”",
+        "When-response-IS-“Approve”",
+        "Parent-Logic-App",
+        "Create-a-new-logic-app-1",
+        "Trigger-and-iterate-repositories",
+        "Parse-the-branch-stats-response-1",
+        "Validate-each-branch",
+        "Call-the-child-logic-app",
+        "The-End"
+      ],
+      "published": "2022-12-06T00:00:00.000Z"
+    },
+    {
+      "path": "/2026/01/28/Power-Platform-Component-Framework-ESBuild/",
+      "title": "Power Platform Component Framework - ESBuild",
+      "headings": [
+        "The-Default",
+        "Lets-Compare",
+        "Webpack-Output",
+        "ESBuild-Output",
+        "Configuration",
+        "Enable-the-feature-flag",
+        "Install-the-dependencies",
+        "Results-amp-Conclusion"
+      ],
+      "published": "2026-01-28T00:00:00.000Z"
+    },
+    {
+      "path": "/archives/2020/03/",
+      "title": "Writing: 2020/3",
+      "headings": [],
+      "published": "2020-03-08T00:00:00.000Z"
+    },
+    {
+      "path": "/archives/2020/04/",
+      "title": "Writing: 2020/4",
+      "headings": [],
+      "published": "2020-04-11T00:07:42.000Z"
+    },
+    {
+      "path": "/archives/2020/06/",
+      "title": "Writing: 2020/6",
+      "headings": [],
+      "published": "2020-06-10T23:05:42.000Z"
+    },
+    {
+      "path": "/archives/2020/",
+      "title": "Writing: 2020",
+      "headings": [],
+      "published": "2020-06-10T23:05:42.000Z"
+    },
+    {
+      "path": "/archives/2021/01/",
+      "title": "Writing: 2021/1",
+      "headings": [],
+      "published": "2021-01-22T00:12:23.000Z"
+    },
+    {
+      "path": "/archives/2021/04/",
+      "title": "Writing: 2021/4",
+      "headings": [],
+      "published": "2021-04-30T22:00:00.000Z"
+    },
+    {
+      "path": "/archives/2021/",
+      "title": "Writing: 2021",
+      "headings": [],
+      "published": "2021-04-30T22:00:00.000Z"
+    },
+    {
+      "path": "/archives/2022/12/",
+      "title": "Writing: 2022/12",
+      "headings": [],
+      "published": "2022-12-06T00:00:00.000Z"
+    },
+    {
+      "path": "/archives/2022/",
+      "title": "Writing: 2022",
+      "headings": [],
+      "published": "2022-12-06T00:00:00.000Z"
+    },
+    {
+      "path": "/archives/2026/01/",
+      "title": "Writing: 2026/1",
+      "headings": [],
+      "published": "2026-01-28T00:00:00.000Z"
+    },
+    {
+      "path": "/archives/2026/",
+      "title": "Writing: 2026",
+      "headings": [],
+      "published": "2026-01-28T00:00:00.000Z"
+    },
+    {
+      "path": "/archives/",
+      "title": "Writing",
+      "headings": [],
+      "published": "2026-01-28T00:00:00.000Z"
+    },
+    {
+      "path": "/archives/page/2/",
+      "title": "Writing",
+      "headings": [],
+      "published": "2020-03-07T00:00:00.000Z"
+    },
+    {
+      "path": "/categories/Azure/DevOps/",
+      "title": "Category: DevOps",
+      "headings": [],
+      "published": "2022-12-06T00:00:00.000Z"
+    },
+    {
+      "path": "/categories/Azure/",
+      "title": "Category: Azure",
+      "headings": [],
+      "published": "2022-12-06T00:00:00.000Z"
+    },
+    {
+      "path": "/categories/D365-TypeScript/",
+      "title": "Category: D365 TypeScript",
+      "headings": [],
+      "published": "2021-04-30T22:00:00.000Z"
+    },
+    {
+      "path": "/categories/",
+      "title": "categories",
+      "headings": []
+    },
+    {
+      "path": "/categories/Power-Apps-Component-Framework/",
+      "title": "Category: Power Apps Component Framework",
+      "headings": [],
+      "published": "2020-06-10T23:05:42.000Z"
+    },
+    {
+      "path": "/categories/Power-Apps-Component-Framework/PCF-Tips-n-Tricks/",
+      "title": "Category: PCF Tips &#39;n&#39; Tricks",
+      "headings": [],
+      "published": "2020-06-10T23:05:42.000Z"
+    },
+    {
+      "path": "/categories/Power-Platform/",
+      "title": "Category: Power Platform",
+      "headings": [],
+      "published": "2026-01-28T00:00:00.000Z"
+    },
+    {
+      "path": "/categories/Power-Platform/Power-Apps-Component-Framework/",
+      "title": "Category: Power Apps Component Framework",
+      "headings": [],
+      "published": "2026-01-28T00:00:00.000Z"
+    },
+    {
+      "path": "/D365-Typescript/",
+      "title": "D365 Typescript",
+      "headings": [
+        "D365-Typescript"
+      ]
+    },
+    {
+      "path": "//",
+      "title": "A Blog by Oliver Flint",
+      "headings": [],
+      "published": "2026-01-28T00:00:00.000Z"
+    },
+    {
+      "path": "/Me/",
+      "title": "A Blog by Oliver Flint",
+      "headings": [
+        "Welcome-to-my-blog",
+        "Here’s-some-info-about-me"
+      ]
+    },
+    {
+      "path": "/page/2/",
+      "title": "A Blog by Oliver Flint",
+      "headings": [],
+      "published": "2026-01-28T00:00:00.000Z"
+    },
+    {
+      "path": "/tags/Azure/",
+      "title": "Tag: Azure",
+      "headings": [],
+      "published": "2022-12-06T00:00:00.000Z"
+    },
+    {
+      "path": "/tags/Babel/",
+      "title": "Tag: Babel",
+      "headings": [],
+      "published": "2020-04-11T00:07:42.000Z"
+    },
+    {
+      "path": "/tags/Branches/",
+      "title": "Tag: Branches",
+      "headings": [],
+      "published": "2022-12-06T00:00:00.000Z"
+    },
+    {
+      "path": "/tags/Component-Framework/",
+      "title": "Tag: Component Framework",
+      "headings": [],
+      "published": "2026-01-28T00:00:00.000Z"
+    },
+    {
+      "path": "/tags/D365/",
+      "title": "Tag: D365",
+      "headings": [],
+      "published": "2021-04-30T22:00:00.000Z"
+    },
+    {
+      "path": "/tags/Debugging/",
+      "title": "Tag: Debugging",
+      "headings": [],
+      "published": "2020-04-11T00:07:42.000Z"
+    },
+    {
+      "path": "/tags/DevOps/",
+      "title": "Tag: DevOps",
+      "headings": [],
+      "published": "2022-12-06T00:00:00.000Z"
+    },
+    {
+      "path": "/tags/ES-Modules/",
+      "title": "Tag: ES Modules",
+      "headings": [],
+      "published": "2020-04-11T00:07:42.000Z"
+    },
+    {
+      "path": "/tags/Flow/",
+      "title": "Tag: Flow",
+      "headings": [],
+      "published": "2022-12-06T00:00:00.000Z"
+    },
+    {
+      "path": "/tags/JavaScript/",
+      "title": "Tag: JavaScript",
+      "headings": [],
+      "published": "2021-04-30T22:00:00.000Z"
+    },
+    {
+      "path": "/tags/Jest/",
+      "title": "Tag: Jest",
+      "headings": [],
+      "published": "2021-01-22T00:12:23.000Z"
+    },
+    {
+      "path": "/tags/Logic-Apps/",
+      "title": "Tag: Logic Apps",
+      "headings": [],
+      "published": "2022-12-06T00:00:00.000Z"
+    },
+    {
+      "path": "/tags/oliver-flint/",
+      "title": "Tag: oliver flint",
+      "headings": [],
+      "published": "2020-03-06T23:00:43.000Z"
+    },
+    {
+      "path": "/tags/PCF/",
+      "title": "Tag: PCF",
+      "headings": [],
+      "published": "2026-01-28T00:00:00.000Z"
+    },
+    {
+      "path": "/tags/Power-Apps/",
+      "title": "Tag: Power Apps",
+      "headings": [],
+      "published": "2020-06-10T23:05:42.000Z"
+    },
+    {
+      "path": "/tags/Power-Apps-Component-Framework/",
+      "title": "Tag: Power Apps Component Framework",
+      "headings": [],
+      "published": "2026-01-28T00:00:00.000Z"
+    },
+    {
+      "path": "/tags/Power-Automate/",
+      "title": "Tag: Power Automate",
+      "headings": [],
+      "published": "2022-12-06T00:00:00.000Z"
+    },
+    {
+      "path": "/tags/Power-Platform/",
+      "title": "Tag: Power Platform",
+      "headings": [],
+      "published": "2026-01-28T00:00:00.000Z"
+    },
+    {
+      "path": "/tags/Stale/",
+      "title": "Tag: Stale",
+      "headings": [],
+      "published": "2022-12-06T00:00:00.000Z"
+    },
+    {
+      "path": "/tags/TypeScript/",
+      "title": "Tag: TypeScript",
+      "headings": [],
+      "published": "2021-04-30T22:00:00.000Z"
+    },
+    {
+      "path": "/tags/Unit-Testing/",
+      "title": "Tag: Unit Testing",
+      "headings": [],
+      "published": "2021-01-22T00:12:23.000Z"
+    },
+    {
+      "path": "/tags/Web-Resources/",
+      "title": "Tag: Web Resources",
+      "headings": [],
+      "published": "2021-04-30T22:00:00.000Z"
+    },
+    {
+      "path": "/tags/Webpack/",
+      "title": "Tag: Webpack",
+      "headings": [],
+      "published": "2020-04-11T00:07:42.000Z"
+    },
+    {
+      "path": "/tags/welcome/",
+      "title": "Tag: welcome",
+      "headings": [],
+      "published": "2020-03-06T23:00:43.000Z"
+    },
+    {
+      "path": "/tags/XrmDefinitelyTyped/",
+      "title": "Tag: XrmDefinitelyTyped",
+      "headings": [],
+      "published": "2020-03-08T00:00:00.000Z"
+    },
+    {
+      "path": "/tags/XrmMock/",
+      "title": "Tag: XrmMock",
+      "headings": [],
+      "published": "2021-01-22T00:12:23.000Z"
+    }
+  ]
+}

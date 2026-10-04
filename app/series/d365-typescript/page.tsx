@@ -1,0 +1,9 @@
+import Link from "next/link";
+import { getSeriesPosts } from "@/lib/content";
+import { pageMetadata } from "@/lib/metadata";
+import { Icon } from "@/components/icon";
+export const metadata = pageMetadata("TypeScript for Dynamics 365", "A six-part guide to writing Dynamics 365 web resources with TypeScript: basics, declarations, bundling, modules, unit tests and Application Insights.", "/series/d365-typescript/");
+export default function TypeScriptSeries() {
+  const posts = getSeriesPosts();
+  return <div className="container page-content"><header className="page-heading"><Link href="/series/" className="eyebrow breadcrumb">← All series</Link><h1>TypeScript for<br />Dynamics 365<span>.</span></h1><p>A practical approach to building web resources that are<br className="desktop-break" /> easier to maintain, test and support.</p><div className="page-heading-meta"><span>6 parts</span><span>Published 2020–2021</span><span>{posts.reduce((sum, p) => sum + p.readingMinutes, 0)} min total reading</span></div></header><div className="series-context"><p>This series grew out of projects where JavaScript web resources had become difficult to maintain. TypeScript, testing and telemetry help bring structure to that work.</p><p>These articles reflect the tools and APIs available when they were written. The code and downloadable samples are preserved with their original context.</p></div><div className="series-list">{posts.map(post => <article key={post.path}><span className="series-order">{String(post.order).padStart(2, "0")}</span><div><span className="eyebrow">Part {post.order} / {post.readingMinutes} min read</span><h2><Link href={post.path}>{post.title.replace(/^D365 TypeScript Web Resources - Part \d - /, "")}</Link></h2><p>{post.summary || post.description}</p></div><Icon name="arrow" /></article>)}</div></div>;
+}
