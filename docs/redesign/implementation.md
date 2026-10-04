@@ -1,7 +1,8 @@
 # Workbench implementation
 
-Completed 4 October 2026. The redesign is implemented in this workspace and available as a Netlify draft deployment.
+Completed 4 October 2026. The redesign is implemented in this workspace and launched on the existing Netlify site.
 
+- [Live website](https://oliverflint.co.uk/)
 - [Review the Workbench preview](https://6ac2d13c5c17f0659154d5bf--oliverflintcouk.netlify.app/)
 - [Netlify deployment log](https://app.netlify.com/projects/oliverflintcouk/deploys/6ac2d13c5c17f0659154d5bf)
 
@@ -48,16 +49,22 @@ Small labels and metadata now use at least 13px. Navigation, card summaries, cod
 
 ## Production cutover
 
-The existing Netlify site is `oliverflintcouk`, ID `c786ebee-1d25-437b-87f6-906ec4e25e28`, with custom domain `oliverflint.co.uk`. Its configured production branch is currently **master**, and its build command/publish directory are unset in the dashboard. This checkout is on **source**. Source changes have not been committed or pushed by this task.
+The redesign launched on 4 October 2026 at [oliverflint.co.uk](https://oliverflint.co.uk/). The existing Netlify site and custom domain were retained.
 
-The draft deployment is `6ac2d13c5c17f0659154d5bf`. The previous production deployment recorded for rollback is `697a23c219a86c0008937074`. Production was not replaced.
+- Netlify site: `oliverflintcouk`, ID `c786ebee-1d25-437b-87f6-906ec4e25e28`.
+- Production Git branch: `source`, connected to `OliverFlint/oliverflint.co.uk` on GitHub.
+- Build command: `npm run build`; publish directory: `out`; Node 22.
+- Redesign commit: `30c2ccd`; original asset byte preservation: `9070fe9`.
+- Production deployment: `6ac2d3fdcb03a200089415d4` ([deployment log](https://app.netlify.com/projects/oliverflintcouk/deploys/6ac2d3fdcb03a200089415d4)).
+- Git pushes to `source` now trigger Netlify production builds automatically.
+- Production robots rules allow indexing; no preview `noindex` headers are present.
 
-After reviewing the redesign:
+The local production build and migration export checks passed. Live checks covered all 12 article pages, the six principal index pages, all 63 historical page addresses, legacy About/category/article redirects, original ZIP/SVG downloads, RSS identities, sitemap entries, a genuine custom 404 and the www-to-apex redirect. Browser review confirmed the homepage at desktop and 390px mobile widths.
 
-1. Commit and push the migration source to the intended branch.
-2. For continuous deployment, point the existing Netlify site's production branch at the migrated source (recommended: `source`) so the committed `netlify.toml` controls builds.
-3. Run a fresh production build (`npm run build`) and `npm run check:export`; production robots rules must allow indexing. Never promote the noindex preview artifact directly.
-4. Publish the production artifact, preserve the custom domain and verify the key legacy routes/downloads on that domain.
-5. Monitor route errors and feed delivery. Restore deploy `697a23c219a86c0008937074` and the previous build/branch configuration if rollback is needed.
+Git attributes preserve downloadable asset bytes across Windows and Netlify's Linux checkout, including line endings in the original SVG and diagram source.
+
+### Rollback
+
+The previous Hexo production deployment is `697a23c219a86c0008937074`. If rollback is required, restore that deploy through Netlify and restore its production branch to `master`, clearing the dashboard build command and publish directory. Pause automatic builds during rollback so a subsequent push cannot immediately replace the restored deploy. The historical `master` branch and Hexo sources remain available.
 
 The [root README](../../README.md) documents development, writing, builds, previews and publishing.

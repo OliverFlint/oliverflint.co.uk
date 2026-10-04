@@ -68,7 +68,7 @@ Fonts are self-hosted Inter and JetBrains Mono from the Fontsource packages. The
 
 ## Deployment to Netlify
 
-`netlify.toml` specifies Node 22, `npm run build` and `out` publishing, with the Next.js runtime skipped for the static export. Preserve the existing site's custom domain and Git repository connection. Confirm the production branch before changing continuous deployment: the previous Hexo config pushed generated content to `master`, whereas the development checkout is on `source`.
+`netlify.toml` specifies Node 22, `npm run build` and `out` publishing, with the Next.js runtime skipped for the static export. Preserve the existing site's custom domain and Git repository connection. The production branch is `source`; pushing changes to this branch triggers a production build. The previous Hexo pipeline published generated files from `master`, which is retained for historical reference.
 
 Local draft deployment after linking to the existing site:
 
