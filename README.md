@@ -68,7 +68,7 @@ Fonts are self-hosted Inter and JetBrains Mono from the Fontsource packages. The
 
 ## Deployment to Netlify
 
-`netlify.toml` specifies Node 22, `npm run build` and `out` publishing, with the Next.js runtime skipped for the static export. The existing site's custom domain and Git repository connection are configured on the `source` production branch. Pushing changes to `source` triggers a production build.
+`netlify.toml` specifies Node 22, `npm run build` and `out` publishing, with the Next.js runtime skipped for the static export. The existing site's custom domain and Git repository connection are configured on the `master` production branch. Pushing changes to `master` triggers a production build.
 
 Local draft deployment after linking to the existing site:
 
@@ -78,7 +78,7 @@ npm run build:preview
 npx netlify deploy --dir=out --no-build
 ```
 
-Production releases deploy automatically from `source`. Before pushing a content or code change, run `npm run build` and `npm run check:export`. Local builds do not publish by themselves. Draft builds carry `noindex` rules and must never be published to production.
+Production releases deploy automatically from `master`. Before pushing a content or code change, run `npm run build` and `npm run check:export`. Local builds do not publish by themselves. Draft builds carry `noindex` rules and must never be published to production.
 
 ## Migration record
 
