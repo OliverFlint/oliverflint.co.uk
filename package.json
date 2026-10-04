@@ -9,7 +9,8 @@
     "build:preview": "node scripts/build-preview.mjs",
     "typecheck": "tsc --noEmit",
     "check:export": "node scripts/check-export.mjs",
-    "content": "node scripts/prepare-content.mjs"
+    "content": "node scripts/prepare-content.mjs",
+    "new:post": "node scripts/new-post.mjs"
   },
   "engines": {
     "node": ">=22"

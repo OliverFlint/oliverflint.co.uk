@@ -28,7 +28,16 @@ The preview server runs at `http://127.0.0.1:3000`, serves the exported HTML, fo
 
 ## Writing a post
 
-Create `content/posts/a-new-note.md`:
+Create a Markdown post and matching assets folder with:
+
+```sh
+npm run new:post -- "A new note"
+npm run new:post -- "A new note" 2026-10-05
+```
+
+The date is optional and defaults to your local calendar date. The command derives a URL-safe slug, creates `content/posts/<slug>.md` and `content/assets/<slug>/`, and refuses to overwrite an existing post or assets folder. New posts start as drafts, so they stay unpublished until you edit the metadata and set `draft: false`.
+
+The generated Markdown looks like this:
 
 ```yaml
 ---
