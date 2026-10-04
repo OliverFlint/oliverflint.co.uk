@@ -1,0 +1,12 @@
+[
+  {
+    "slug": "d365-typescript",
+    "title": "TypeScript for Dynamics 365",
+    "description": "A six-part guide to writing Dynamics 365 web resources with TypeScript: basics, declarations, bundling, modules, unit tests and Application Insights.",
+    "intro": "A practical approach to building web resources that are easier to maintain, test and support.",
+    "context": [
+      "This series grew out of projects where JavaScript web resources had become difficult to maintain. TypeScript, testing and telemetry help bring structure to that work.",
+      "These articles reflect the tools and APIs available when they were written. The code and downloadable samples are preserved with their original context."
+    ]
+  }
+]

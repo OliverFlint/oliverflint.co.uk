@@ -57,7 +57,7 @@ Write ordinary Markdown here.
 
 Topic slugs and their display names and descriptions are defined once in `lib/topics.json`. Add a topic there, then use its slug in post front matter. Dates are explicit UTC timestamps and paths are explicit; a timezone change never moves an article. An optional `updated` timestamp should record an actual editorial revision.
 
-For D365 TypeScript series members, add `series: d365-typescript` and `order: 1` (through 6). Do not assign these fields to unrelated posts.
+Series definitions live in `lib/series.json`. Add a definition there with a unique URL-safe `slug`, title, description and intro; `context` paragraphs are optional. Then add `series: <slug>` and a unique positive `order` to each participating post's front matter. The series overview, static route, sitemap entry and previous/next article links are generated from these definitions at build time. Posts without a series should omit both fields.
 
 Place assets in `content/assets/a-new-note/` and reference them by filename from the Markdown. The build copies originals to the article's published folder, creates responsive WebP variants, validates references and adds image dimensions. Image descriptions should use real Markdown alt text; inherited filename-based labels are only a fallback for legacy images. ZIP downloads stay byte-for-byte intact.
 

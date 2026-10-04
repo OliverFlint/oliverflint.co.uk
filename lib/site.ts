@@ -1,4 +1,5 @@
 import topicDefinitions from "./topics.json";
+import seriesDefinitions from "./series.json";
 
 export const site = {
   name: "Oliver Flint",
@@ -11,6 +12,7 @@ export const site = {
   support: "https://ko-fi.com/oliverflint",
 };
 export const topics = topicDefinitions;
+export const series = seriesDefinitions;
 export function formatDate(date: string) {
   return new Intl.DateTimeFormat("en-GB", { day: "numeric", month: "short", year: "numeric", timeZone: "UTC" }).format(new Date(date));
 }

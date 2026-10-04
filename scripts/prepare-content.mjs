@@ -14,16 +14,18 @@ import rehypeShiki from '@shikijs/rehype';
 import { visit } from 'unist-util-visit';
 import sharp from 'sharp';
 import topics from '../lib/topics.json' with { type: 'json' };
+import series from '../lib/series.json' with { type: 'json' };
 
 const origin = 'https://oliverflint.co.uk';
 const topicIds = topics.map(topic => topic.slug);
+const seriesIds = series.map(item => item.slug);
 const schema = z.object({
   title: z.string().min(1), slug: z.string().regex(/^[a-z0-9-]+$/),
   published: z.string().datetime(), path: z.string().regex(/^\/\d{4}\/\d{2}\/\d{2}\/[a-z0-9-]+\/$/),
   description: z.string().min(1), summary: z.string().min(1).optional(), topics: z.array(z.enum(topicIds)), tags: z.array(z.string()),
   draft: z.boolean().default(false), updated: z.string().datetime().optional(),
   legacyPath: z.string().optional(), rssGuid: z.string().optional(), legacyHeadings: z.array(z.string()).optional(),
-  series: z.literal('d365-typescript').optional(), order: z.number().int().min(1).max(6).optional(),
+  series: z.enum(seriesIds).optional(), order: z.number().int().min(1).optional(),
 });
 await fs.mkdir('.generated', { recursive: true });
 await fs.mkdir('public/generated', { recursive: true });
@@ -54,7 +56,7 @@ for (const key of ['path', 'slug']) {
   if (new Set(rawPosts.map(p => p[key])).size !== rawPosts.length) throw Error(`Duplicate post ${key}`);
 }
 const seriesPosts = rawPosts.filter(p => p.series);
-if (new Set(seriesPosts.map(p => p.order)).size !== seriesPosts.length) throw Error('Duplicate series order');
+if (new Set(seriesPosts.map(p => `${p.series}:${p.order}`)).size !== seriesPosts.length) throw Error('Duplicate series order');
 const legacy = JSON.parse(await fs.readFile('migration/legacy-routes.json', 'utf8'));
 const rewrite = url => {
   let local = url.replace(/^https?:\/\/(www\.)?oliverflint\.co\.uk/, '');
