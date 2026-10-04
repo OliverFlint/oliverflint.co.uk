@@ -9,8 +9,7 @@
     "build:preview": "node scripts/build-preview.mjs",
     "typecheck": "tsc --noEmit",
     "check:export": "node scripts/check-export.mjs",
-    "content": "node scripts/prepare-content.mjs",
-    "migrate:hexo": "node scripts/migrate-hexo.mjs"
+    "content": "node scripts/prepare-content.mjs"
   },
   "engines": {
     "node": ">=22"

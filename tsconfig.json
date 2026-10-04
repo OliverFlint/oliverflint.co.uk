@@ -38,10 +38,6 @@
     ".next/dev/types/**/*.ts"
   ],
   "exclude": [
-    "node_modules",
-    "themes",
-    "_old",
-    "source",
-    "legacy"
+    "node_modules"
   ]
 }

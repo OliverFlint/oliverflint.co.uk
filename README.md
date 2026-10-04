@@ -68,7 +68,7 @@ Fonts are self-hosted Inter and JetBrains Mono from the Fontsource packages. The
 
 ## Deployment to Netlify
 
-`netlify.toml` specifies Node 22, `npm run build` and `out` publishing, with the Next.js runtime skipped for the static export. Preserve the existing site's custom domain and Git repository connection. The production branch is `source`; pushing changes to this branch triggers a production build. The previous Hexo pipeline published generated files from `master`, which is retained for historical reference.
+`netlify.toml` specifies Node 22, `npm run build` and `out` publishing, with the Next.js runtime skipped for the static export. The existing site's custom domain and Git repository connection are configured on the `source` production branch. Pushing changes to `source` triggers a production build.
 
 Local draft deployment after linking to the existing site:
 
@@ -78,7 +78,7 @@ npm run build:preview
 npx netlify deploy --dir=out --no-build
 ```
 
-For an agreed production release, run a fresh `npm run build`, then `npm run check:export`, and publish that artifact. Do not publish the noindex preview artifact to production. Record the previous Netlify deploy ID before cutover so it can be restored if necessary. A deployment does not push source changes to Git; continuous deployment needs this source committed and pushed to the configured branch.
+Production releases deploy automatically from `source`. Before pushing a content or code change, run `npm run build` and `npm run check:export`. Local builds do not publish by themselves. Draft builds carry `noindex` rules and must never be published to production.
 
 ## Migration record
 
@@ -86,6 +86,6 @@ For an agreed production release, run a fresh `npm run build`, then `npm run che
 
 `scripts/check-export.mjs` checks the actual output for every imported post and historical page, heading compatibility, unchanged assets, RSS identities, canonical origin, broken local references and draft exclusion.
 
-The original `source/`, `themes/`, `_config.yml`, `scaffolds/` and `_old/` are retained as migration references and do not participate in the Next.js build. The previous ignored generated `public/` output was moved locally to `legacy/hexo-public/`. The one-time `npm run migrate:hexo` importer does not overwrite existing Markdown.
+The old Hexo source, themes, scaffolds, configuration, importer and generated output have been removed from this workspace. The migrated Markdown and assets in `content/` are the editable source; `migration/` retains the legacy route, sitemap and RSS snapshots needed for redirects and export checks. The former Hexo production deployment ID and rollback steps are recorded in [the migration implementation notes](docs/redesign/implementation.md).
 
 Analytics, comment embeds and the floating donation widget have been replaced by ordinary profile, RSS and support links. The site does not require external scripts for reading.

@@ -19,7 +19,7 @@ Completed 4 October 2026. The redesign is implemented in this workspace and laun
 - Canonical URLs, metadata, structured article data, RSS, sitemap, robots and individual sharing images generated.
 - Netlify configuration publishes `out/`. The draft build has `noindex` response headers and robots exclusion.
 - Historical About, category, tag, archive and series routes map to their new destinations.
-- Original Hexo source/theme directories retained as references outside the active Next.js build. The previous ignored generated output is locally archived under `legacy/hexo-public/`.
+- Legacy Hexo source, themes, scaffolds, importer, caches and generated output have been removed. Migration route, RSS and sitemap snapshots remain under `migration/` for URL preservation and export checks.
 
 ## Validation
 

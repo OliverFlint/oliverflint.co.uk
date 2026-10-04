@@ -1,6 +1,6 @@
 # Website redesign and migration proposal
 
-Reviewed 4 October 2026. Status: Workbench implemented and deployed to a Netlify draft preview. See `implementation.md` for results and the production cutover checklist.
+Reviewed 4 October 2026. Workbench is implemented and deployed to the production site. This document records the original site review, selected concept and migration proposal; see `implementation.md` for launch verification and rollback details.
 
 ## Selected direction
 
@@ -273,15 +273,15 @@ Overall planning allowance: **roughly 6–10 working days**, depending on copy c
 - Preview indexing controls do not leak into production.
 - A documented publishing workflow and a recorded rollback deployment.
 
-## Decisions for the next step
+## Decision outcome
 
-Workbench is selected. Proceed with detailed layouts for the personal technical blog and its existing archive. Biography, comments and analytics decisions can be resolved while the layout is developed. Professional services or case studies can be added later when there is confirmed copy and material to publish.
+Workbench was selected and implemented. The migrated Markdown archive, article series and new site structure are live at the canonical domain. The implementation and production verification are recorded in `implementation.md`.
 
 ## Evidence and references
 
 - [Live home](https://oliverflint.co.uk/), [categories](https://oliverflint.co.uk/categories/), [archive](https://oliverflint.co.uk/archives/), [About](https://oliverflint.co.uk/me/) and [ESBuild article](https://oliverflint.co.uk/2026/01/28/power-platform-component-framework-esbuild/): content and desktop layout reviewed in browser.
 - [Live sitemap](https://oliverflint.co.uk/sitemap.xml) and [RSS](https://oliverflint.co.uk/rss.xml): fetched directly, both HTTP 200; origin/path details above reflect those responses.
-- Workspace: `package.json`, `_config.yml`, `themes/cactus-of/`, `source/_posts/`, `source/_drafts/`, `source/Me/`, `source/D365-Typescript/`, and existing `public/` output.
+- Workspace at the time of the review: `package.json`, `_config.yml`, `themes/cactus-of/`, `source/_posts/`, `source/_drafts/`, `source/Me/`, `source/D365-Typescript/`, and existing `public/` output. These Hexo files have since been removed from the active branch.
 - [Next.js static exports](https://nextjs.org/docs/app/guides/static-exports): build-time Server Components, `output: 'export'`, static path generation, export limitations and image handling.
 - [Next.js on Netlify](https://docs.netlify.com/build/frameworks/framework-setup-guides/nextjs/overview/): OpenNext support and the alternative adapter deployment mode.
 
