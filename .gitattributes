@@ -1,0 +1,4 @@
+# Preserve original downloadable asset bytes across Windows and Netlify builds.
+content/assets/** -text
+source/_posts/**/*.svg -text
+source/_posts/**/*.yuml -text
