@@ -2,7 +2,71 @@ import Link from "next/link";
 import { site } from "@/lib/site";
 import { pageMetadata } from "@/lib/metadata";
 import { Icon } from "@/components/icon";
-export const metadata = pageMetadata("About", "Meet Oliver Flint: Dynamics 365 solution architect, technology enthusiast and author of practical development notes.", "/about/");
+export const metadata = pageMetadata(
+  "About",
+  "Meet Oliver Flint: Dynamics 365 solution architect, technology enthusiast and author of practical development notes.",
+  "/about/",
+);
 export default function About() {
-  return <div className="container page-content"><header className="page-heading"><span className="eyebrow">Behind the workbench</span><h1>Hello, I'm Oliver<span>.</span></h1><p>Solution architect. Tech enthusiast.<br />Always something new to learn.</p></header><div className="about-layout"><div className="about-copy"><h2>A place to think out loud.</h2><p>I'm a Microsoft Dynamics 365 solution architect with a love of technology. This is where I share my experiences with Power Platform, Power Apps, Dataverse and Azure.</p><p>The writing is grounded in things I've worked on and questions I've explored. Sometimes that's a detailed walkthrough; sometimes it's a small API discovery that might save someone else a bit of time.</p><p>These are my own opinions and experiences. I'm always interested in learning a better way to do things.</p><h2>Away from the keyboard.</h2><p>Family, rugby, and probably still a bit of tech.</p><Link className="button button-primary" href="/blog/">Read the writing <span>→</span></Link></div><aside className="about-sidebar"><div className="profile-mark">of<span>.</span></div><span className="eyebrow">Elsewhere on the web</span><a href={site.github}>GitHub <Icon name="arrow" /></a><a href={site.linkedin}>LinkedIn <Icon name="arrow" /></a><a href={site.twitter}>X / Twitter <Icon name="arrow" /></a><a href="/rss.xml">RSS feed <Icon name="rss" /></a><div className="sidebar-note"><p>If a post helped you out, you can support the writing.</p><a href={site.support}>Buy me a coffee ↗</a></div></aside></div></div>;
+  return (
+    <div className="container page-content">
+      <header className="page-heading">
+        <span className="eyebrow">Behind the workbench</span>
+        <h1>
+          Hello, I'm Oliver<span>.</span>
+        </h1>
+        <p>
+          Solution architect. Tech enthusiast.
+          <br />
+          Always something new to learn.
+        </p>
+      </header>
+      <div className="about-layout">
+        <div className="about-copy">
+          <h2>A place to think out loud.</h2>
+          <p>
+            I'm a Microsoft Dynamics 365 solution architect with a love of
+            technology. This is where I share my experiences with Power
+            Platform, Power Apps, Dataverse and Azure.
+          </p>
+          <p>
+            The writing is grounded in things I've worked on and questions I've
+            explored. Sometimes that's a detailed walkthrough; sometimes it's a
+            small API discovery that might save someone else a bit of time.
+          </p>
+          <p>
+            These are my own opinions and experiences. I'm always interested in
+            learning a better way to do things.
+          </p>
+          <h2>Away from the keyboard.</h2>
+          <p>Family, rugby, hockey, and probably still a bit of tech.</p>
+          <Link className="button button-primary" href="/blog/">
+            Read the writing <span>→</span>
+          </Link>
+        </div>
+        <aside className="about-sidebar">
+          <div className="profile-mark">
+            of<span>.</span>
+          </div>
+          <span className="eyebrow">Elsewhere on the web</span>
+          <a href={site.github}>
+            GitHub <Icon name="arrow" />
+          </a>
+          <a href={site.linkedin}>
+            LinkedIn <Icon name="arrow" />
+          </a>
+          <a href={site.twitter}>
+            X / Twitter <Icon name="arrow" />
+          </a>
+          <a href="/rss.xml">
+            RSS feed <Icon name="rss" />
+          </a>
+          <div className="sidebar-note">
+            <p>If a post helped you out, you can support the writing.</p>
+            <a href={site.support}>Buy me a coffee ↗</a>
+          </div>
+        </aside>
+      </div>
+    </div>
+  );
 }
